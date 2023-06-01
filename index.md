@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to Rubin's place
 
 You can use the [editor on GitHub](https://github.com/rubin55/website/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
