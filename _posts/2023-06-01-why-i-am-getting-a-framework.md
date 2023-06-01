@@ -106,8 +106,11 @@ most of these issues are fixed and for common grievances fixes and workarounds
 seem to be readily available.
 
 Framework has recently opened pre-order for their 3rd generation devices and so
-I bit the bullet and ordered an Intel 13th gen variant. Actually, as I'm typing
-this, I just got a message in the mail telling me they are preparing my batch!
+I bit the bullet and ordered an Intel 13th gen variant with 64Gib RAM and an
+8TiB NVME (ordered seperately).
+
+Actually, as I'm typing this, I just got a message in the mail telling me they
+are preparing my batch!
 
 By the way, you might be asking yourself why not the Ryzen variant? I love AMD,
 their Linux support is super good, especially amdgpu in the Linux kernel is very
@@ -122,10 +125,8 @@ So I guess the biggest reason for me to go with Framework is the openness of the
 platform, consequent repairability, and overal positive reviews with regards to
 build quality. I think this might just be the ultimate Linux device for me!
 
-I'll be running [Arch Linux][13] on mine and I've configured it with an 8TiB
-NVME (bought seperately) and 64GiB of RAM.
-
-In a future post, I'll share how the experience has been so far.
+I'll be running [Arch Linux][13] on mine. In a future post, I'll share how the
+experience has been so far.
 
 [1]: https://letsencrypt.org/
 [2]: https://jekyllrb.com/
