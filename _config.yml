@@ -12,6 +12,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 github_username: rubin55
 minimal_mistakes_skin: sunrise
 search: true
+future: true
 
 # Build settings
 markdown: kramdown
