@@ -1,5 +1,4 @@
 ---
-layout: post
 title: A third post
 categories: [blah]
 ---
