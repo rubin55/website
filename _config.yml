@@ -14,13 +14,13 @@ minimal_mistakes_skin: sunrise
 search: true
 
 # Build settings
-markdown: kramdown
+markdown: GFM
 remote_theme: mmistakes/minimal-mistakes
 
 # Outputting
 permalink: /:categories/:title/
 paginate: 4
-paginate_path: /page:num/
+paginate_path: /page/:num/
 timezone: Europe/Amsterdam
 include:
   - _pages
