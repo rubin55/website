@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A first post
-categories: [blogging]
+categories: [blah]
 ---
 
 ## Hello!
