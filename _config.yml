@@ -51,6 +51,12 @@ author:
   avatar : "/assets/images/rubin.gif"
   bio    : "Ah yes well."
   links:
+    - label: The Hague, NL"
+      icon: "fas fa-fw fa-map-marker-alt"
+      url: "https://en.wikipedia.org/wiki/The_Hague"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:me@rubin55.org"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://rubin55.org/"
