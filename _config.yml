@@ -1,3 +1,8 @@
-name     : rubin55.org
-title    : false
-markdown : GFM
+name: rubin55.org
+title: false
+theme:
+markdown: GFM
+permalink: /:title/
+date_format: "%b %-d, %Y"
+paginate: 5
+paginate_path: "/:num/"
