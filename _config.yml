@@ -1,8 +1,14 @@
 name: rubin55.org
 title: false
-theme:
+
 markdown: GFM
+paginate: 3
+paginate_path: /:num/
 permalink: /:title/
 date_format: "%b %-d, %Y"
-paginate: 3
-paginate_path: "/:num/"
+
+
+remote_theme: pages-themes/minimal@v0.2.0
+
+plugins:
+- jekyll-remote-theme
