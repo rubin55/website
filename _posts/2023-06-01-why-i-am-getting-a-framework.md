@@ -1,6 +1,6 @@
 ---
 title: Why I am getting a Framework
-date: 2023-06-01T16:58:30-02:00
+date: 2023-06-01T14:58:30-02:00
 categories:
   - blog
 tags:
@@ -106,7 +106,14 @@ Framework has recently opened pre-order for their 3rd generation devices and so
 I bit the bullet and ordered an Intel 13th gen variant. Actually, as I'm typing
 this, I just got a message in the mail telling me they are preparing my batch!
 
+So I guess the biggest reason for me to go with Framework is the openness of the
+platform, consequent repairability, and overal positive reviews with regards to
+build quality. I think this might just be the ultimate Linux device for me!
 
+I'll be running [Arch Linux][11] on mine and I've configured it with an 8TiB
+NVME (bought seperately) and 64GiB of RAM.
+
+In a future post, I'll share how the experience has been so far.
 
 [1]: https://letsencrypt.org/
 [2]: https://jekyllrb.com/
@@ -118,3 +125,4 @@ this, I just got a message in the mail telling me they are preparing my batch!
 [8]: https://asahilinux.org/
 [9]: https://www.microsoft.com/en-us/d/surface-pro-x/8xtmb6c575md
 [10]: https://frame.work/
+[11]: https://archlinux.org/
