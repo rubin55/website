@@ -10,7 +10,7 @@ email: me@rubin55.org
 description: >- # this means to ignore newlines until "baseurl:"
   Rubin's internet site on the internet. Ah yes well.
 github_username: rubin55
-minimal_mistakes_skin: default
+minimal_mistakes_skin: sunrise
 search: true
 
 # Build settings
