@@ -1,12 +1,20 @@
 ---
 title: Why I am getting a Framework
 date: 2023-06-01T14:28:00+02:00
-last_modified_at: 2023-06-01T16:49:00+02:00
+last_modified_at: 2023-06-02T19:15:00+02:00
 categories:
   - blog
 tags:
   - computers
 ---
+
+Update: I kid you not, my 4th Surface type cover just died this morning. Also
+corrected Macbook Pro 14 2017 to 13 inch (silly mistake). I also noticed some
+folks thought I used a lot of computers. I guess I do? I don't know really.
+Some of those systems are desktops, some laptops, some were used during
+approximately the same time periods, some were aquired for my office, some for
+personal use, some as an experiment and sold again.
+{: .notice--info}
 
 First things first. This is my first post to my newish personal website, which
 I'm hosting on GitHub Pages. It has all kinds of bells and whistles like
@@ -25,7 +33,7 @@ now. I use a beefy desktop at home and at my office, but when I'm out and about
 I usually have a laptop with me to hack around on.
 
 Historically I've used ThinkPads (T43, X220, X230, W520, T14s), Macs (PowerBook
-G4, Apple Cube, G5, MacBook Pro 14 2017), and even a few Surface devices (Surface
+G4, Apple Cube, G5, MacBook Pro 13 2017), and even a few Surface devices (Surface
 Pro 4, Surface Pro X).
 
 ## ThinkPads nowadays
