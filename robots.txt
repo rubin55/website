@@ -1,0 +1,4 @@
+# robots.txt for https://rubin55.org/
+
+User-agent: *
+Disallow: /assets/
