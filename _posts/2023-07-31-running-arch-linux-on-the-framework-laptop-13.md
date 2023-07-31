@@ -23,11 +23,11 @@ This is going to be quite a long article, so here's a Table of Contents:
 
 ## Why Arch Linux
 
-Prior to my Framework Laptop adventures, I've been planning to move to Arch 
+Prior to my Framework Laptop adventures, I've been planning to move to Arch
 Linux for a while. I'm a long-time Linux desktop user. I started out with those
-Red Hat CD-ROMs you'd buy at your local bookshop (this was around '96), I
+Red Hat CD-ROMs you'd buy at your local bookshop (this was around '96). I
 fooled around with SCO UnixWare, had a whole period of SGI IRIX after that and
-then some distro-hopping to Debian, Fedora, Arch Linux (in 2007), Gentoo and 
+then some distro-hopping to Debian, Fedora, Arch Linux (in 2007), Gentoo and
 Void Linux, more-or-less in that order.
 
 The last two-ish years I've been running on Void Linux, which I still strongly
@@ -35,29 +35,29 @@ recommend and love - it's a really good distribution with a nice balance between
 stability and simplicity.
 
 I used the OS package manager for the essentials, like Gnome, Firefox, the
-terminal, Wayland and X11, and used `/opt` like a sort of `Program Files` or 
+terminal, Wayland and X11, and used `/opt` like a sort of `Program Files` or
 `Applications` directory where I had my own programs like IntelliJ, Postman,
 PostgreSQL, etc.
 
-This works relatively well: you don't have a lot of demands on package 
+This works relatively well: you don't have a lot of demands on package
 availability in the distro itself and you keep things stable - only update your
 own stuff when you feel like it and/or when you need to.
 
-At a certain point I had about 70 applications in there which became a burden 
-to keep up to date, so I set out to find a distribution that packages as much 
-as possible of the software I use, and where packaging it yourself is as simple 
+At a certain point I had about 70 applications in there which became a burden
+to keep up to date, so I set out to find a distribution that packages as much
+as possible of the software I use, and where packaging it yourself is as simple
 as possible.
 
 I definitely prefer a rolling-release distro. I checked out Nix, Gentoo and Arch
-Linux. Nix I found really appealing (hard declarative) but I hated the syntax 
-(maybe Guix one day - I like Scheme). 
+Linux. Nix I found really appealing (hard declarative) but I hated the syntax
+(maybe Guix one day? I like Scheme better).
 
-Gentoo did have a comparable set of packaged software available, and it *is* 
-one of my favorite distributions, but I had too many issues on my test-build 
-virtual machine which blocked me from experimenting prior to running it on my 
+Gentoo did have a comparable set of packaged software available, and it *is*
+one of my favorite distributions, but I had too many issues on my test-build
+virtual machine which blocked me from experimenting prior to running it on my
 daily driver.
 
-So why move to Arch? Well, in one word: mind-share. The wiki, the amount of 
+So why move to Arch? Well, in one word: mind-share. The wiki, the amount of
 packaged software, sane package standards:
 
   * The Arch wiki has essentially become the de-facto standard Linux wiki
@@ -65,21 +65,21 @@ packaged software, sane package standards:
   * Upstream stable usually means an upstream update is in repos within minutes
   * Does not have separate dev/devel packages for headers
 
-The above three things means a lot of convenience to a Linux desktop user. On 
-Arch Linux, 99.9% of the software I ever used on Linux is packaged, most of it 
-in the official repositories and a few in AUR. Next to that, AUR and PKGBUILD 
-are so easy to get into, so you can easily package things yourself and share it 
+The above three things means a lot of convenience to a Linux desktop user. On
+Arch Linux, 99.9% of the software I ever used on Linux is packaged, most of it
+in the official repositories and a few in AUR. Next to that, AUR and PKGBUILD
+are so easy to get into, so you can easily package things yourself and share it
 with the community.
 
-On most other distros the gap between what's packaged and what isn't is quite 
+On most other distros the gap between what's packaged and what isn't is quite
 a bit larger which means you need alternative ways to get that software and keep
 it up-to-date, which in practice becomes error-prone and time-consuming.
 
-On Arch Linux I made the choice to run *everything* packaged with `pacman`. If 
-I need something that isn't packaged yet (currently the case for 5 packages of 
+On Arch Linux I made the choice to run *everything* packaged with `pacman`. If
+I need something that isn't packaged yet (currently the case for 5 packages of
 which I packaged one already), I package it and publish it to AUR.
 
-The rest of this article is essentially a how-to with notes about what I run 
+The rest of this article is essentially a how-to with notes about what I run
 and install. Feel free to peruse and/or replay!
 
 ## BIOS settings
@@ -94,10 +94,10 @@ on the Framework community website. The only settings I changed were:
 The above causes the laptop to effectively run in a lower TDP setting. I think
 it goes from 28watts to 22watts. This has a dramatic effect on the battery life
 and thermals of the device. I don't want a wild beast that blasts the fans as
-soon as I type `ls`, so these settings are great for me. Did I mention the 
+soon as I type `ls`, so these settings are great for me. Did I mention the
 laptop performs really great with these settings?
 
-With the above and the settings I configure in TLP I get ~3watts idle with 
+With the above and the settings I configure in TLP I get ~3watts idle with
 screen on normal brightness, Wi-Fi and Bluetooth enabled, and about ~45 celsius
 core temperatures.
 
@@ -110,8 +110,8 @@ configuration tooling.
 
 ### Additional kernel parameters I use
 
-Whichever boot manager you use, you might want to set a few extra kernel 
-parameters. I found the following additionals handle a bunch of stuff nicely 
+Whichever boot manager you use, you might want to set a few extra kernel
+parameters. I found the following additionals handle a bunch of stuff nicely
 on my Framework Laptop 13:
 
 ```
@@ -121,9 +121,9 @@ net.ifnames=0 module_blacklist=cros_ec_lpcs,hid_sensor_hub acpi_osi="!Windows 20
 ### Note about mkinitcpio vs. dracut
 
 Quick note about `mkinitcpio` and `mkinitcpio-busybox`: These are used to build
-the kernel initrd image. They are fine for most use-cases. Just note that if you 
-need working LVM RAID mirrors, I couldn't get that to work with these packages, 
-so on my desktop box, I opted to use `dracut`, which in my experience has much 
+the kernel initrd image. They are fine for most use-cases. Just note that if you
+need working LVM RAID mirrors, I couldn't get that to work with these packages,
+so on my desktop box, I opted to use `dracut`, which in my experience has much
 saner + robuster setup of LVM-based configurations.
 
 Note that there are no hooks by default for rebuilding dracut-based initrd
@@ -139,9 +139,9 @@ dracut --hostonly --no-hostonly-cmdline --kver $KERNEL_VERSION --force /boot/ini
 
 ## Packages I install
 
-You can install the following packages right after your system comes up first 
-boot, or you could do it during install with `pacstrap` (it doesn't really 
-matter, but in any case, make sure `core`, `contrib` and `multilib` are enabled 
+You can install the following packages right after your system comes up first
+boot, or you could do it during install with `pacstrap` (it doesn't really
+matter, but in any case, make sure `core`, `contrib` and `multilib` are enabled
 in `/etc/pacman.conf` first):
 
 ```shell
@@ -191,12 +191,12 @@ see [here](https://community.frame.work/t/fingerprint-reader-failing-to-register
 Apparently, when one installs the Windows drivers for these things, the Windows
 driver actually **downgrades** the firmware to a version that works with Linux..
 <br/><br/>
-Installing Windows 10 in a virtual machine and passing through the Fingerprint 
+Installing Windows 10 in a virtual machine and passing through the Fingerprint
 USB device and then installing the Windows [drivers](https://knowledgebase.frame.work/en_us/framework-laptop-bios-and-driver-releases-13th-gen-intel-core-BkQBvKWr3),
 downgrades the firwmware, after which the device is usable in Linux.
 {: .notice--warning}
 
-If your fingerprint reader is working, you can continue to follow the steps 
+If your fingerprint reader is working, you can continue to follow the steps
 [here](https://wiki.archlinux.org/title/Fprint) to set it up for usage.
 
 ### Additionally install on devices with Intel graphics
@@ -266,9 +266,9 @@ systemctl enable bluetooth.service
 systemctl start bluetooth.service
 ```
 
-Bluetooth mostly just works out of the box, except for my XBox Series X|S 
+Bluetooth mostly just works out of the box, except for my XBox Series X|S
 Wireless Game Controller. To get this to run, I use the `xpadneo-dkms` AUR
-package. Additionally, I need to configure a few settings in 
+package. Additionally, I need to configure a few settings in
 `/etc/bluetooth/main.conf` (add or set these settings yourself, or use `patch`
 to apply the settings to your `main.conf`):
 
@@ -281,7 +281,7 @@ to apply the settings to your `main.conf`):
  # Possible values: "dual", "bredr", "le"
 -#ControllerMode = dual
 +ControllerMode = dual
- 
+
  # Maximum number of controllers allowed to be exposed to the system.
  # Default=0 (unlimited)
 @@ -100,7 +100,7 @@
@@ -290,11 +290,11 @@ to apply the settings to your `main.conf`):
  # Defaults to "never"
 -#JustWorksRepairing = never
 +JustWorksRepairing = confirm
- 
+
  # How long to keep temporary devices around
  # The value is in seconds. Default is 30.
 @@ -212,9 +212,9 @@
- 
+
  # LE default connection parameters.  These values are superceeded by any
  # specific values provided via the Load Connection Parameters interface
 -#MinConnectionInterval=
@@ -322,8 +322,8 @@ systemctl enable gdm.service
 systemctl start gdm.service
 ```
 
-I prefer auto-login on some of my devices (no on laptop, yes on desktop). Add 
-the two lines or apply the below diff to `/etc/gdm/custom.conf` using `patch` 
+I prefer auto-login on some of my devices (no on laptop, yes on desktop). Add
+the two lines or apply the below diff to `/etc/gdm/custom.conf` using `patch`
 if you would like your user to allow GDM to automatically login (don't forget
 to replace `$USER` with your user name):
 
@@ -332,7 +332,7 @@ to replace `$USER` with your user name):
 +++ custom.conf 2023-07-31 19:08:25.741219958 +0300
 @@ -1,6 +1,8 @@
  # GDM configuration storage
- 
+
  [daemon]
 +AutomaticLogin=$USER
 +AutomaticLoginEnable=True
@@ -352,8 +352,8 @@ systemctl start libvirtd.service
 ```
 
 I run `libvirtd` mostly stock. I do set `unix_sock_group` to `libvirt` and add
-myself to the `libvirt` group. I then set `unix_sock_ro_perms`, 
-`unix_sock_rw_perms` and `unix_sock_admin_perms` to `0770` (Meaning, the owner 
+myself to the `libvirt` group. I then set `unix_sock_ro_perms`,
+`unix_sock_rw_perms` and `unix_sock_admin_perms` to `0770` (Meaning, the owner
 and group can read, write and execute, everybody else can do nothing).
 
 ```
@@ -364,15 +364,15 @@ unix_sock_admin_perms = "0770"
 ```
 
 You need to change this for a whole lot of files under `/etc/libvirt`. Not doing
-this causes problems when connecting with your user instead of root using the 
-`virsh` or `virt-manager` clients. don't forget to restart the service after 
+this causes problems when connecting with your user instead of root using the
+`virsh` or `virt-manager` clients. don't forget to restart the service after
 changes:
 
 ```shell
 systemctl restart libvirtd.service
 ```
 
-Furthermore, I configure the `virt0` interface of the `default` NAT-enabled 
+Furthermore, I configure the `virt0` interface of the `default` NAT-enabled
 network to have a specific IP address (10.10.11.1) and range (note: needs to
 be run after starting/restarting libvirtd):
 
@@ -400,7 +400,7 @@ virsh net-destroy default
 virsh net-define /tmp/net-default.xml
 virsh net start default
 rm -qf /tmp/net-default.xml
-``` 
+```
 
 ### NetworkManager
 
@@ -413,8 +413,8 @@ systemctl start NetworkManager.service
 
 NetworkManager works mostly out of the box, normally no special settings needed.
 
-However I did run into an issue connecting with older VPN environments related 
-to OpenSSL 3.x disabling various legacy encapsulation and connection modes by 
+However I did run into an issue connecting with older VPN environments related
+to OpenSSL 3.x disabling various legacy encapsulation and connection modes by
 default. The error you would see in such a case is:
 
 ```
@@ -424,8 +424,8 @@ Jul 31 20:26:38 FRAME nm-openvpn[58956]: Decoding PKCS12 failed. Probably wrong 
 
 ```
 
-Furthermore, when you are behind corporate proxies, you might also have 
-difficulties passing through the corporate proxy without the settings 
+Furthermore, when you are behind corporate proxies, you might also have
+difficulties passing through the corporate proxy without the settings
 `UnsafeLegacyRenegotiation` and `UnsafeLegacyServerConnect` (which were allowed
 by default on OpenSSL 1.x).
 
@@ -459,7 +459,7 @@ Options = UnsafeLegacyRenegotiation,UnsafeLegacyServerConnect
 EOF
 ```
 
-Note that I would only do the above if you need to interact with some old 
+Note that I would only do the above if you need to interact with some old
 legacy VPN stuff, or if you're behind moron-grade SSL-terminating proxies.
 {: .notice--warning}
 
@@ -472,10 +472,10 @@ systemctl enable nfsv4.service
 systemctl start nfsv4.service
 ```
 
-I use NFS only on internal interfaces, specifically the `virt0` interface of 
-the `default` network (remember that ip address 10.10.11.1?). This allows me 
+I use NFS only on internal interfaces, specifically the `virt0` interface of
+the `default` network (remember that ip address 10.10.11.1?). This allows me
 to work with shared storage on really old operating systems that I fool around
-with on Qemu/KVM (Note that you have much better options for modern Linux 
+with on Qemu/KVM (Note that you have much better options for modern Linux
 systems - there you can use `enable shared memory` and a virtiofs device to
 essentially loop-mount a memory block device which is a directory on the host).
 
@@ -522,7 +522,7 @@ systemctl start nmb.service smb.service
 ```
 
 I use Samba for the same reasons as I use NFS, that is to have shared storage
-on various older virtual machines (like Windows NT 4.0). Let's create an 
+on various older virtual machines (like Windows NT 4.0). Let's create an
 `smb.conf` file:
 
 ```shell
@@ -530,7 +530,7 @@ cat <<EOF > "/etc/samba/smb.conf"
 [global]
    workgroup = WORKGROUP
    netbios name = $(hostname | tr 'a-z' 'A-Z' | cut -d. -f1)
-   server string = 
+   server string =
    server role = standalone server
    server min protocol = NT1
    ntlm auth = yes
@@ -544,7 +544,7 @@ cat <<EOF > "/etc/samba/smb.conf"
    wins proxy = yes
    wins support = yes
    local master = yes
-   domain master = yes 
+   domain master = yes
    preferred master = yes
    os level = 33
 
@@ -575,7 +575,7 @@ systemctl start thermald.service
 ```
 
 Thermald is specifically for Intel-based platforms. It can adjust fan-curves by
-talking to the low-level hardware interfaces. I didn't adjust the defaults and 
+talking to the low-level hardware interfaces. I didn't adjust the defaults and
 it seems to work great.
 
 ### TLP
@@ -587,7 +587,7 @@ systemctl enable tlp.service
 systemctl start tlp.service
 ```
 
-TLP is used to manage power-saving modes of various hardware. It is usually 
+TLP is used to manage power-saving modes of various hardware. It is usually
 configured to enable power-saving when not connected to AC, and to disable it
 when connected to AC. It does that for all kinds of things, like Wi-Fi, USB,
 PCIe, Bluetooth, the CPU scheduler, etc.
@@ -634,7 +634,7 @@ systemctl enable cups.socket
 systemctl start cups.socket
 ```
 
-I use cups without any adjustments. 
+I use cups without any adjustments.
 
 ### Docker
 
@@ -664,12 +664,12 @@ packages.
 ### Setting up your own custom local repository
 
 First, let's create a `custom` repository source for pacman. Note that I sign
-my packages using my GnuPG key, so the following assumes that. If you don't 
+my packages using my GnuPG key, so the following assumes that. If you don't
 want to sign your own packages, you need to change the `SigLevel` setting in
 `/etc/pacman.conf` for your `custom` repository and you need to tell `makepkg`
-not to sign your built package.  
+not to sign your built package.
 
-Also note that my package build root location is specific to my needs; 
+Also note that my package build root location is specific to my needs;
 feel free to change it to anything you like.
 
 ```shell
@@ -708,7 +708,7 @@ unset PKG_ROOT
 
 ### Configuring for package building
 
-Now we configure `makepkg` defaults. Make sure you configure the PKG_ROOT, 
+Now we configure `makepkg` defaults. Make sure you configure the PKG_ROOT,
 GPG_PUBKEY and PACKAGER environment variables to your specific likings:
 
 ```shell
@@ -735,7 +735,7 @@ unset PKG_ROOT GPG_PUBKEY PACKAGER
 
 ### Example interactions using AUR
 
-Here are a few example interactions with package fetching, building, repository 
+Here are a few example interactions with package fetching, building, repository
 updating and package removal to get you started:
 
 ```shell
@@ -771,7 +771,7 @@ repo-remove custom.db.tar.gz aurutils
 
 ### AUR packages I build and install
 
-So now to fill that `$PKG_ROOT/Build` directory with packages from AUR so we 
+So now to fill that `$PKG_ROOT/Build` directory with packages from AUR so we
 can build some stuff and put it in our own repository:
 
 ```shell
@@ -782,7 +782,7 @@ export PKG_ROOT="$HOME/Syncthing/Packaging/Arch"
 cd "$PKG_ROOT/Build"
 for p in akku ares-emu attract-git aurutils authy azure-cli chez-scheme conan cubeb dolphin-emu-git dosbox-x duckstation-git earthly eclipse-java elixir elixir-ls erlang_ls exercism flycast godot-mono-bin google-cloud-cli groovy-language-server-git ibmcloud-cli icaclient imhex irccloud-bin jdk17-graalvm-bin jdk17-jetbrains-bin jdk17-openj9-bin jdtls jetbrains-toolbox krew kubelogin lagrange libretro-beetle-lynx-git libretro-beetle-pcfx-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-fsuae-git libspng license-wtfpl m64py mathematica mednaffe metals moonlight-qt ms-sys ncurses5-compat-libs nestopia openmsx parsec-bin passmark-performancetest-bin pcsx2-git pegasus-frontend-git postman-bin powershell-bin protonmail-bridge-bin python-patch-ng python-pluginbase python-pysdl2 rabtap rcu-bin rebar3 remark-language-server roomeqwizard rpcs3-git ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-reverse_markdown ruby-solargraph ryujinx-git sameboy scala-dotty skyscraper-git soapui sublime-text-4 sunshine tla-toolbox townsemu-git ums ungoogled-chromium-bin visual-studio-code-bin vi-vim-symlink vmware-horizon-client vmware-keymaps xpadneo-dkms zeal-git zlib-ng zoom; do git clone https://aur.archlinux.org/$p.git; done
 
-# Build all (I wouldn't do this, I would initially enter one-by-one and do 
+# Build all (I wouldn't do this, I would initially enter one-by-one and do
 # git log ; makepkg -cCs manually). Will result in packages under $PKG_ROOT/Build.
 cd "$PKG_ROOT/Build"
 for p in *; do cd $p; makepkg -cCs; cd -; done
