@@ -16,6 +16,7 @@ I've been busy getting up+running and getting to know the device. TL;DR; I'm
 best devices I've owned in a long time. It is near-silent, It uses ~3watts at
 idle, it's fast, it's sturdy and it looks good!
 
+* TOC
 {:toc}
 
 ## Why Arch Linux
