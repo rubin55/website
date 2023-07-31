@@ -23,7 +23,7 @@ idle, it's fast, it's sturdy and it looks good!
 
 Prior to my Framework Laptop adventures, I've been planning to move to Arch 
 Linux for a while. I'm a long-time Linux desktop user. I started out with those
-Red Hat CD-ROMs you'd buy at your local bookshop (this was around 96ish?), I
+Red Hat CD-ROMs you'd buy at your local bookshop (this was around '96), I
 fooled around with SCO UnixWare, had a whole period of SGI IRIX after that and
 then some distro-hopping to Debian, Fedora, Arch Linux (in 2007), Gentoo and 
 Void Linux, more-or-less in that order.
@@ -33,8 +33,8 @@ recommend and love - it's a really good distribution with a nice balance between
 stability and simplicity.
 
 I used the OS package manager for the essentials, like Gnome, Firefox, the
-terminal, Wayland and X11, and use /opt like a sort of "Program Files" or 
-"Applications" directory where I had my own programs like IntelliJ, Postman,
+terminal, Wayland and X11, and used `/opt` like a sort of `Program Files` or 
+`Applications` directory where I had my own programs like IntelliJ, Postman,
 PostgreSQL, etc.
 
 This works relatively well: you don't have a lot of demands on package 
@@ -43,10 +43,10 @@ own stuff when you feel like it and/or when you need to.
 
 At a certain point I had about 70 applications in there which became a burden 
 to keep up to date, so I set out to find a distribution that packages as much 
-as possible of the software I use, and where packaging yourself is as simple as 
-possible.
+as possible of the software I use, and where packaging it yourself is as simple 
+as possible.
 
-I definitely wanted a rolling-release distro. I checked out Nix, Gentoo and Arch
+I definitely prefer a rolling-release distro. I checked out Nix, Gentoo and Arch
 Linux. Nix I found really appealing (hard declarative) but I hated the syntax 
 (maybe Guix one day - I like Scheme). 
 
@@ -169,18 +169,18 @@ systemctl start fprintd
 
 Note that the latest Goodix MOC fingerprint readers which the Framework Laptop
 13 uses, use a firmware that is not compatible with Linux. For more information,
-see [here](https://community.frame.work/t/fingerprint-reader-failing-to-register-on-13th-gen/34153/60)
-{: .notice--warning}
-
+see [here](https://community.frame.work/t/fingerprint-reader-failing-to-register-on-13th-gen/34153/60).
+<br/><br/>
 Apparently, when one installs the Windows drivers for these things, the Windows
 driver actually **downgrades** the firmware to a version that works with Linux..
-
+<br/><br/>
 Installing Windows 10 in a virtual machine and passing through the Fingerprint 
 USB device and then installing the Windows [drivers](https://knowledgebase.frame.work/en_us/framework-laptop-bios-and-driver-releases-13th-gen-intel-core-BkQBvKWr3),
 downgrades the firwmware, after which the device is usable in Linux.
+{: .notice--warning}
 
-After that hurdle, follow the steps [here](https://wiki.archlinux.org/title/Fprint) 
-to set it up.
+If your fingerprint reader is working, you can continue to follow the steps 
+[here](https://wiki.archlinux.org/title/Fprint) to set it up for usage.
 
 ### Additionally install on devices with Intel graphics
 
