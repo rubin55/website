@@ -16,6 +16,8 @@ I've been busy getting up+running and getting to know the device. TL;DR; I'm
 best devices I've owned in a long time. It is near-silent, It uses ~3watts at
 idle, it's fast, it's sturdy and it looks good!
 
+This is going to be quite a long article, so here's a Table of Contents:
+
 * TOC
 {:toc}
 
@@ -82,7 +84,22 @@ and install. Feel free to peruse and/or replay!
 
 ## BIOS settings
 
-Blah
+You can find the [BIOS guide](https://community.frame.work/t/bios-guide/4178)
+on the Framework community website. The only settings I changed were:
+
+  * CPU Configuration -> Boot Performance mode: **MAX BATTERY**
+  * CPU Configuration -> Intel Turbo Boost Max Technology 3.0: **DISABLED**
+  * Secure Boot -> Enforce Secure Boot: **DISABLED**
+
+The above causes the laptop to effectively run in a lower TDP setting. I think
+it goes from 28watts to 22watts. This has a dramatic effect on the battery life
+and thermals of the device. I don't want a wild beast that blasts the fans as
+soon as I type `ls`, so these settings are great for me. Did I mention the 
+laptop performs really great with these settings?
+
+With the above and the settings I configure in TLP I get ~3watts idle with 
+screen on normal brightness, Wi-Fi and Bluetooth enabled, and about ~45 celsius
+core temperatures.
 
 ## Basic installation
 
@@ -279,7 +296,7 @@ Blah
 
 Blah
 
-### Enabling and disabling services
+### Enabling services
 
 I enable the following system-wide services to start at bootup (do as root):
 
@@ -454,6 +471,9 @@ Here are a few more things I plan to create AUR packages for:
   * [ares-commander](https://www.graebert.com/us/cad-software/ares-commander/)
 
 ## Final thoughts
+
+After you've done (most of) the above, a `reboot` is in order; the system should
+come up cleanly, without errors or stalls.
 
 I've be been using this setup for the last month and it has been pretty great.
 I get really good battery life, The fan almost never comes on, sleep and resume
