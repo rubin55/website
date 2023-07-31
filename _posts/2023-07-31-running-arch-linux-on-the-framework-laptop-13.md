@@ -254,55 +254,400 @@ pacman -S --needed `comm -23 ~/Desktop/lib32-candidates ~/Desktop/lib32-notfound
 
 ## Service configuration
 
-Blah
+I use and customized a bunch of services on my device. So I don't forget what
+I customized and why, let me document it.
 
 ### Bluetooth
 
-Blah
+Enable `bluetooth` with:
+
+```shell
+systemctl enable bluetooth.service
+systemctl start bluetooth.service
+```
+
+Bluetooth mostly just works out of the box, except for my XBox Series X|S 
+Wireless Game Controller. To get this to run, I use the `xpadneo-dkms` AUR
+package. Additionally, I need to configure a few settings in 
+`/etc/bluetooth/main.conf` (add or set these settings yourself, or use `patch`
+to apply the settings to your `main.conf`):
+
+```diff
+-- main.conf.orig 2023-07-31 19:01:29.473651656 +0300
++++ main.conf 2023-07-07 23:40:50.658941005 +0300
+@@ -49,7 +49,7 @@
+ # Restricts all controllers to the specified transport. Default value
+ # is "dual", i.e. both BR/EDR and LE enabled (when supported by the HW).
+ # Possible values: "dual", "bredr", "le"
+-#ControllerMode = dual
++ControllerMode = dual
+ 
+ # Maximum number of controllers allowed to be exposed to the system.
+ # Default=0 (unlimited)
+@@ -100,7 +100,7 @@
+ # Specify the policy to the JUST-WORKS repairing initiated by peer
+ # Possible values: "never", "confirm", "always"
+ # Defaults to "never"
+-#JustWorksRepairing = never
++JustWorksRepairing = confirm
+ 
+ # How long to keep temporary devices around
+ # The value is in seconds. Default is 30.
+@@ -212,9 +212,9 @@
+ 
+ # LE default connection parameters.  These values are superceeded by any
+ # specific values provided via the Load Connection Parameters interface
+-#MinConnectionInterval=
+-#MaxConnectionInterval=
+-#ConnectionLatency=
++MinConnectionInterval=7
++MaxConnectionInterval=9
++ConnectionLatency=0
+ #ConnectionSupervisionTimeout=
+ #Autoconnecttimeout=
+```
+
+After changes, restart the service:
+
+```shell
+systemctl restart bluetooth.service
+```
 
 ### GDM
 
-Blah
+Enable `gdm` with:
 
-### Libvirt
+```shell
+systemctl enable gdm.service
+systemctl start gdm.service
+```
 
-Blah
+I prefer auto-login on some of my devices (no on laptop, yes on desktop). Add 
+the two lines or apply the below diff to `/etc/gdm/custom.conf` using `patch` 
+if you would like your user to allow GDM to automatically login (don't forget
+to replace `$USER` with your user name):
+
+```diff
+--- custom.conf.orig  2023-07-31 19:08:35.307832755 +0300
++++ custom.conf 2023-07-31 19:08:25.741219958 +0300
+@@ -1,6 +1,8 @@
+ # GDM configuration storage
+ 
+ [daemon]
++AutomaticLogin=$USER
++AutomaticLoginEnable=True
+ # Uncomment the line below to force the login screen to use Xorg
+ #WaylandEnable=false
+```
+
+Reboot for the above to take effect.
+
+### Libvirtd
+
+Enable `libvirtd` with:
+
+```shell
+systemctl enable libvirtd.service
+systemctl start libvirtd.service
+```
+
+I run `libvirtd` mostly stock. I do set `unix_sock_group` to `libvirt` and add
+myself to the `libvirt` group. I then set `unix_sock_ro_perms`, 
+`unix_sock_rw_perms` and `unix_sock_admin_perms` to `0770` (Meaning, the owner 
+and group can read, write and execute, everybody else can do nothing).
+
+```
+unix_sock_group = "libvirt"
+unix_sock_ro_perms = "0770"
+unix_sock_rw_perms = "0770"
+unix_sock_admin_perms = "0770"
+```
+
+You need to change this for a whole lot of files under `/etc/libvirt`. Not doing
+this causes problems when connecting with your user instead of root using the 
+`virsh` or `virt-manager` clients. don't forget to restart the service after 
+changes:
+
+```shell
+systemctl restart libvirtd.service
+```
+
+Furthermore, I configure the `virt0` interface of the `default` NAT-enabled 
+network to have a specific IP address (10.10.11.1) and range (note: needs to
+be run after starting/restarting libvirtd):
+
+```shell
+export UUID=$(uuidgen)
+cat <<EOF > "/tmp/net-default.xml"
+<network>
+  <name>default</name>
+  <uuid>$UUID</uuid>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='virt0' stp='off' delay='0'/>
+  <ip address='10.10.11.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='10.10.11.2' end='10.10.11.254'/>
+    </dhcp>
+  </ip>
+</network>
+EOF
+
+virsh net-destroy default
+virsh net-define /tmp/net-default.xml
+virsh net start default
+rm -qf /tmp/net-default.xml
+``` 
 
 ### NetworkManager
 
-Blah
+Enable `NetworkManager` with:
+
+```shell
+systemctl enable NetworkManager.service
+systemctl start NetworkManager.service
+```
+
+NetworkManager works mostly out of the box, normally no special settings needed.
+
+However I did run into an issue connecting with older VPN environments related 
+to OpenSSL 3.x disabling various legacy encapsulation and connection modes by 
+default. The error you would see in such a case is:
+
+```
+Jul 31 20:26:38 FRAME nm-openvpn[58956]: OpenSSL: error:11800071:PKCS12 routines::mac verify failure
+Jul 31 20:26:38 FRAME nm-openvpn[58956]: OpenSSL: error:0308010C:digital envelope routines::unsupported
+Jul 31 20:26:38 FRAME nm-openvpn[58956]: Decoding PKCS12 failed. Probably wrong password or unsupported/legacy encryption
+
+```
+
+Furthermore, when you are behind corporate proxies, you might also have 
+difficulties passing through the corporate proxy without the settings 
+`UnsafeLegacyRenegotiation` and `UnsafeLegacyServerConnect` (which were allowed
+by default on OpenSSL 1.x).
+
+To work-around these issues, I place a custom  `/etc/ssl/openssl.cnf`:
+
+```shell
+cp -n "/etc/ssl/openssl.cnf" "/etc/ssl/openssl.cnf.orig"
+cat <<EOF > "/etc/ssl/openssl.cnf"
+HOME = .
+openssl_conf = openssl_init
+
+[openssl_init]
+providers = provider_sect
+ssl_conf = ssl_sect
+
+[provider_sect]
+default = default_sect
+legacy = legacy_sect
+
+[default_sect]
+activate = 1
+
+[legacy_sect]
+activate = 1
+
+[ssl_sect]
+system_default = system_default_sect
+
+[system_default_sect]
+Options = UnsafeLegacyRenegotiation,UnsafeLegacyServerConnect
+EOF
+```
+
+Note that I would only do the above if you need to interact with some old 
+legacy VPN stuff, or if you're behind moron-grade SSL-terminating proxies.
+{: .notice--warning}
 
 ### NFSv4
 
-Blah
+Enable `nfsv4` with:
+
+```shell
+systemctl enable nfsv4.service
+systemctl start nfsv4.service
+```
+
+I use NFS only on internal interfaces, specifically the `virt0` interface of 
+the `default` network (remember that ip address 10.10.11.1?). This allows me 
+to work with shared storage on really old operating systems that I fool around
+with on Qemu/KVM (Note that you have much better options for modern Linux 
+systems - there you can use `enable shared memory` and a virtiofs device to
+essentially loop-mount a memory block device which is a directory on the host).
+
+Since we're only doing NFSv4 we don't need rpcbind, so let's mask that first:
+
+```shell
+systemctl stop rpcbind.service
+systemctl mask rpcbind.service
+```
+
+To make NFSv4 only listen on a specific interface, we patch `/etc/nfs.conf` (use
+`patch` or add the `host=` elements by hand under `[nfsd]`:
+
+```diff
+--- nfs.conf.orig 2023-07-31 21:16:20.438028044 +0300
++++ nfs.conf  2023-07-31 21:17:08.074251682 +0300
+@@ -67,6 +67,8 @@
+ # debug=0
+ # threads=8
+ # host=
++host=127.0.0.1
++host=10.10.11.1
+ # port=0
+ # grace-time=90
+ # lease-time=90
+
+```
+
+After the above changes, restart the service:
+
+```shell
+systemctl restart nfsv4.service
+```
 
 ### Samba
 
-Blah
+Enable `smbd` and `nmbd` with:
+
+```shell
+#bluetooth.service gdm.service libvirtd.service NetworkManager.service nfsv4.service nmb.service smb.service thermald.service tlp.service cups.socket docker.socket
+
+systemctl enable nmb.service smb.service
+systemctl start nmb.service smb.service
+```
+
+I use Samba for the same reasons as I use NFS, that is to have shared storage
+on various older virtual machines (like Windows NT 4.0). Let's create an 
+`smb.conf` file:
+
+```shell
+cat <<EOF > "/etc/samba/smb.conf"
+[global]
+   workgroup = WORKGROUP
+   netbios name = $(hostname | tr 'a-z' 'A-Z' | cut -d. -f1)
+   server string = 
+   server role = standalone server
+   server min protocol = NT1
+   ntlm auth = yes
+   lanman auth = yes
+   hosts allow = 127. 10.10.11.
+   log file = /var/log/samba/log.smbd
+   max log size = 100
+   interfaces = 127.0.0.1/8 10.10.11.1/24
+   bind interfaces only = yes
+   dns proxy = yes
+   wins proxy = yes
+   wins support = yes
+   local master = yes
+   domain master = yes 
+   preferred master = yes
+   os level = 33
+
+[homes]
+   comment = Home Directories
+   acl allow execute always = True
+   browsable = yes
+   writable = yes
+   valid users = %U
+   create mask = 0644
+   directory mask = 0755
+EOF
+```
+
+After creating or changing `smb.conf`, restart the services:
+
+```shell
+systemctl restart nmb.service smb.service
+```
 
 ### Thermald
 
-Blah
+Enable `thermald` with:
+
+```shell
+systemctl enable thermald.service
+systemctl start thermald.service
+```
+
+Thermald is specifically for Intel-based platforms. It can adjust fan-curves by
+talking to the low-level hardware interfaces. I didn't adjust the defaults and 
+it seems to work great.
 
 ### TLP
 
-Blah
+Enable `tlp` with:
+
+```shell
+systemctl enable tlp.service
+systemctl start tlp.service
+```
+
+TLP is used to manage power-saving modes of various hardware. It is usually 
+configured to enable power-saving when not connected to AC, and to disable it
+when connected to AC. It does that for all kinds of things, like Wi-Fi, USB,
+PCIe, Bluetooth, the CPU scheduler, etc.
+
+I've made a custom TLP configuration for my Framework Laptop 13 which you can
+install as follows:
+
+```shell
+cat <<EOF > "/etc/tlp.d/01-custom.conf"
+CPU_SCALING_GOVERNOR_ON_AC=powersave
+CPU_SCALING_GOVERNOR_ON_BAT=powersave
+
+CPU_BOOST_ON_AC=0
+CPU_BOOST_ON_BAT=0
+
+PCIE_ASPM_ON_BAT=powersupersave
+
+PLATFORM_PROFILE_ON_AC=balanced
+PLATFORM_PROFILE_ON_BAT=low-power
+
+USB_ALLOWLIST=32ac:0002
+USB_EXCLUDE_BTUSB=1
+USB_EXCLUDE_PRINTER=0
+
+WIFI_PWR_ON_AC=off
+WIFI_PWR_ON_BAT=off
+
+WOL_DISABLE=N
+EOF
+```
+
+After the above, you need to restart the service:
+
+```shell
+systemctl restart tlp.service
+```
 
 ### Cups
 
-Blah
+Enable `cups` with:
+
+```shell
+systemctl enable cups.socket
+systemctl start cups.socket
+```
+
+I use cups without any adjustments. 
 
 ### Docker
 
-Blah
-
-### Enabling services
-
-I enable the following system-wide services to start at bootup (do as root):
+Enable bluetooth with:
 
 ```shell
-for s in bluetooth.service gdm.service libvirtd.service NetworkManager.service nfsv4.service nmb.service smb.service thermald.service tlp.service cups.socket docker.socket; do systemctl enable $s; done
+systemctl enable docker.socket
+systemctl start docker.socket
 ```
+
+I use docker without any adjustments.
+
+### Enabling user services
 
 I use the following user-level services (do as logged in user):
 
