@@ -270,15 +270,15 @@ package. Additionally, I need to configure a few settings in
 to apply the settings to your `main.conf`):
 
 ```diff
--- main.conf.orig 2023-07-31 19:01:29.473651656 +0300
-+++ main.conf 2023-07-07 23:40:50.658941005 +0300
+--- main.conf.orig  2023-07-31 19:01:29.473651656 +0300
++++ main.conf 2023-08-01 23:39:23.294653784 +0300
 @@ -49,7 +49,7 @@
  # Restricts all controllers to the specified transport. Default value
  # is "dual", i.e. both BR/EDR and LE enabled (when supported by the HW).
  # Possible values: "dual", "bredr", "le"
 -#ControllerMode = dual
 +ControllerMode = dual
-
+ 
  # Maximum number of controllers allowed to be exposed to the system.
  # Default=0 (unlimited)
 @@ -100,7 +100,7 @@
@@ -287,11 +287,11 @@ to apply the settings to your `main.conf`):
  # Defaults to "never"
 -#JustWorksRepairing = never
 +JustWorksRepairing = confirm
-
+ 
  # How long to keep temporary devices around
  # The value is in seconds. Default is 30.
 @@ -212,9 +212,9 @@
-
+ 
  # LE default connection parameters.  These values are superceeded by any
  # specific values provided via the Load Connection Parameters interface
 -#MinConnectionInterval=
@@ -302,6 +302,16 @@ to apply the settings to your `main.conf`):
 +ConnectionLatency=0
  #ConnectionSupervisionTimeout=
  #Autoconnecttimeout=
+ 
+@@ -318,7 +318,7 @@
+ # AutoEnable defines option to enable all controllers when they are found.
+ # This includes adapters present on start as well as adapters that are plugged
+ # in later on. Defaults to 'true'.
+-#AutoEnable=true
++AutoEnable=false
+ 
+ # Audio devices that were disconnected due to suspend will be reconnected on
+ # resume. ResumeDelay determines the delay between when the controller
 ```
 
 After changes, restart the service:
