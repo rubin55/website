@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-08-01T13:46:00+02:00
+last_modified_at: 2023-08-01T15:02:00+02:00
 categories:
   - blog
 tags:
@@ -766,7 +766,7 @@ export PKG_ROOT="$HOME/Syncthing/Packaging/Arch"
 
 # Git clone them all.
 cd "$PKG_ROOT/Build"
-for p in akku ares-emu attract-git aurutils authy azure-cli chez-scheme conan cubeb dolphin-emu-git dosbox-x duckstation-git earthly eclipse-java elixir elixir-ls erlang_ls exercism flycast godot-mono-bin google-cloud-cli groovy-language-server-git ibmcloud-cli icaclient imhex irccloud-bin jdk17-graalvm-bin jdk17-jetbrains-bin jdk17-openj9-bin jdtls jetbrains-toolbox krew kubelogin lagrange libretro-beetle-lynx-git libretro-beetle-pcfx-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-fsuae-git libspng license-wtfpl m64py mathematica mednaffe metals moonlight-qt ms-sys ncurses5-compat-libs nestopia openmsx parsec-bin passmark-performancetest-bin pcsx2-git pegasus-frontend-git postman-bin powershell-bin protonmail-bridge-bin python-patch-ng python-pluginbase python-pysdl2 rabtap rcu-bin rebar3 remark-language-server roomeqwizard rpcs3-git ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-reverse_markdown ruby-solargraph ryujinx-git sameboy scala-dotty skyscraper-git soapui sublime-text-4 sunshine tla-toolbox townsemu-git ums ungoogled-chromium-bin visual-studio-code-bin vi-vim-symlink vmware-horizon-client vmware-keymaps xpadneo-dkms zeal-git zlib-ng zoom; do git clone https://aur.archlinux.org/$p.git; done
+for p in akku ares-emu attract-git aurutils authy azure-cli chez-scheme conan cubeb dolphin-emu-git dosbox-x duckstation-git earthly eclipse-java elixir elixir-ls erlang_ls exercism flycast godot-mono-bin google-cloud-cli groovy-language-server-git ibmcloud-cli icaclient imhex irccloud-bin jdk17-graalvm-bin jdk17-jetbrains-bin jdk17-openj9-bin jdtls jetbrains-toolbox krew kubelogin lagrange libretro-beetle-lynx-git libretro-beetle-pcfx-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-fsuae-git libspng license-wtfpl m64py mathematica mednaffe metals moonlight-qt ms-sys ncurses5-compat-libs nestopia openmsx parsec-bin passmark-performancetest-bin pcsx2-git pegasus-frontend-git postman-bin powershell-bin protonmail-bridge-bin python-patch-ng python-pluginbase python-pysdl2 rabtap rcu-bin rebar3 remark-language-server roomeqwizard rpcs3-git ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-reverse_markdown ruby-solargraph ryujinx-git sameboy scala-dotty sedutil skyscraper-git soapui sublime-text-4 sunshine tla-toolbox townsemu-git ums ungoogled-chromium-bin visual-studio-code-bin vi-vim-symlink vmware-horizon-client vmware-keymaps xpadneo-dkms zeal-git zlib-ng zoom; do git clone https://aur.archlinux.org/$p.git; done
 
 # Build all (I wouldn't do this, I would initially enter one-by-one and do
 # git log ; makepkg -cCs manually). Will result in packages under $PKG_ROOT/Packages.
