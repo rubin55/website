@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-07-31T21:55:00+02:00
+last_modified_at: 2023-08-01T13:46:00+02:00
 categories:
   - blog
 tags:
@@ -161,8 +161,7 @@ pacman -S --needed touchegg
 Make sure you enable the service:
 
 ```shell
-systemctl enable touchegg
-systemctl start touchegg
+systemctl enable --now touchegg
 ```
 
 And also install the required Gnome [extension](https://github.com/JoseExposito/gnome-shell-extension-x11gestures).
@@ -180,8 +179,7 @@ pacman -S --needed libfprint fprintd
 And make sure you enable the service:
 
 ```shell
-systemctl enable fprintd
-systemctl start fprintd
+systemctl enable --now fprintd
 ```
 
 Note that the latest Goodix MOC fingerprint readers which the Framework Laptop
@@ -262,8 +260,7 @@ I customized and why, let me document it.
 Enable `bluetooth` with:
 
 ```shell
-systemctl enable bluetooth.service
-systemctl start bluetooth.service
+systemctl enable --now bluetooth.service
 ```
 
 Bluetooth mostly just works out of the box, except for my XBox Series X|S
@@ -318,8 +315,7 @@ systemctl restart bluetooth.service
 Enable `gdm` with:
 
 ```shell
-systemctl enable gdm.service
-systemctl start gdm.service
+systemctl enable --now gdm.service
 ```
 
 I prefer auto-login on some of my devices (no on laptop, yes on desktop). Add
@@ -347,8 +343,7 @@ Reboot for the above to take effect.
 Enable `libvirtd` with:
 
 ```shell
-systemctl enable libvirtd.service
-systemctl start libvirtd.service
+systemctl enable --now libvirtd.service
 ```
 
 I run `libvirtd` mostly stock. I do set `unix_sock_group` to `libvirt` and add
@@ -407,8 +402,7 @@ rm -qf /tmp/net-default.xml
 Enable `NetworkManager` with:
 
 ```shell
-systemctl enable NetworkManager.service
-systemctl start NetworkManager.service
+systemctl enable --now NetworkManager.service
 ```
 
 NetworkManager works mostly out of the box, normally no special settings needed.
@@ -468,16 +462,15 @@ legacy VPN stuff, or if you're behind moron-grade SSL-terminating proxies.
 Enable `nfsv4` with:
 
 ```shell
-systemctl enable nfsv4.service
-systemctl start nfsv4.service
+systemctl enable --now nfsv4.service
 ```
 
 I use NFS only on internal interfaces, specifically the `virt0` interface of
 the `default` network (remember that ip address 10.10.11.1?). This allows me
-to work with shared storage on really old operating systems that I fool around
-with on Qemu/KVM (Note that you have much better options for modern Linux
-systems - there you can use `enable shared memory` and a virtiofs device to
-essentially loop-mount a memory block device which is a directory on the host).
+to work with shared storage on other operating systems that I fool around with
+on Qemu/KVM (Note that you have much better options for modern Linux systems -
+there you can use `enable shared memory` and a `virtiofs` device to essentially 
+loop-mount a memory block device which is a directory on the host).
 
 Since we're only doing NFSv4 we don't need rpcbind, so let's mask that first:
 
@@ -515,10 +508,7 @@ systemctl restart nfsv4.service
 Enable `smbd` and `nmbd` with:
 
 ```shell
-#bluetooth.service gdm.service libvirtd.service NetworkManager.service nfsv4.service nmb.service smb.service thermald.service tlp.service cups.socket docker.socket
-
-systemctl enable nmb.service smb.service
-systemctl start nmb.service smb.service
+systemctl enable --now nmb.service smb.service
 ```
 
 I use Samba for the same reasons as I use NFS, that is to have shared storage
@@ -570,8 +560,7 @@ systemctl restart nmb.service smb.service
 Enable `thermald` with:
 
 ```shell
-systemctl enable thermald.service
-systemctl start thermald.service
+systemctl enable --now thermald.service
 ```
 
 Thermald is specifically for Intel-based platforms. It can adjust fan-curves by
@@ -583,8 +572,7 @@ it seems to work great.
 Enable `tlp` with:
 
 ```shell
-systemctl enable tlp.service
-systemctl start tlp.service
+systemctl enable --now tlp.service
 ```
 
 TLP is used to manage power-saving modes of various hardware. It is usually
@@ -630,8 +618,7 @@ systemctl restart tlp.service
 Enable `cups` with:
 
 ```shell
-systemctl enable cups.socket
-systemctl start cups.socket
+systemctl enable --now cups.socket
 ```
 
 I use cups without any adjustments.
@@ -641,8 +628,7 @@ I use cups without any adjustments.
 Enable bluetooth with:
 
 ```shell
-systemctl enable docker.socket
-systemctl start docker.socket
+systemctl enable --now docker.socket
 ```
 
 I use docker without any adjustments.
@@ -652,7 +638,7 @@ I use docker without any adjustments.
 I use the following user-level services (do as logged in user):
 
 ```shell
-for u in syncthing.service wireplumber.service pipewire.socket pipewire-pulse.socket; do systemctl enable --user $u; done
+for u in syncthing.service wireplumber.service pipewire.socket pipewire-pulse.socket; do systemctl enable --now --user $u; done
 ```
 
 ## How I use AUR
@@ -783,7 +769,7 @@ cd "$PKG_ROOT/Build"
 for p in akku ares-emu attract-git aurutils authy azure-cli chez-scheme conan cubeb dolphin-emu-git dosbox-x duckstation-git earthly eclipse-java elixir elixir-ls erlang_ls exercism flycast godot-mono-bin google-cloud-cli groovy-language-server-git ibmcloud-cli icaclient imhex irccloud-bin jdk17-graalvm-bin jdk17-jetbrains-bin jdk17-openj9-bin jdtls jetbrains-toolbox krew kubelogin lagrange libretro-beetle-lynx-git libretro-beetle-pcfx-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-fsuae-git libspng license-wtfpl m64py mathematica mednaffe metals moonlight-qt ms-sys ncurses5-compat-libs nestopia openmsx parsec-bin passmark-performancetest-bin pcsx2-git pegasus-frontend-git postman-bin powershell-bin protonmail-bridge-bin python-patch-ng python-pluginbase python-pysdl2 rabtap rcu-bin rebar3 remark-language-server roomeqwizard rpcs3-git ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-reverse_markdown ruby-solargraph ryujinx-git sameboy scala-dotty skyscraper-git soapui sublime-text-4 sunshine tla-toolbox townsemu-git ums ungoogled-chromium-bin visual-studio-code-bin vi-vim-symlink vmware-horizon-client vmware-keymaps xpadneo-dkms zeal-git zlib-ng zoom; do git clone https://aur.archlinux.org/$p.git; done
 
 # Build all (I wouldn't do this, I would initially enter one-by-one and do
-# git log ; makepkg -cCs manually). Will result in packages under $PKG_ROOT/Build.
+# git log ; makepkg -cCs manually). Will result in packages under $PKG_ROOT/Packages.
 cd "$PKG_ROOT/Build"
 for p in *; do cd $p; makepkg -cCs; cd -; done
 
