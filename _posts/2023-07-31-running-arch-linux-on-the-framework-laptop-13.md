@@ -131,7 +131,8 @@ images, so you'd need to do that manually after `linux` kernel package updates.
 For example:
 
 ```shell
-export KERNEL_VERSION=$(pacman -Q linux | awk '{print $2}')
+# Kernel version in package contains dot, on-disk it contains dash, hence the sed.
+export KERNEL_VERSION=$(pacman -Q linux | awk '{print $2}' | sed 's|\.arch|-arch|g')
 cp /lib/modules/$KERNEL_VERSION/vmlinuz /boot/vmlinuz-linux
 dracut --kver $KERNEL_VERSION --force /boot/initramfs-linux-fallback.img
 dracut --hostonly --no-hostonly-cmdline --kver $KERNEL_VERSION --force /boot/initramfs-linux.img
