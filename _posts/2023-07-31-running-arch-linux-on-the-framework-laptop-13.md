@@ -203,7 +203,7 @@ If your fingerprint reader is working, you can continue to follow the steps
 My Framework Laptop 13 is intel-based, so I install these packages additionally:
 
 ```shell
-pacman -S --needed intel-gpu-tools vulkan-intel intel-media-driver libvdpau-va-gl thermald
+pacman -S --needed intel-gpu-tools vulkan-intel intel-media-driver libvdpau-va-gl
 ```
 
 ### Additionally install on devices with AMD graphics
@@ -580,18 +580,6 @@ After creating or changing `smb.conf`, restart the services:
 ```shell
 systemctl restart nmb.service smb.service
 ```
-
-### Thermald
-
-Enable `thermald` with:
-
-```shell
-systemctl enable --now thermald.service
-```
-
-Thermald is specifically for Intel-based platforms. It can adjust fan-curves by
-talking to the low-level hardware interfaces. I didn't adjust the defaults and
-it seems to work great.
 
 ### TLP
 
