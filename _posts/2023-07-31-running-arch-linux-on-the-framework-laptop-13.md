@@ -507,7 +507,7 @@ the protocol explicitly, we patch `/etc/nfs.conf` (use `patch` or add the
 @@ -67,13 +67,14 @@
  # debug=0
  # threads=8
- # host=
+-# host=
 +host=10.10.11.1
  # port=0
  # grace-time=90
