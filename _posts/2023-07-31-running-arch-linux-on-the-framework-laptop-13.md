@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-08-02T02:00:00+02:00
+last_modified_at: 2023-08-03T09:11:00+02:00
 categories:
   - blog
 tags:
@@ -354,7 +354,7 @@ Reboot for the above to take effect.
 Enable `libvirtd` with:
 
 ```shell
-systemctl enable --now libvirtd.socket
+systemctl enable --now libvirtd.service
 ```
 
 I run `libvirtd` mostly stock. I do set `unix_sock_group` to `libvirt` and add
@@ -473,7 +473,7 @@ legacy VPN stuff, or if you're behind moron-grade SSL-terminating proxies.
 Enable `nfsv4` with:
 
 ```shell
-systemctl enable --now nfsv4.service
+systemctl enable --now nfsv4-server.service
 ```
 
 I use NFS only on internal interfaces, specifically the `virt0` interface of
@@ -483,35 +483,50 @@ on Qemu/KVM (Note that you have much better options for modern Linux systems -
 there you can use `enable shared memory` and a `virtiofs` device to essentially 
 loop-mount a memory block device which is a directory on the host).
 
-Since we're only doing NFSv4 we don't need rpcbind, so let's mask that first:
+Since we're only doing NFSv4, and we're not interested in user/group ID mapping,
+let's stop and mask a couple of RPC services first:
 
 ```shell
 systemctl stop rpcbind.service
 systemctl mask rpcbind.service
+systemctl stop nfs-blkmap
+systemctl mask nfs-blkmap
+systemctl stop nfs-idmapd
+systemctl mask nfs-idmapd
+systemctl stop nfs-mountd
+systemctl mask nfs-mountd
 ```
 
-To make NFSv4 only listen on a specific interface, we patch `/etc/nfs.conf` (use
-`patch` or add the `host=` elements by hand under `[nfsd]`:
+To make NFSv4 only listen on a specific interface, and to disable version 3 of 
+the protocol explicitly, we patch `/etc/nfs.conf` (use `patch` or add the 
+`host=`, `vers3=` and `vers4=` elements by hand under `[nfsd]`:
 
 ```diff
---- nfs.conf.orig 2023-07-31 21:16:20.438028044 +0300
-+++ nfs.conf  2023-07-31 21:17:08.074251682 +0300
-@@ -67,6 +67,8 @@
+--- nfs.conf.orig       2023-07-31 21:16:20.438028044 +0300
++++ nfs.conf    2023-08-03 09:01:05.586457300 +0300
+@@ -67,13 +67,14 @@
  # debug=0
  # threads=8
  # host=
-+host=127.0.0.1
 +host=10.10.11.1
  # port=0
  # grace-time=90
  # lease-time=90
-
+ # udp=n
+ # tcp=y
+-# vers3=y
+-# vers4=y
++vers3=n
++vers4=y
+ # vers4.0=y
+ # vers4.1=y
+ # vers4.2=y
 ```
 
 After the above changes, restart the service:
 
 ```shell
-systemctl restart nfsv4.service
+systemctl restart nfsv4-server.service
 ```
 
 ### Samba
@@ -536,10 +551,10 @@ cat <<EOF > "/etc/samba/smb.conf"
    server min protocol = NT1
    ntlm auth = yes
    lanman auth = yes
-   hosts allow = 127. 10.10.11.
+   hosts allow = 10.10.11.
    log file = /var/log/samba/log.smbd
    max log size = 100
-   interfaces = 127.0.0.1/8 10.10.11.1/24
+   interfaces = 10.10.11.1/24
    bind interfaces only = yes
    dns proxy = yes
    wins proxy = yes
