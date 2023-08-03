@@ -354,7 +354,7 @@ Reboot for the above to take effect.
 Enable `libvirtd` with:
 
 ```shell
-systemctl enable --now libvirtd.service
+systemctl enable --now libvirtd.socket
 ```
 
 I run `libvirtd` mostly stock. I do set `unix_sock_group` to `libvirt` and add
