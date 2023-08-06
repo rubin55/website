@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-08-03T09:11:00+02:00
+last_modified_at: 2023-08-06T13:44:00+02:00
 categories:
   - blog
 tags:
@@ -139,6 +139,33 @@ dracut --hostonly --no-hostonly-cmdline --kver $KERNEL_VERSION --force /boot/ini
 ```
 
 ## Packages I install
+
+Next to the default `core` and `extra` repositories, I enable `multilib` in
+`pacman.conf` before installing. Additionally, I blacklist `pam_systemd_home.so`
+because I don't use `systemd-homed` and it spams the journal on any login or
+auth action:
+
+```diff
+--- pacman.conf.orig    2023-08-06 12:09:44.849855338 +0300
++++ pacman.conf 2023-08-06 12:01:30.261984035 +0300
+@@ -26,7 +26,7 @@
+ #IgnoreGroup =
+
+ #NoUpgrade   =
+-#NoExtract   =
++NoExtract    = usr/lib/security/pam_systemd_home.so
+
+ # Misc options
+ #UseSyslog
+@@ -87,12 +87,11 @@
+ #[multilib-testing]
+ #Include = /etc/pacman.d/mirrorlist
+
+-#[multilib]
+-#Include = /etc/pacman.d/mirrorlist
++[multilib]
++Include = /etc/pacman.d/mirrorlist
+```
 
 You can install the following packages right after your system comes up first
 boot, or you could do it during install with `pacstrap` (it doesn't really
@@ -279,7 +306,7 @@ to apply the settings to your `main.conf`):
  # Possible values: "dual", "bredr", "le"
 -#ControllerMode = dual
 +ControllerMode = dual
- 
+
  # Maximum number of controllers allowed to be exposed to the system.
  # Default=0 (unlimited)
 @@ -100,7 +100,7 @@
@@ -288,11 +315,11 @@ to apply the settings to your `main.conf`):
  # Defaults to "never"
 -#JustWorksRepairing = never
 +JustWorksRepairing = confirm
- 
+
  # How long to keep temporary devices around
  # The value is in seconds. Default is 30.
 @@ -212,9 +212,9 @@
- 
+
  # LE default connection parameters.  These values are superceeded by any
  # specific values provided via the Load Connection Parameters interface
 -#MinConnectionInterval=
@@ -303,14 +330,14 @@ to apply the settings to your `main.conf`):
 +ConnectionLatency=0
  #ConnectionSupervisionTimeout=
  #Autoconnecttimeout=
- 
+
 @@ -318,7 +318,7 @@
  # AutoEnable defines option to enable all controllers when they are found.
  # This includes adapters present on start as well as adapters that are plugged
  # in later on. Defaults to 'true'.
 -#AutoEnable=true
 +AutoEnable=false
- 
+
  # Audio devices that were disconnected due to suspend will be reconnected on
  # resume. ResumeDelay determines the delay between when the controller
 ```
@@ -480,7 +507,7 @@ I use NFS only on internal interfaces, specifically the `virt0` interface of
 the `default` network (remember that ip address 10.10.11.1?). This allows me
 to work with shared storage on other operating systems that I fool around with
 on Qemu/KVM (Note that you have much better options for modern Linux systems -
-there you can use `enable shared memory` and a `virtiofs` device to essentially 
+there you can use `enable shared memory` and a `virtiofs` device to essentially
 loop-mount a memory block device which is a directory on the host).
 
 Since we're only doing NFSv4, and we're not interested in user/group ID mapping,
@@ -497,8 +524,8 @@ systemctl stop nfs-mountd
 systemctl mask nfs-mountd
 ```
 
-To make NFSv4 only listen on a specific interface, and to disable version 3 of 
-the protocol explicitly, we patch `/etc/nfs.conf` (use `patch` or add the 
+To make NFSv4 only listen on a specific interface, and to disable version 3 of
+the protocol explicitly, we patch `/etc/nfs.conf` (use `patch` or add the
 `host=`, `vers3=` and `vers4=` elements by hand under `[nfsd]`:
 
 ```diff
@@ -688,7 +715,7 @@ repo-add custom.db.tar.gz
 # Add entry to /etc/pacman.conf.
 cat <<EOF >> "/etc/pacman.conf"
 [custom]
-SigLevel = Required DatabaseOptional TrustedOnly
+SigLevel = Required DatabaseRequired TrustedOnly
 Server = file://$PKG_ROOT/Packages
 EOF
 
@@ -699,8 +726,9 @@ pacman-key --lsign-key $USER
 rm -qf your.key
 
 
-# Run update to test, you should see custom being referenced.
+# Run update for db and files, you should see custom being referenced.
 pacman -Syu
+pacman -Fy
 
 # Unset variables.
 unset PKG_ROOT
@@ -762,11 +790,11 @@ ls ../../Source\ Packages
 
 # Update local repository (adds new packages, removes older ones).
 cd "$PKG_ROOT/Packages"
-repo-add -n -R custom.db.tar.gz *.zst
+repo-add -n -R -s custom.db.tar.gz *.zst
 
 # Remove a specific AUR package from local repository
 cd "$PKG_ROOT/Packages"
-repo-remove custom.db.tar.gz aurutils
+repo-remove -s custom.db.tar.gz aurutils
 ```
 
 ### AUR packages I build and install
@@ -803,7 +831,7 @@ pacman -S --needed $(pacman -Sl custom | grep -v installed | awk '{print $2}')
 
 ### No AUR packages available (yet)
 
-I maintain these AUR packages: 
+I maintain these AUR packages:
 
   * [rcu-bin](https://aur.archlinux.org/packages/rcu-bin)
   * [scheme-chez-symlink](https://aur.archlinux.org/packages/scheme-chez-symlink)
