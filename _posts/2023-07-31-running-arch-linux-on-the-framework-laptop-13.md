@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-08-06T13:44:00+02:00
+last_modified_at: 2023-08-06T14:09:00+02:00
 categories:
   - blog
 tags:
@@ -118,26 +118,6 @@ on my Framework Laptop 13:
 net.ifnames=0 module_blacklist=cros_ec_lpcs,hid_sensor_hub acpi_osi="!Windows 2020" tpm_tis.interrupts=0 nvme.noacpi=1 mem_sleep_default=s2idle
 ```
 
-### Note about mkinitcpio vs. dracut
-
-Quick note about `mkinitcpio` and `mkinitcpio-busybox`: These are used to build
-the kernel initrd image. They are fine for most use-cases. Just note that if you
-need working LVM RAID mirrors, I couldn't get that to work with these packages,
-so on my desktop box, I opted to use `dracut`, which in my experience has much
-saner + robuster setup of LVM-based configurations.
-
-Note that there are no hooks by default for rebuilding dracut-based initrd
-images, so you'd need to do that manually after `linux` kernel package updates.
-For example:
-
-```shell
-# Kernel version in package contains dot, on-disk it contains dash, hence the sed.
-export KERNEL_VERSION=$(pacman -Q linux | awk '{print $2}' | sed 's|\.arch|-arch|g')
-cp /lib/modules/$KERNEL_VERSION/vmlinuz /boot/vmlinuz-linux
-dracut --kver $KERNEL_VERSION --force /boot/initramfs-linux-fallback.img
-dracut --hostonly --no-hostonly-cmdline --kver $KERNEL_VERSION --force /boot/initramfs-linux.img
-```
-
 ## Packages I install
 
 Next to the default `core` and `extra` repositories, I enable `multilib` in
@@ -173,7 +153,32 @@ matter, but in any case, make sure `core`, `contrib` and `multilib` are enabled
 in `/etc/pacman.conf` first):
 
 ```shell
-pacman -S --needed acpi acpi_call-dkms acpid adwaita-qt5 adwaita-qt6 alsa-utils ansible-language-server ant audacious autoconf automake aws-cli bash bash-language-server bc bind bison blender bookworm btop bubblewrap cabal-install calibre cameractrls cheese cifs-utils clang cmake corkscrew cpio cpupower cue cups curl dagger dash dcraw deno desmume devtools discord distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dos2unix dosfstools dotnet-sdk dracut efibootmgr elixir emacs-wayland eog erlang ethtool evince extra-cmake-modules fakeroot fd file file-roller firefox flex foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fop fractal fs-uae fs-uae-launcher fwupd fzf gamemode gcc gcolor3 gdb gdm ghc ghidra gimp git glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-console gnome-control-center gnome-session gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-tweaks gnupg go gopls gparted gradle groovy guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb gvim harfbuzz-cairo haskell-language-server hdparm helm hplip htop i2c-tools ifuse inkscape iperf3 iptables-nft irssi jdk17-openjdk jdk8-openjdk jfsutils jq k9s kafka kooha kubectl libcroco libindicator-gtk3 libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-core-info libretro-desmume libretro-dolphin libretro-duckstation libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-pcsx2 libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libretro-yabause libva-mesa-driver libva-utils libvirt libvisual libxcrypt-compat linux-headers lldb lm_sensors lm_sensors lshw lsof ltrace lua-language-server make mame mame-tools man-db man-pages mattermost maven mbedtls2 mednafen mesa-utils mesa-vdpau mgba-qt minikube mitmproxy mono mono-msbuild moreutils mplayer mpv mtools multipath-tools mupen64plus mutter nasm nautilus neofetch netbeans network-manager-applet networkmanager networkmanager-openvpn nfs-utils ninja nmap nodejs npm ntfs-3g nuget nvme-cli openbsd-netcat openldap openssh openvpn p7zip pacutils pandoc-cli patch pavucontrol pciutils perl perl-net-dbus perl-x11-protocol pinentry pipewire pipewire-alsa pipewire-jack pipewire-pulse pipewire-v4l2 plymouth postgresql powertop ppsspp pyright python python-kubernetes python-ldap python-opengl python-pip python-pycryptodomex python-pyopenssl python-setuptools python-websockets python-wheel qbittorrent qemu-full qgnomeplatform-qt5 qgnomeplatform-qt6 qmc2 qt5-declarative qt5-tools qt5-wayland qt5-webchannel qt5-webengine qt5ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland qt6ct quodlibet rabbitmq racket retroarch retroarch-assets-ozone retroarch-assets-glui ripgrep rsync ruby ruby-rake-compiler rust s-tui samba sane sbt scons screen scummvm sdl2_mixer signal-desktop smartmontools smbclient snes9x speedtest-cli squashfs-tools stack steam step-ca step-cli stern strace sudo syncthing tar texlive-bin texlive-core the_silver_searcher thunderbird tlp tmux traceroute tracker3-miners tree ttf-joypixels typescript typescript-language-server unixodbc unzip usbutils util-linux v4l-utils valgrind vdpauinfo virt-manager vlc vulkan-tools wake wgetpaste wireless_tools wireplumber wireshark-cli wireshark-qt wmctrl wol xclip xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xorg-font-util xorg-fonts-100dpi xorg-mkfontscale xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo xsane xsane-gimp xterm yarn yasm yq yt-dlp yuzu zig zip zls zstd
+pacman -S --needed acpi acpi_call-dkms acpid adwaita-qt5 adwaita-qt6 alsa-utils ansible-language-server ant audacious autoconf automake aws-cli bash bash-language-server bc bind bison blender bookworm btop bubblewrap cabal-install calibre cameractrls cheese cifs-utils clang cmake corkscrew cpio cpupower cue cups curl dagger dash dcraw deno desmume devtools discord distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dos2unix dosfstools dotnet-sdk efibootmgr elixir emacs-wayland eog erlang ethtool evince extra-cmake-modules fakeroot fd file file-roller firefox flex foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fop fractal fs-uae fs-uae-launcher fwupd fzf gamemode gcc gcolor3 gdb gdm ghc ghidra gimp git glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-console gnome-control-center gnome-session gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-tweaks gnupg go gopls gparted gradle groovy guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb gvim harfbuzz-cairo haskell-language-server hdparm helm hplip htop i2c-tools ifuse inkscape iperf3 iptables-nft irssi jdk17-openjdk jdk8-openjdk jfsutils jq k9s kafka kooha kubectl libcroco libindicator-gtk3 libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-core-info libretro-desmume libretro-dolphin libretro-duckstation libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-pcsx2 libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libretro-yabause libva-mesa-driver libva-utils libvirt libvisual libxcrypt-compat linux-headers lldb lm_sensors lm_sensors lshw lsof ltrace lua-language-server make mame mame-tools man-db man-pages mattermost maven mbedtls2 mednafen mesa-utils mesa-vdpau mgba-qt minikube mitmproxy mono mono-msbuild moreutils mplayer mpv mtools multipath-tools mupen64plus mutter nasm nautilus neofetch netbeans network-manager-applet networkmanager networkmanager-openvpn nfs-utils ninja nmap nodejs npm ntfs-3g nuget nvme-cli openbsd-netcat openldap openssh openvpn p7zip pacutils pandoc-cli patch pavucontrol pciutils perl perl-net-dbus perl-x11-protocol pinentry pipewire pipewire-alsa pipewire-jack pipewire-pulse pipewire-v4l2 pkgconf postgresql powertop ppsspp pyright python python-kubernetes python-ldap python-opengl python-pip python-pycryptodomex python-pyopenssl python-setuptools python-websockets python-wheel qbittorrent qemu-full qgnomeplatform-qt5 qgnomeplatform-qt6 qmc2 qt5-declarative qt5-tools qt5-wayland qt5-webchannel qt5-webengine qt5ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland qt6ct quodlibet rabbitmq racket retroarch retroarch-assets-ozone retroarch-assets-glui ripgrep rsync ruby ruby-rake-compiler rust s-tui samba sane sbt scons screen scummvm sdl2_mixer signal-desktop smartmontools smbclient snes9x speedtest-cli squashfs-tools stack steam step-ca step-cli stern strace sudo syncthing tar texlive-bin texlive-core the_silver_searcher thunderbird tlp tmux traceroute tracker3-miners tree ttf-joypixels typescript typescript-language-server unixodbc unzip usbutils util-linux v4l-utils valgrind vdpauinfo virt-manager vlc vulkan-tools wake wgetpaste wireless_tools wireplumber wireshark-cli wireshark-qt wmctrl wol xclip xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xorg-font-util xorg-fonts-100dpi xorg-mkfontscale xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo xsane xsane-gimp xterm yarn yasm yq yt-dlp yuzu zig zip zls zstd
+```
+
+### Additionally install when you want to use dracut instead of mkinitcpio
+
+I use `dracut` on my desktop computer, because I need working LVM RAID mirrors
+there. I couldn't get that to work with `mkinitcpio` based initrd.
+
+If you want to use `dracut` instead of `mkinitcpio` to generate initrd images,
+you need to install it and remove the default initrd tooling:
+
+```shell
+pacman -S --needed dracut
+pacman -R mkinitcpio mkinitcpio-busybox
+```
+
+Note that there are no hooks by default for rebuilding dracut-based initrd
+images, so you'd need to do that manually after `linux` kernel package updates.
+For example:
+
+```shell
+# Kernel version in package contains dot, on-disk it contains dash, hence the sed.
+export KERNEL_VERSION=$(pacman -Q linux | awk '{print $2}' | sed 's|\.arch|-arch|g')
+cp /lib/modules/$KERNEL_VERSION/vmlinuz /boot/vmlinuz-linux
+dracut --kver $KERNEL_VERSION --force /boot/initramfs-linux-fallback.img
+dracut --hostonly --no-hostonly-cmdline --kver $KERNEL_VERSION --force /boot/initramfs-linux.img
 ```
 
 ### Additionally install when you use X11 instead of Wayland and want gestures
