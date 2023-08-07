@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-08-07T02:15:00+02:00
+last_modified_at: 2023-08-07T19:15:00+02:00
 categories:
   - blog
 tags:
@@ -153,7 +153,7 @@ matter, but in any case, make sure `core`, `contrib` and `multilib` are enabled
 in `/etc/pacman.conf` first):
 
 ```shell
-pacman -S --needed acpi acpi_call-dkms acpid adwaita-qt5 adwaita-qt6 alsa-utils ansible-language-server ant audacious autoconf automake aws-cli bash bash-language-server bc bind bison blender bookworm btop bubblewrap cabal-install calibre cameractrls cdemu-daemon cdemu-client cheese cifs-utils clang cmake corkscrew cpio cpupower cue cups curl dagger dash dcraw deno desmume devtools discord distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dos2unix dosfstools dotnet-sdk efibootmgr elixir emacs-wayland eog erlang ethtool evince extra-cmake-modules fakeroot fd file file-roller firefox flex foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fop fractal fs-uae fs-uae-launcher fwupd fzf gamemode gcc gcolor3 gdb gdm ghc ghidra gimp git glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-console gnome-control-center gnome-session gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-tweaks gnupg go gopls gparted gradle groovy guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb gvim harfbuzz-cairo haskell-language-server hdparm helm hplip htop i2c-tools ifuse inkscape iperf3 iptables-nft irssi jdk17-openjdk jdk8-openjdk jfsutils jq k9s kafka kooha kubectl libcroco libindicator-gtk3 libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-core-info libretro-desmume libretro-dolphin libretro-duckstation libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-pcsx2 libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libretro-yabause libva-mesa-driver libva-utils libvirt libvisual libxcrypt-compat linux-headers lldb lm_sensors lm_sensors lshw lsof ltrace lua-language-server make mame mame-tools man-db man-pages mattermost maven mbedtls2 mednafen mesa-utils mesa-vdpau mgba-qt minikube mitmproxy mono mono-msbuild moreutils mplayer mpv mtools multipath-tools mupen64plus mutter nasm nautilus neofetch netbeans network-manager-applet networkmanager networkmanager-openvpn nfs-utils ninja nmap nodejs npm ntfs-3g nuget nvme-cli openbsd-netcat openldap openssh openvpn p7zip pacutils pandoc-cli patch pavucontrol pciutils perl perl-net-dbus perl-x11-protocol pinentry pipewire pipewire-alsa pipewire-jack pipewire-pulse pipewire-v4l2 pkgconf postgresql powertop ppsspp pyright python python-kubernetes python-ldap python-opengl python-pip python-pycryptodomex python-pyopenssl python-setuptools python-websockets python-wheel qbittorrent qemu-full qgnomeplatform-qt5 qgnomeplatform-qt6 qmc2 qt5-declarative qt5-tools qt5-wayland qt5-webchannel qt5-webengine qt5ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland qt6ct quodlibet rabbitmq racket retroarch retroarch-assets-ozone retroarch-assets-glui ripgrep rsync ruby ruby-rake-compiler rust s-tui samba sane sbt scons screen scummvm sdl2_mixer signal-desktop smartmontools smbclient snes9x speedtest-cli squashfs-tools stack steam step-ca step-cli stern strace sudo syncthing tar texlive-bin texlive-core the_silver_searcher thunderbird tlp tmux traceroute tracker3-miners tree ttf-joypixels typescript typescript-language-server unixodbc unzip usbutils util-linux v4l-utils valgrind vdpauinfo virt-manager vlc vulkan-tools wake wgetpaste wireless_tools wireplumber wireshark-cli wireshark-qt wmctrl wol xclip xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xorg-font-util xorg-fonts-100dpi xorg-mkfontscale xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo xsane xsane-gimp xterm yarn yasm yq yt-dlp yuzu zig zip zls zstd
+pacman -S --needed acpi acpi_call-dkms acpid adwaita-qt5 adwaita-qt6 alsa-utils ansible-language-server ant audacious autoconf automake aws-cli bash bash-language-server bc bind bison blender bookworm btop bubblewrap cabal-install calibre cameractrls cdemu-daemon cdemu-client cheese cifs-utils clang cmake corkscrew cpio cpupower cue cups curl dagger dash dcraw deno desmume devtools discord distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dos2unix dosfstools dotnet-sdk efibootmgr elixir emacs-wayland eog erlang ethtool evince extra-cmake-modules fakeroot fd file file-roller firefox flex foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fop fractal fs-uae fs-uae-launcher fwupd fzf gamemode gcc gcolor3 gdb gdm ghc ghidra gimp git glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-console gnome-control-center gnome-session gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-tweaks gnupg go gopls gparted gradle groovy guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb gvim harfbuzz-cairo haskell-language-server hdparm helm hplip htop i2c-tools ifuse inkscape iperf3 iptables-nft irssi jdk17-openjdk jdk8-openjdk jfsutils jq k9s kafka kooha kubectl libcroco libindicator-gtk3 libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-core-info libretro-desmume libretro-dolphin libretro-duckstation libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-pcsx2 libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libretro-yabause libva-mesa-driver libva-utils libvirt libvisual libxcrypt-compat linux-headers lldb lm_sensors lm_sensors lshw lsof ltrace lua-language-server make mame mame-tools man-db man-pages mattermost maven mbedtls2 mednafen mesa-utils mesa-vdpau mgba-qt minikube mitmproxy mono mono-msbuild moreutils mplayer mpv mtools multipath-tools mupen64plus mutter nasm nautilus neofetch netbeans network-manager-applet networkmanager networkmanager-openvpn nfs-utils ninja nmap nodejs npm ntfs-3g nuget nvme-cli openbsd-netcat openldap openssh openvpn p7zip pacutils pandoc-cli patch pavucontrol pciutils perl perl-net-dbus perl-x11-protocol pinentry pipewire pipewire-alsa pipewire-jack pipewire-pulse pipewire-v4l2 pkgconf postgresql powertop ppsspp pyright python python-kubernetes python-ldap python-opengl python-pip python-pycryptodomex python-pyopenssl python-setuptools python-websockets python-wheel qbittorrent qemu-full qgnomeplatform-qt5 qgnomeplatform-qt6 qmc2 qt5-declarative qt5-tools qt5-wayland qt5-webchannel qt5-webengine qt5ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland qt6ct quodlibet rabbitmq racket retroarch retroarch-assets-ozone retroarch-assets-glui ripgrep rsync ruby ruby-rake-compiler rust s-tui samba sane sbt scons screen scummvm sdl2_mixer signal-desktop smartmontools smbclient snes9x speedtest-cli squashfs-tools stack steam step-ca step-cli stern strace sudo syncthing tar texlive-bin texlive-core the_silver_searcher thunderbird tlp tmux traceroute tracker3-miners tree ttf-joypixels typescript typescript-language-server unixodbc unzip usbutils util-linux v4l-utils valgrind vdpauinfo vhba-module-dkms virt-manager vlc vulkan-tools wake wgetpaste wireless_tools wireplumber wireshark-cli wireshark-qt wmctrl wol xclip xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xorg-font-util xorg-fonts-100dpi xorg-mkfontscale xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo xsane xsane-gimp xterm yarn yasm yq yt-dlp yuzu zig zip zls zstd
 ```
 
 ### Additionally install when you want to use dracut instead of mkinitcpio
@@ -679,12 +679,31 @@ systemctl enable --now docker.socket
 
 I use docker without any adjustments.
 
+### CDemu
+
+I  use `cdemu` and related `vhba` kernel module to emulate optical drives for
+use with emulation stuff. If you'd like to run CDemu, make sure the required 
+modules are loaded at boot:
+
+```shell
+# Load modules at boot.
+cat <<EOF > "/etc/modules-load.d/cdemu.conf"
+sg
+sr_mod
+vhba
+EOF
+
+# Do it now too.
+modprobe -a sg sr_mod vhba
+
+```
+
 ### Enabling user services
 
 I use the following user-level services (do as logged in user):
 
 ```shell
-for u in cdemu-daemon.service syncthing.service wireplumber.service pipewire.socket pipewire-pulse.socket; do systemctl enable --now --user $u; done
+for u in syncthing.service wireplumber.service pipewire.socket pipewire-pulse.socket; do systemctl enable --now --user $u; done
 ```
 
 ## How I use AUR
