@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-08-09T13:49:00+02:00
+last_modified_at: 2023-08-09T13:56:00+02:00
 categories:
   - blog
 tags:
@@ -115,7 +115,7 @@ parameters. I found the following additionals handle a bunch of stuff nicely
 on my Framework Laptop 13:
 
 ```
-net.ifnames=0 module_blacklist=cros_ec_lpcs,hid_sensor_hub acpi_osi="!Windows 2020" tpm_tis.interrupts=0 nvme.noacpi=1 mem_sleep_default=s2idle
+net.ifnames=0 libata.allow_tpm=1 module_blacklist=cros_ec_lpcs,hid_sensor_hub acpi_osi="!Windows 2020" tpm_tis.interrupts=0 nvme.noacpi=1 mem_sleep_default=s2idle
 ```
 
 ## Packages I install
