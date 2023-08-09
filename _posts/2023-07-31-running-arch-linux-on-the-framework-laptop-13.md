@@ -508,6 +508,10 @@ Enable `nfsv4` with:
 systemctl enable --now nfsv4-server.service
 ```
 
+Quick note: the above start may fail if you updated the `linux` package but did
+not reboot yet, you'll see an error about a dependency failure.
+{: .notice--warning}
+
 I use NFS only on internal interfaces, specifically the `virt0` interface of
 the `default` network (remember that ip address 10.10.11.1?). This allows me
 to work with shared storage on other operating systems that I fool around with
@@ -553,6 +557,15 @@ the protocol explicitly, we patch `/etc/nfs.conf` (use `patch` or add the
  # vers4.0=y
  # vers4.1=y
  # vers4.2=y
+```
+
+Create an exports for /home:
+
+```shell
+cp -n "/etc/exports.d/home.exports" "/etc/exports.d/home.exports.orig"
+cat <<EOF > "/etc/exports.d/home.exports"
+/home   10.10.11.0/24(rw,sync,crossmnt,no_subtree_check)
+EOF
 ```
 
 After the above changes, restart the service:
