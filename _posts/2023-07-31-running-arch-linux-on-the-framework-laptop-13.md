@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-08-28T19:49:00+02:00
+last_modified_at: 2023-08-29T10:04:00+02:00
 categories:
   - blog
 tags:
@@ -287,6 +287,17 @@ pacman -S --needed `comm -23 ~/Desktop/lib32-candidates ~/Desktop/lib32-notfound
 
 I use and customized a bunch of services on my device. So I don't forget what
 I customized and why, let me document it.
+
+
+### Avahi
+
+I don't want any service auto-configuring stuff on my system, especially things
+like printers for example. Therefore I disable the Avahi zeroconf service:
+
+```shell
+systemctl disable --now  avahi-daemon.service
+systemctl disable --now  avahi-daemon.socket
+```
 
 ### Bluetooth
 
@@ -680,7 +691,22 @@ Enable `cups` with:
 systemctl enable --now cups.socket
 ```
 
-I use cups without any adjustments.
+I also don't want cups via `cups-browsed` to be able to auto-add printers, so I
+patch `/etc/cups/cups-browsed.conf` as follows:
+
+```diff
+--- cups-browsed.conf.default	2023-08-29 09:57:47.157250003 +0200
++++ cups-browsed.conf	2023-08-29 09:58:45.054108764 +0200
+@@ -53,7 +53,7 @@
+ # BrowseLocalProtocols.
+ # Can use DNSSD and/or CUPS and/or LDAP, or 'none' for neither.
+
+-# BrowseProtocols none
++BrowseProtocols none
+
+
+ # Only browse remote printers (via DNS-SD or CUPS browsing) from
+```
 
 ### Docker
 
