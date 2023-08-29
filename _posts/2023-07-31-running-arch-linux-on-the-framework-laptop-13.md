@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-08-29T10:04:00+02:00
+last_modified_at: 2023-08-29T11:30:00+02:00
 categories:
   - blog
 tags:
@@ -295,8 +295,9 @@ I don't want any service auto-configuring stuff on my system, especially things
 like printers for example. Therefore I disable the Avahi zeroconf service:
 
 ```shell
-systemctl disable --now  avahi-daemon.service
-systemctl disable --now  avahi-daemon.socket
+systemctl mask avahi-daemon.service
+systemctl mask avahi-daemon.socket
+systemctl mask avahi-dnsconfd.service
 ```
 
 ### Bluetooth
