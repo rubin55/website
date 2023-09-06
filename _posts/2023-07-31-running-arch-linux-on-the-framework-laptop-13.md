@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-09-01T23:29:00+02:00
+last_modified_at: 2023-09-06T18:19:00+02:00
 categories:
   - blog
 tags:
