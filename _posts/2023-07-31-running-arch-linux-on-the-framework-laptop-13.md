@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-09-24T22:04:00+02:00
+last_modified_at: 2023-09-24T22:10:00+02:00
 categories:
   - blog
 tags:
@@ -897,6 +897,8 @@ pacman -S --needed $(pacman -Sl custom | grep -v installed | awk '{print $2}')
 
 I maintain these AUR packages:
 
+  * [openshift-developer-bin](https://aur.archlinux.org/packages/openshift-developer-bin)
+  * [openshift-pipelines-bin](https://aur.archlinux.org/packages/openshift-pipelines-bin)
   * [rcu-bin](https://aur.archlinux.org/packages/rcu-bin)
   * [scheme-chez-symlink](https://aur.archlinux.org/packages/scheme-chez-symlink)
 
