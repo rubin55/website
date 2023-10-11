@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-10-11T21:20:00+02:00
+last_modified_at: 2023-10-11T21:31:00+02:00
 categories:
   - blog
 tags:
@@ -893,7 +893,7 @@ pacman -Sl custom
 pacman -S --needed $(pacman -Sl custom | grep -v installed | awk '{print $2}')
 ```
 
-### No AUR packages available (yet)
+### Personal AUR packages
 
 I maintain these AUR packages:
 
