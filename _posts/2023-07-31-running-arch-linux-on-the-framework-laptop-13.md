@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-11-16T17:14:00+02:00
+last_modified_at: 2023-11-16T18:55:00+02:00
 categories:
   - blog
 tags:
@@ -297,6 +297,15 @@ pacman -S --needed `comm -23 ~/Desktop/lib32-candidates ~/Desktop/lib32-notfound
 I use and customized a bunch of services on my device. So I don't forget what
 I customized and why, let me document it.
 
+### CpuPower
+
+The `cpupower` service reads from `/etc/default/cpupower` and configures the
+default scheduler. Edit that file to set the default scheduler to `powersave` or
+`performance `and then enable it:
+
+```shell
+systemctl enable --now cpupower.service
+```
 
 ### Avahi
 
