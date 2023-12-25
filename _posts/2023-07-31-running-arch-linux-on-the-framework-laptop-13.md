@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
 date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-12-21T19:54:00+02:00
+last_modified_at: 2023-12-25T13:20:00+02:00
 categories:
   - blog
 tags:
@@ -224,17 +224,32 @@ And make sure you enable the service:
 systemctl enable --now fprintd
 ```
 
-Note that the latest Goodix MOC fingerprint readers which the Framework Laptop
-13 uses, use a firmware that is not compatible with Linux. For more information,
-see [here](https://community.frame.work/t/fingerprint-reader-failing-to-register-on-13th-gen/34153/60).
-<br/><br/>
-Apparently, when one installs the Windows drivers for these things, the Windows
-driver actually **downgrades** the firmware to a version that works with Linux..
-<br/><br/>
-Installing Windows 10 in a virtual machine and passing through the Fingerprint
-USB device and then installing the Windows [drivers](https://knowledgebase.frame.work/en_us/framework-laptop-bios-and-driver-releases-13th-gen-intel-core-BkQBvKWr3),
-downgrades the firwmware, after which the device is usable in Linux.
-{: .notice--warning}
+To configure the fingerprint reader, I needed to upgrade the firmware. Version
+`01000320` is known to not work with Linux. Also, I had to use an older version
+of `fwupd` (version 1.9.5 to be specific) - 1.9.10 did not work. I followed the
+instructions [here](https://knowledgebase.frame.work/en_us/updating-fingerprint-reader-firmware-on-linux-for-13th-gen-and-amd-ryzen-7040-series-laptops-HJrvxv_za)
+to update to the required firmware version `01000330` to make the fingerprint
+reader work with Linux. Instructions below are based on the linked document:
+
+```shell
+# First downgrade fwupd...
+wget --continue https://archive.archlinux.org/packages/f/fwupd/fwupd-1.9.5-2-x86_64.pkg.tar.zst --output fwupd-1.9.5-2-x86_64.pkg.tar.zst
+pacman -U fwupd-1.9.5-2-x86_64.pkg.tar.zst
+# Get firmware file and install...
+wget --continue https://github.com/FrameworkComputer/linux-docs/raw/main/goodix-moc-609c-v01000330.cab --output goodix-moc-609c-v01000330.cab
+fwupdtool install --allow-reinstall --allow-older goodix-moc-609c-v01000330.cab
+```
+
+Note: There might be a transfer error mentioned at the end. This can be safely
+ignored. Reboot and start a fresh terminal and show the device:
+
+```shell
+fwupdmgr get-devices 1e8c8470-a49c-571a-82fd-19c9fa32b8c3
+```
+
+Note: The above command sometimes times out the first time it's run. Just run it
+again and you'll see some details about the fingerprint reader. Notably, the
+version should now be: `01000330`. You can now enroll fingerprints.
 
 If your fingerprint reader is working, you can continue to follow the steps
 [here](https://wiki.archlinux.org/title/Fprint) to set it up for usage.
