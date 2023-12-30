@@ -262,6 +262,15 @@ My Framework Laptop 13 is intel-based, so I install these packages additionally:
 pacman -S --needed intel-gpu-tools vulkan-intel intel-media-driver libvdpau-va-gl intel-graphics-compiler intel-compute-runtime
 ```
 
+Also, from AUR, I install these, making sure their version is synced with the
+above mentioned 64-bit versions, These make it possible for 32-bit apps to also
+use VAAPI-based hardware acceleration:
+
+```
+lib32-intel-gmmlib
+lib32-intel-media-driver
+```
+
 ### Additionally install on devices with AMD graphics
 
 If you have an AMD device instead, you might want these ones:
