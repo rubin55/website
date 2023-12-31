@@ -32,12 +32,13 @@ few stubborn teeth at the time, nothing dramatic, but over the years since, they
 slowly reverted to their previous somewhat crooked stance.
 
 I went to the orthodontist and started a program with Invisalign braces that I
-still have today. I think I will be "done" just before summer '24. The results
-are pretty dramatic and I'm very happy so far. Just one tooth still has to come
-down a little and then everything is straight again.
+still have today. I think I will be "done" just before summer '24.
 
-I'm also happy that my adventures with braces this year inspired a few
-colleagues at work to do the same! Yay for greath dental health.
+The results are pretty dramatic and I'm very happy so far. Just one tooth still
+has to come down a little and then everything is straight again.
+
+I'm also happy that my adventures with braces this year inspired a colleague
+(or maybe two) at work to do the same! Yay for great dental health.
 
 
 ### Financial security
@@ -60,7 +61,7 @@ much as I hoped I would..
 
 I guess I was hoping for a relief of sorts. Don't get me wrong, I'm super happy
 I achieved this, but it didn't make me feel more secure (yet?). It might even
-have made me feel a bit lost, without purpose (more on that later).
+have made me feel a bit lost, a sense of lost purpose? (more on that later).
 
 
 ### More vacations
@@ -105,8 +106,8 @@ to the gym two times a week to execute a regimen of horror for about 2.5 hours.
 
 It's now about three months on and I do feel much better, more awake. Physically
 it is also making more and more of a difference. The plan is to just keep at it
-and so far so good. It definitely has helped with my feelings of depression,
-although I keep struggling with lost purpose (more on that later).
+and so far so good. It has definitely helped with feeling more positive,
+although I keep struggling with a sense of lost purpose (more on that later).
 
 
 ### Death
@@ -121,16 +122,17 @@ In the last week of his life, I was there most every day. We talked about life
 and death. I also was there when he chose to die. I admired his bravery and
 resolution - he drank the cup (made a joke about Socrates) and peacefully went
 to the eternal hunting grounds in less than 90 seconds. He'll be missed dearly
-by us. Eline was very fond of him and it was her first death.
+by us. Eline was very fond of him and it was her first death that was closer to
+home (her great-grandfather in bulgaria died in 2022).
 
 As I write this, Marina's best friend is fighting a losing battle against cancer
 too. It is heavily advanced. She's been fighting this demon for five years. The
 last 18 months have been "given" by a relatively new drug called Trodelvy - she
 would have been gone 18 months ago if it weren't for this drug.
 
-It's a matter of hours, days at best for her now. Just some bad luck with a
-specific gene that doesn't matter for evolutionary selection.. Live is really
-horrible sometimes.
+It's a matter of hours, days at best for her now.. Just some bad luck with a
+specific gene that doesn't matter from an evolutionary standpoint.. Live is
+really horrible and unfair sometimes.
 
 
 ### End of project
@@ -140,26 +142,31 @@ large-scale notification system that me and my team have been working on for the
 last three years.
 
 I'm currently working to transition the software development and operations to
-the team that will be maintaining it, which will be done by april of next year.
+a new team that will be maintaining it, which will be concluded by april of next
+year.
 
 It's a strange mix of feelings. The team I've been a part of the last three
-years is definitely one of the most balanced and positive ones I've been had the
-privileg to be a part of and I'm going to miss that. At the same time I'm happy
-the software is working, live, and to have a sense of conclusion there.
+years is definitely one of the most balanced and positive ones I've had the
+privilege to be a part of, and I'm going to miss that. At the same time I'm
+happy the software is working, live, and to have a sense of conclusion there.
 
 
-### Lost purpose
+## Final thoughts, lost purpose
 
-I feel a bit as if I'm "flying" over all these events, as an observer. Important
-things happened. Bad ones, happy ones, necessary ones. There's a feeling of
-unavoidability.
+This article intended to give an overview of just a life (mine) in 2023, I'm
+not yet sure how others would experience it (negatively or positively or both)
+but it did feel good to write down.
+
+Wit regards to a lost sense of purpose: I feel a bit as if I'm "flying" over all
+these events, as an observer. Important things happened. Bad ones, happy ones,
+necessary ones.. There's a feeling of unavoidability.
 
 I've been thinking a lot about the "why" of things, also about motivation, about
 what should be next. And I find myself unable to answer with determination - I
-lost a sense of purpose, a goal and I'm not sure how to find it.
+lost a sense of purpose, a goal and I'm not sure how to (re)find it.
 
 I wouldn't write this down if it was just a momentary thing - it has been in the
-undercurrents of my thoughts for the better part of this last year.
+undercurrents of my thoughts for the better part of this last year..
 
 I think "ungrounded" captures it best. I go through the motions, am happy even,
 but at the same time I feel detached. It's hard to put into writing.
@@ -168,11 +175,7 @@ I suspect I will be tackling with this next year too, although I hope to find
 some constructive way of getting to a place where I am either at peace with
 whereI am now or re-find my purpose.
 
-## Final things
-
-This article intended to give an overview of just a life (mine) in 2023, I'm
-not yet sure how others would experience it (negatively or positively or both)
-but it did feel good to write down.
+---
 
 My next blog post will be about my ideas and resolutions for 2024, which I hope
 to write next week somewhere.
