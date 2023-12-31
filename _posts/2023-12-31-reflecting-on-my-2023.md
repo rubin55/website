@@ -173,7 +173,7 @@ but at the same time I feel detached. It's hard to put into writing.
 
 I suspect I will be tackling with this next year too, although I hope to find
 some constructive way of getting to a place where I am either at peace with
-whereI am now or re-find my purpose.
+where I am now or re-find my purpose.
 
 ---
 
