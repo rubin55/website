@@ -7,14 +7,15 @@ categories:
 tags:
   - thoughts
 
-A follow-up to my reflections on 2023, my plans and ideas for 2024.
+A follow-up to [my reflections on 2023](/blog/reflecting-on-my-2023/), my plans
+and ideas for 2024.
 
 * TOC
 {:toc}
 
 ## Plans and ideas for 2024
 
-In a [previous post[/blog/reflecting-on-my-2023/] I reflected on what 2023 was
+In a [previous post](/blog/reflecting-on-my-2023/) I reflected on what 2023 was
 like for us. 2023 has been a year with ups and downs (as many of them are). For
 2024 I have a few hopes, plans, and ideas that I would like to write down, hence
 this post today.
@@ -88,7 +89,7 @@ different kind of life, what things could be.. So:
 I currently have a moderately succesful software engineering company and I do
 software engineering projects together with my colleagues for various clients.
 
-In a [previous post[/blog/reflecting-on-my-2023/] I shared a bit about how I
+In a [previous post](/blog/reflecting-on-my-2023/) I shared a bit about how I
 feel like I lost my enthousiasm for what I'm doing, feeling out of touch,
 without a real sense of purpose. Definitely not unhappy, but maybe critical of
 where I am and where I (think I) want to be.
