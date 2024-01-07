@@ -10,7 +10,7 @@ tags:
 
 Update: On the 2nd of January, Marina's best friend, Eli who was fighting
 cancer, passed away. We went to the funeral on the 3rd. She will be greatly
-missed by many, many, friends and loved ones.
+missed by us, and by many, many, friends and loved ones.
 {: .notice--info}
 
 I figured I'd write a post about this last year, maybe to crystalize thoughts
