@@ -1,12 +1,17 @@
 ---
 title: Reflecting on my 2023
 date: 2023-12-31T17:05:00+02:00
-last_modified_at: 2023-12-31T17:05:00+02:00
+last_modified_at: 2023-01-07T11:05:00+02:00
 categories:
   - blog
 tags:
   - thoughts
 ---
+
+Update: On the 2nd of January, Marina's best friend, Eli who was fighting
+cancer, passed away. We went to the funeral on the 3rd. She will be greatly
+missed by many, many, friends and loved ones.
+{: .notice--info}
 
 I figured I'd write a post about this last year, maybe to crystalize thoughts
 I've been having, and to help figure some things out for the times ahead.
