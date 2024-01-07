@@ -6,6 +6,7 @@ categories:
   - blog
 tags:
   - thoughts
+---
 
 A follow-up to [my reflections on 2023](/blog/reflecting-on-my-2023/), my plans
 and ideas for 2024.
