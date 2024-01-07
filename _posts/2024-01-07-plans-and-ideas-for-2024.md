@@ -62,7 +62,7 @@ The software and infrastructure we created went live last November, and we're
 now in the process of transfering to a new operations team who will be
 maintaining the product. This will last until about May of this year.
 
-For my new role I will definitely look for a role that brings software
+For my new role I will definitely look for something that brings software
 engineering more to the forefront, preferably in a language I get excited about
 (i.e., Scala, Elixir, Rust), although I do enjoy the more mainstream languages
 too (Java, C#, Python).
@@ -136,5 +136,8 @@ while away, but that's the plan.
 I think the overall idea for this year is: stay healthy, get stronger, and
 explore a few avenues. Do great things with family and try to make it so that
 everyone is a little bit better off at the end of the year. I hope we won't
-have more instability in the world at large (which I can't really control
-anyway) and in general, a bit less cynical takes. So, "just do" I guess!
+have more instability in the world at large (although I can't really control
+that anyway) and in general, a bit less cynical takes. So, "just do" I guess!
+
+I think many of the above subjects will receive their own blog-posts, so stay
+tuned (yeesh).
