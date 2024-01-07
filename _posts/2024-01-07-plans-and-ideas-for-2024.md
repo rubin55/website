@@ -46,9 +46,9 @@ started to dominate (I would say 25/75 in favor of DevOps work).
 Now, there's nothing wrong with DevOps work, but the way DevOps was meant to
 be (not a role but a way of doing things together in a team) versus what it is
 in practice ("Who's the DevOps Engineer? Can you fix this Kubernetes issue?") is
-just a sad state of affairs. Before you can say *"repeat after me, DevOps is not
-a role"*, you're neck-deep into infrastructure and operational issues that take
-away from the software engineering part of the job.
+just a sad state of affairs. Before you can say **"repeat after me, DevOps is
+not a role"**, you're neck-deep into infrastructure and operational issues that
+take away from the software engineering part of the job.
 
 I guess I do enjoy both aspects, i.e., the infrastructural part (performance and
 how you use hardware resources, make CI/CD really work nice, predictable, and
