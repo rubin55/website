@@ -1,7 +1,7 @@
 ---
 title: Reflecting on my 2023
 date: 2023-12-31T17:05:00+02:00
-last_modified_at: 2023-01-07T11:05:00+02:00
+last_modified_at: 2024-01-07T11:05:00+02:00
 categories:
   - blog
 tags:

@@ -1,7 +1,7 @@
 ---
 title: Plans and ideas for 2024
 date: 2024-01-07T09:39:00+02:00
-last modified at: 2024-01-07T09:39:00+02:00
+last_modified_at: 2024-01-07T22:47:00+02:00
 categories:
   - blog
 tags:
