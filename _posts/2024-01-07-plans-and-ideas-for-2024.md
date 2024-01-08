@@ -137,7 +137,7 @@ I think the overall idea for this year is: stay healthy, get stronger, and
 explore a few avenues. Do great things with family and try to make it so that
 everyone is a little bit better off at the end of the year. I hope we won't
 have more instability in the world at large (although I can't really control
-that anyway) and in general, a bit less cynical takes. So, "just do" I guess!
+that anyway) and in general, a bit less cynical takes.
 
 I think many of the above subjects will receive their own blog-posts, so stay
 tuned (yeesh).
