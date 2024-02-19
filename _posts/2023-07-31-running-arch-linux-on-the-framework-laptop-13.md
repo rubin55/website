@@ -105,7 +105,7 @@ core temperatures.
 
 Basically, [download](https://archlinux.org/download/) the ISO and follow the
 [installation guide](https://wiki.archlinux.org/title/Installation_guide). I
-opted to use `systemd-boot` as boot manager and `NetworkManager` as my network
+opted to use `systemd-boot` as boot manager and `systemd-networkd` as my network
 configuration tooling.
 
 ### Additional kernel parameters I use
@@ -153,7 +153,7 @@ matter, but in any case, make sure `core`, `contrib` and `multilib` are enabled
 in `/etc/pacman.conf` first):
 
 ```shell
-pacman -S --needed acpi acpi_call-dkms acpid alsa-utils ansible-language-server ant ardour autoconf automake aws-cli bash bash-language-server bc bind bison blender btop bubblewrap cabal-install calibre cameractrls carla cdemu-client cdemu-daemon cdrdao cdrtools cifs-utils clang clinfo clojure cmake corkscrew cpio cpupower cue cups curl dagger dash dcraw debugedit delve deno desmume devtools discord distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dool dos2unix dosfstools dotnet-sdk dvd+rw-tools editorconfig-core-c efibootmgr elixir emacs-wayland erlang ethtool evince exfatprogs extra-cmake-modules fakeroot fd file file-roller fio firefox flex foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fop fractal fs-uae fs-uae-launcher furnace fwupd fzf gamemode gcc gdb gdm ghc ghidra gimp git git-lfs glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-control-center gnome-disk-utility gnome-session gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-terminal gnome-themes-extra gnome-tweaks gnupg go gopls go-tools gparted gradle groovy guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb gvim handbrake harfbuzz-cairo haskell-language-server hdparm helix helm hoogle hplip htop i2c-tools ifuse inkscape iperf3 iptables-nft irssi jfsutils jq k9s kafka kubectl leiningen libcroco libindicator-gtk3 libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-core-info libretro-desmume libretro-dolphin libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-pcsx2 libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libretro-yabause libva-mesa-driver libva-utils libvirt libvisual libxcrypt-compat linux-headers lldb lm_sensors loupe lshw lsof lsscsi ltrace lua-language-server make mame mame-tools man-db man-pages marksman mattermost-desktop maven mbedtls2 mednafen mesa-utils mesa-vdpau meson mgba-qt minikube mitmproxy mono mono-msbuild moreutils mplayer mpv mtools multipath-tools mupdf-tools mupen64plus mutter nasm nautilus neofetch netbeans net-tools networkmanager network-manager-applet networkmanager-openvpn nfs-utils ninja nmap nodejs npm ntfs-3g nuget nvchecker nvme-cli nvtop openbsd-netcat opencl-clhpp opencl-headers openldap openssh openvpn p7zip pacutils pandoc-cli patch patchelf pavucontrol pciutils perl perl-net-dbus perl-x11-protocol pinentry piper pipewire pipewire-alsa pipewire-jack pipewire-pulse pipewire-v4l2 papirus-icon-theme pkgconf postgresql powertop ppsspp python python-jsbeautifier python-kubernetes python-ldap python-nose python-opengl python-pip python-pycryptodomex python-pylint python-pyopenssl python-pytest python-rope python-setuptools python-websockets python-wheel qbittorrent qemu-full qjackctl qmc2 qpwgraph qt5ct qt5-declarative qt5-tools qt5-wayland qt5-webchannel qt5-webengine qt6ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland quodlibet rabbitmq racket realtime-privileges retroarch retroarch-assets-glui retroarch-assets-ozone ripgrep rlwrap rsync ruby ruby-rake-compiler rust rust-analyzer samba sane sbt scons screen scummvm sdl2_mixer seahorse shellcheck signal-desktop smartmontools smbclient snapshot snes9x speedtest-cli squashfs-tools stack steam step-ca step-cli stern strace s-tui stylelint sudo syncthing sysprof tar terminus-font texlab texlive-bin texlive-core the_silver_searcher thunderbird tidy tmux traceroute tracker3-miners tree ttf-ibm-plex ttf-joypixels typescript typescript-language-server udftools uncrustify unixodbc unzip urlwatch usbutils util-linux v4l-utils valgrind vdpauinfo vhba-module-dkms virt-manager vscode-css-languageserver vscode-html-languageserver vscode-json-languageserver vulkan-tools wake wayland-utils wgetpaste whois wine wine-mono winetricks wireless_tools wireplumber wireshark-cli wireshark-qt wmctrl wol xchm xclip xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xfsprogs xorg-fonts-100dpi xorg-font-util xorg-mkfontscale xorg-fonts-misc xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo xsane xsane-gimp xterm yaml-language-server yarn yasm yq yt-dlp ython-lsp-server yuzu zig zip zls zstd
+pacman -S --needed acpi acpi_call-dkms acpid alsa-utils ansible-language-server ant ardour autoconf automake aws-cli bash bash-language-server bc bind bison blender btop bubblewrap cabal-install calibre cameractrls carla cdemu-client cdemu-daemon cdrdao cdrtools cifs-utils clang clinfo clojure cmake corkscrew cpio cpupower cue cups curl dagger dash dcraw debugedit delve deno desmume devtools discord distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dool dos2unix dosfstools dotnet-sdk dvd+rw-tools editorconfig-core-c efibootmgr elixir emacs-wayland erlang ethtool evince exfatprogs extra-cmake-modules fakeroot fd file file-roller fio firefox flex foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fop fractal fs-uae fs-uae-launcher furnace fwupd fzf gamemode gcc gdb gdm ghc ghidra gimp git git-lfs glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-control-center gnome-disk-utility gnome-session gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-terminal gnome-themes-extra gnome-tweaks gnupg go gopls go-tools gparted gradle groovy guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb gvim handbrake harfbuzz-cairo haskell-language-server hdparm helix helm hoogle hplip htop i2c-tools ifuse inkscape iperf3 iptables-nft irssi iwd jfsutils jq k9s kafka kubectl leiningen libcroco libindicator-gtk3 libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-core-info libretro-desmume libretro-dolphin libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-pcsx2 libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libretro-yabause libva-mesa-driver libva-utils libvirt libvisual libxcrypt-compat linux-headers lldb lm_sensors loupe lshw lsof lsscsi ltrace lua-language-server make mame mame-tools man-db man-pages marksman mattermost-desktop maven mbedtls2 mednafen mesa-utils mesa-vdpau meson mgba-qt minikube mitmproxy mono mono-msbuild moreutils mplayer mpv mtools multipath-tools mupdf-tools mupen64plus mutter nasm nautilus neofetch netbeans net-tools nfs-utils ninja nmap nodejs npm ntfs-3g nuget nvchecker nvme-cli nvtop openbsd-netcat opencl-clhpp opencl-headers openldap openssh openvpn p7zip pacutils pandoc-cli patch patchelf pavucontrol pciutils perl perl-net-dbus perl-x11-protocol pinentry piper pipewire pipewire-alsa pipewire-jack pipewire-pulse pipewire-v4l2 papirus-icon-theme pkgconf postgresql powertop ppsspp python python-jsbeautifier python-kubernetes python-ldap python-nose python-opengl python-pip python-pycryptodomex python-pylint python-pyopenssl python-pytest python-rope python-setuptools python-websockets python-wheel qbittorrent qemu-full qjackctl qmc2 qpwgraph qt5ct qt5-declarative qt5-tools qt5-wayland qt5-webchannel qt5-webengine qt6ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland quodlibet rabbitmq racket realtime-privileges retroarch retroarch-assets-glui retroarch-assets-ozone ripgrep rlwrap rsync ruby ruby-rake-compiler rust rust-analyzer samba sane sbt scons screen scummvm sdl2_mixer seahorse shellcheck signal-desktop smartmontools smbclient snapshot snes9x speedtest-cli squashfs-tools stack steam step-ca step-cli stern strace s-tui stylelint sudo syncthing sysprof tar terminus-font texlab texlive-bin texlive-core the_silver_searcher thunderbird tidy tmux traceroute tracker3-miners tree ttf-ibm-plex ttf-joypixels typescript typescript-language-server udftools uncrustify unixodbc unzip urlwatch usbutils util-linux v4l-utils valgrind vdpauinfo vhba-module-dkms virt-manager vscode-css-languageserver vscode-html-languageserver vscode-json-languageserver vulkan-tools wake wayland-utils wgetpaste whois wine wine-mono winetricks wireless_tools wireplumber wireshark-cli wireshark-qt wmctrl wol xchm xclip xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xfsprogs xorg-fonts-100dpi xorg-font-util xorg-mkfontscale xorg-fonts-misc xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo xsane xsane-gimp xterm yaml-language-server yarn yasm yq yt-dlp ython-lsp-server yuzu zig zip zls zstd
 ```
 
 ### Additionally install when you want dynamic application of power management settings
@@ -498,24 +498,118 @@ virsh net-start default
 rm -qf /tmp/net-default.xml
 ```
 
-### NetworkManager
+### Systemd-networkd and iwd
 
-Enable `NetworkManager` with:
+First configure `iwd` defaults:
 
 ```shell
-systemctl enable --now NetworkManager.service
+mkdir -p /etc/iwd
+cat <<EOF > "/etc/iwd/main.conf"
+[General]
+RoamThreshold=-75
+RoamThreshold5G=-80
+
+[Network]
+EnableIPv6=false
+NameResolvingService=systemd
+
+[Scan]
+DisablePeriodicScan=true
+EOF
 ```
 
-NetworkManager works mostly out of the box, normally no special settings needed.
+If you're connecting to a wireless network, you need to first configure that
+using `iwctl`, see: https://wiki.archlinux.org/title/Iwd
 
-However I did run into an issue connecting with older VPN environments related
+After that, you can configure `systemd-networkd`, which comes down to placing
+configuration files in `/etc/systemd/network`. Let me give three examples.
+
+#### Setting up an ethernet device with DHCP
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-ethernet.network"
+[Match]
+Name=eth0
+
+[Network]
+DHCP=yes
+EOF
+```
+
+#### Setting up a bridge device with DHCP
+
+Create the physical device bind config:
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-bind.network"
+[Match]
+Name=eth0 eth1
+
+[Network]
+Bridge=bridge0
+
+EOF
+```
+
+Create the virtual bridge device:
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-bridge.netdev"
+[NetDev]
+Name=bridge0
+Kind=bridge
+MACAddress=52:41:41:46:00:0b
+EOF
+```
+
+And finally, the bridge network, configured by DHCP:
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-bridge.network"
+[Match]
+Name=bridge0
+
+[Network]
+DHCP=yes
+EOF
+```
+
+#### Setting up a wireless device with DHCP
+
+Note that you first need to configure `iwd` to authenticate and connect to your
+wireless network. After that, tell `systemd-networkd` about it:
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-wireless.network"
+[Match]
+Name=wlan0
+
+[Network]
+DHCP=yes
+IgnoreCarrierLoss=10s
+EOF
+```
+
+#### Enable systemd-networkd and iwd services
+
+Enable `systemd-networkd` and `iwd `with:
+
+```shell
+systemctl enable --now iwd.service
+systemctl enable --now systemd-networkd.service
+systemctl disable systemd-networkd-wait-online.service
+```
+
+### OpenVPN
+
+I did run into an issue connecting with older VPN environments related
 to OpenSSL 3.x disabling various legacy encapsulation and connection modes by
 default. The error you would see in such a case is:
 
 ```
-Jul 31 20:26:38 FRAME nm-openvpn[58956]: OpenSSL: error:11800071:PKCS12 routines::mac verify failure
-Jul 31 20:26:38 FRAME nm-openvpn[58956]: OpenSSL: error:0308010C:digital envelope routines::unsupported
-Jul 31 20:26:38 FRAME nm-openvpn[58956]: Decoding PKCS12 failed. Probably wrong password or unsupported/legacy encryption
+Jul 31 20:26:38 FRAME openvpn[58956]: OpenSSL: error:11800071:PKCS12 routines::mac verify failure
+Jul 31 20:26:38 FRAME openvpn[58956]: OpenSSL: error:0308010C:digital envelope routines::unsupported
+Jul 31 20:26:38 FRAME openvpn[58956]: Decoding PKCS12 failed. Probably wrong password or unsupported/legacy encryption
 ```
 
 Furthermore, when you are behind corporate proxies, you might also have
