@@ -519,7 +519,8 @@ EOF
 ```
 
 If you're connecting to a wireless network, you need to first configure that
-using `iwctl`, see: https://wiki.archlinux.org/title/Iwd
+using `iwctl`, see the [iwd](https://wiki.archlinux.org/title/Iwd) page on the
+Arch wiki.
 
 After that, you can configure `systemd-networkd`, which comes down to placing
 configuration files in `/etc/systemd/network`. Let me give three examples.
@@ -600,7 +601,13 @@ systemctl enable --now systemd-networkd.service
 systemctl disable systemd-networkd-wait-online.service
 ```
 
-### OpenVPN
+Note that we disable the waiting service, since we want to continue booting
+even if there is no network. If you would like to know more about how you can
+configure `systemd-networkd`, be sure to read the
+[systemd-networkd](https://wiki.archlinux.org/title/Systemd-networkd) page on
+the Arch wiki.
+
+### OpenSSL
 
 I did run into an issue connecting with older VPN environments related
 to OpenSSL 3.x disabling various legacy encapsulation and connection modes by
