@@ -1,7 +1,7 @@
 ---
 title: Uninterupted desktop streaming vs. NetworkManager
 date: 2024-02-29T12:59:00+02:00
-last_modified_at: 2024-02-29T12:59:00+02:00
+last_modified_at: 2024-02-29T15:27:00+02:00
 categories:
   - blog
 tags:
@@ -80,18 +80,27 @@ NetworkManager and `iwd` as a replacement for `wpa_supplicant`.
 I've been using this setup for about a week now, and since then I have zero
 network connection interruption issues and can stream 4K at 60fps without issue.
 
-1. Install `iwd` (`systemd-networkd` is a part of the `systemd` package):
+### Quick guide to do this yourself
+
+#### Install `iwd` 
+
+(`systemd-networkd` is a part of the `systemd` package)
+
 ```shell
 # pacman -S iwd
 ```
 
-2. Turn off and disable NetworkManager and `wpa_supplicant`:
+#### Turn off and disable NetworkManager and `wpa_supplicant`
+
 ```shell
 # systemctl disable --now NetworkManager
 # systemctl disable --now wpa_supplicant
 ```
 
-3. Create `systemd-networkd` config for device `wlan0` (yours might be named differently):
+#### Create `systemd-networkd` configuration for device `wlan0` 
+
+(your device might be named differently):
+
 ```shell
 # mkdir -p /etc/systemd/network
 # cat <<EOF > "/etc/systemd/network/10-wireless.network"
@@ -104,7 +113,8 @@ IgnoreCarrierLoss=10s
 EOF
 ```
 
-4. Create `iwd` config:
+#### Create `iwd` configuration
+
 ```shell
 # mkdir -p /etc/iwd
 # cat <<EOF > "/etc/iwd/main.conf"
@@ -121,13 +131,17 @@ DisablePeriodicScan=true
 EOF
 ```
 
-5. Turn on and enable `systemd-networkd` and `iwd`:
+#### Turn on and enable `systemd-networkd` and `iwd`
+
 ```shell
 # systemctl enable --now systemd-networkd
 # systemctl enable --now iwd
 ```
 
-6. Connect to a wireless network (using device `wlan0` - yours might be named differently):
+#### Connect to a wireless network 
+
+(using device `wlan0` - yours might be named differently):
+
 ```shell
 # iwctl
 [iwd]# station wlan0 scan
