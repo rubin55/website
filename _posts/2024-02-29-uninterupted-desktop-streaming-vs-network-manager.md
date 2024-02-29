@@ -10,9 +10,9 @@ tags:
 ---
 
 For maybe more than a year (maybe two) I've been struggling with getting desktop
-streaming from Linux desktop client to a Windows or Linux host system working
-flawlessly. I mean without interruptions in video frame speed (60fps) or audio
-drop-outs.
+streaming (i.e., from a Linux desktop client to a Windows or Linux host system)
+working flawlessly. I mean, without interruptions in video frame speed (60fps)
+or audio drop-outs.
 
 
 * TOC
@@ -25,8 +25,8 @@ Let me begin by describing the experience:
   * Android TV Moonlight or Parsec client to Windows or Linux host: **flawless**
   * Windows Moonlight or Parsec client to Windows or Linux host: **flawless**
   * macOS Moonlight or Parsec client to Windows or Linux host: **flawless**
-  * **Linux desktop** using either Moonlight or Parsec: **stuttering, audio and video drop-outs** 
-  
+  * **Linux desktop** using either Moonlight or Parsec: **stuttering, audio and video drop-outs**
+
 I'm streaming 4K at 60fps. I use this for remote desktop work and for gaming.
 I observed the above experience starting about two years ago, but I didn't mind
 too much because I was still using a MacBook, and a Surface Pro X at the time.
@@ -34,8 +34,8 @@ too much because I was still using a MacBook, and a Surface Pro X at the time.
 These days I'm fully on Linux, on both my desktops at work and home and on my
 laptop, so the issue became unavoidable. Things I've tried and observed:
 
-  * Initially I thought that it had to do with Wi-Fi hardware - I tested with 
-    cards from Intel, MediaTek, RealTek, even an old Atheros. No dice, stutter 
+  * Initially I thought that it had to do with Wi-Fi hardware - I tested with
+    cards from Intel, MediaTek, RealTek, even an old Atheros. No dice, stutter
     galore.
 
   * Any ethernet card, even an 100mbit one, would work flawlessly.
@@ -61,8 +61,8 @@ NetworkManager does this every 20 or 40 seconds or so.
 
 A "workaround" that floats around on the internets is to specify the BSSID field
 in the wireless configuration profile within NetworkManager. In my experience
-this does not actually work well. If I'd need to quantify it, instead of 
-experiencing interrupts every minute, it became every 3 or 4 minutes. As I 
+this does not actually work well. If I'd need to quantify it, instead of
+experiencing interrupts every minute, it became every 3 or 4 minutes. As I
 understand it, NetworkManager parameterizes `wpa_supplicant` in a way that is
 essentially not configurable. and instructs it to disconnect, rescan and then
 reconnect.
@@ -71,10 +71,10 @@ reconnect.
 
 Even though I like the convenience of the GUI that NetworkManager enables, Its
 shortcomings with regards to stability and performance of the wireless network
-connection are too extreme for my use-case. 
+connection are too extreme for my use-case.
 
 Since I'm currently on Arch Linux, which uses `systemd`, I opted to forego any
-graphical Networking setup and use `systemd-networkd` as a replacement for 
+graphical Networking setup and use `systemd-networkd` as a replacement for
 NetworkManager and `iwd` as a replacement for `wpa_supplicant`.
 
 I've been using this setup for about a week now, and since then I have zero
@@ -82,9 +82,9 @@ network connection interruption issues and can stream 4K at 60fps without issue.
 
 ### Quick guide to do this yourself
 
-#### Install `iwd` 
+#### Install `iwd`
 
-(`systemd-networkd` is a part of the `systemd` package)
+(`systemd-networkd` is a part of the `systemd` package).
 
 ```shell
 # pacman -S iwd
@@ -97,9 +97,9 @@ network connection interruption issues and can stream 4K at 60fps without issue.
 # systemctl disable --now wpa_supplicant
 ```
 
-#### Create `systemd-networkd` configuration for device `wlan0` 
+#### Create `systemd-networkd` configuration for device `wlan0`
 
-(your device might be named differently):
+(your device might be named differently).
 
 ```shell
 # mkdir -p /etc/systemd/network
@@ -138,9 +138,9 @@ EOF
 # systemctl enable --now iwd
 ```
 
-#### Connect to a wireless network 
+#### Connect to a wireless network
 
-(using device `wlan0` - yours might be named differently):
+(using device `wlan0` - yours might be named differently).
 
 ```shell
 # iwctl
