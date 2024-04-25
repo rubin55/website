@@ -262,7 +262,7 @@ If your fingerprint reader is working, you can continue to follow the steps
 My Framework Laptop 13 is intel-based, so I install these packages additionally:
 
 ```shell
-pacman -S --needed intel-gpu-tools vulkan-intel intel-media-driver libvdpau-va-gl intel-graphics-compiler intel-compute-runtime
+pacman -S --needed intel-gpu-tools vulkan-intel intel-media-driver libvdpau-va-gl intel-graphics-compiler intel-compute-runtime gst-plugin-va
 ```
 
 Also, from AUR, I install these, making sure their version is synced with the
@@ -279,7 +279,7 @@ lib32-intel-media-driver
 If you have an AMD device instead, you might want these ones:
 
 ```shell
-pacman -S --needed radeontop vulkan-radeon
+pacman -S --needed radeontop vulkan-radeon gst-plugin-va
 ```
 
 ### Additionally install on devices with NVidia graphics
@@ -287,7 +287,7 @@ pacman -S --needed radeontop vulkan-radeon
 If you have an NVidia device instead, you might want these ones:
 
 ```shell
-pacman -S --needed cuda cuda-tools ffnvcodec-headers libva-nvidia-driver nvidia-cg-toolkit nvidia-settings nvidia-utils nvidia-dkms nvtop opencl-nvidia openssl-1.1
+pacman -S --needed cuda cuda-tools ffnvcodec-headers libva-nvidia-driver nvidia-cg-toolkit nvidia-settings nvidia-utils nvidia-dkms nvtop opencl-nvidia openssl-1.1 gst-plugins-bad
 ```
 
 Note: The `openssl-1.1` package is a (missing) dependency for
