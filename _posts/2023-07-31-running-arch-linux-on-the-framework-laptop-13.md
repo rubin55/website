@@ -919,17 +919,17 @@ export PKG_ROOT="$HOME/Packaging/Arch"
 # Create a directory structure for Arch packaging.
 mkdir -p "$PKG_ROOT"
 cd "$PKG_ROOT"
-install -d Build Packages 'Source Packages' Sources -o $USER
+install -d Build Repository 'Source Packages' Sources -o $USER
 
 # Create a repository database.
-cd "$PKG_ROOT/Packages"
+cd "$PKG_ROOT/Repository"
 repo-add custom.db.tar.gz
 
 # Add entry to /etc/pacman.conf.
 cat <<EOF >> "/etc/pacman.conf"
 [custom]
 SigLevel = Required DatabaseRequired TrustedOnly
-Server = file://$PKG_ROOT/Packages
+Server = file://$PKG_ROOT/Repository
 EOF
 
 # Add your public key to pacman keychain and set trust (assuming key matches $USER).
@@ -963,7 +963,7 @@ cat <<EOF > "$HOME/.makepkg.conf"
 MAKEFLAGS="-j$(nproc)"
 BUILDENV=(!distcc color !ccache check sign)
 BUILDDIR="$PKG_ROOT/Build"
-PKGDEST="$PKG_ROOT/Packages"
+PKGDEST="$PKG_ROOT/Repository"
 SRCDEST="$PKG_ROOT/Sources"
 SRCPKGDEST="$PKG_ROOT/Source Packages"
 GPGKEY="$GPG_PUBKEY"
@@ -990,10 +990,10 @@ git clone https://aur.archlinux.org/aurutils.git
 # Build an AUR package.
 cd aurutils
 makepkg -cCs
-ls ../../Packages/aurutils*
+ls ../../Repository/aurutils*
 
 # Show information about a built package.
-cd "$PKG_ROOT/Packages"
+cd "$PKG_ROOT/Repository"
 pacman -Qpi aurutils-*-any.pkg.tar.zst
 
 # Build a source package.
@@ -1002,11 +1002,11 @@ makepkg -cCsS
 ls ../../Source\ Packages
 
 # Update local repository (adds new packages, removes older ones).
-cd "$PKG_ROOT/Packages"
+cd "$PKG_ROOT/Repository"
 repo-add -n -R -s custom.db.tar.gz *.zst
 
 # Remove a specific AUR package from local repository
-cd "$PKG_ROOT/Packages"
+cd "$PKG_ROOT/Repository"
 repo-remove -s custom.db.tar.gz aurutils
 ```
 
@@ -1017,19 +1017,19 @@ can build some stuff and put it in our own repository:
 
 ```shell
 # Set package build root location.
-export PKG_ROOT="$HOME/Packaging/Arch"
+export PKG_ROOT="$HOME/Packaging"
 
 # Git clone them all.
 cd "$PKG_ROOT/Build"
 for p in adwaita-qt-git aic94xx-firmware akku ares-emu ast-firmware attract-git audacious-gtk3 audacious-plugins-gtk3 aurutils binder_linux-dkms bluez-hcitool brscan4 chez-scheme clojure-lsp-bin cmake-format cmake-language-server conan cubeb djmount dockerfile-language-server dolphin-emu-git dosbox-x drawio-desktop-bin duckstation-git earthly eclipse-java edid-decode-git elixir-ls erlang_ls exercism flutterup flycast godot-mono-bin google-cloud-cli groovy-language-server-git hax11-git ibmcloud-cli icaclient imhex irccloud-bin jdk17-graalvm-bin jdk17-jetbrains-bin jdk17-openj9-bin jdk21-graalvm-bin jdk21-jetbrains-bin jdk21-openj9-bin jdtls jetbrains-toolbox krew kubelogin lagrange lemminx lib32-gperftools lib32-intel-gmmlib lib32-intel-media-driver libgbinder libglibutil librashader libretro-beetle-lynx-git libretro-beetle-pcfx-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-fsuae-git libretro-swanstation-git libspng-git license-wtfpl m64py mathematica mednaffe mei-amt-check-git metals mkinitcpio-firmware moonlight-qt ms-sys ncurses5-compat-libs nestopia netcoredbg ntsync ocenaudio-bin omnisharp-roslyn-bin openmsx openshift-client-bin openshift-codeready-bin openshift-developer-bin openshift-pipelines-bin papirus-folders parsec-bin passmark-performancetest-bin pcsx2-git pegasus-frontend-git perlnavigator postman-bin powercap powershell-bin pragmatapro-fonts protonmail-bridge-bin protonplus protontricks ps3-disc-dumper-bin python-gbinder python-grip python-hwdata python-patch-ng python-path-and-address python-pdm-pep517 python-pluginbase python-pysdl2 python-vdf rabtap rcu-bin rebar3 regionset remark-language-server roomeqwizard rpcs3-git ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-rbs ruby-reverse_markdown ruby-solargraph ryujinx-git sameboy scala-dotty scala-scala3-symlink scheme-chez-symlink sedutil shaderc-non-semantic-debug skyscraper-git slack-desktop soapui softhsm-git sublime-text-4 sunshine tla-toolbox townsemu-git ttf-b612 tuxclocker ums ungoogled-chromium-bin upd72020x-fw vala-language-server visual-studio-code-bin vi-vim-symlink vmware-horizon-client vmware-keymaps waydroid wd719x-firmware xcursor-dmz xdg-terminal-exec-git xpadneo-dkms y-cruncher zeal-git zed-editor zlib-ng zoom; do git clone https://aur.archlinux.org/$p.git; done
 
 # Build all (I wouldn't do this, I would initially enter one-by-one and do
-# git log ; makepkg -cCs manually). Will result in packages under $PKG_ROOT/Packages.
+# git log ; makepkg -cCs manually). Will result in packages under $PKG_ROOT/Repository.
 cd "$PKG_ROOT/Build"
 for p in *; do cd $p; makepkg -cCs; if [[ $? -ne 0 && $? -ne 13 ]]; then echo "$p did not go well, please fix..."; break; fi; cd - > /dev/null; done
 
 # Update custom repository.
-cd "$PKG_ROOT/Packages"
+cd "$PKG_ROOT/Repository"
 repo-add -n -R custom.db.tar.gz *.zst
 
 # Update pacman databases.
