@@ -1021,7 +1021,7 @@ export PKG_ROOT="$HOME/Packaging"
 
 # Git clone them all.
 cd "$PKG_ROOT/Build"
-for p in adwaita-qt-git aic94xx-firmware akku ares-emu aseprite ast-firmware attract-git audacious-gtk3 audacious-plugins-gtk3 aurutils blastem-hg bluez-hcitool brscan4 chez-scheme clojure-lsp-bin cmake-format cmake-language-server conan cubeb djmount dockerfile-language-server dolphin-emu-git dosbox-x drawio-desktop-bin duckstation-git dumpasn1 earthly eclipse-java edid-decode-git elixir-ls erlang_ls exercism figma-linux-bin flow-bin flutterup flycast gitkraken godot-mono-bin google-cloud-cli groovy-language-server-git ibmcloud-cli icaclient ida-pro-patched imhex irccloud-bin jdk17-graalvm-bin jdk17-jetbrains-bin jdk17-openj9-bin jdk21-graalvm-bin jdk21-jetbrains-bin jdk21-openj9-bin jdtls jetbrains-toolbox krew kubelogin lagrange lemminx lib32-gperftools lib32-intel-gmmlib lib32-intel-media-driver librashader libretro-beetle-lynx-git libretro-beetle-pcfx-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-fsuae-git libretro-swanstation-git libspng-git license-wtfpl m64py marsdev-git mathematica mednaffe mei-amt-check-git metals mkinitcpio-firmware mongodb moonlight-qt ms-sys ncurses5-compat-libs nestopia netcoredbg ocenaudio-bin omnisharp-roslyn-bin openmsx openshift-client-bin openshift-codeready-bin openshift-developer-bin openshift-pipelines-bin papirus-folders passmark-performancetest-bin pcsx2-git pegasus-frontend-git perlnavigator postman2openapi-bin postman-bin powercap powershell-bin pragmatapro-fonts protonmail-bridge-bin protonplus protontricks ps3-disc-dumper-bin pupdate-bin python-patch-ng python-pdm-pep517 python-pluginbase python-pysdl2 python-vdf rabtap rcu-bin rebar3 regionset remark-language-server roomeqwizard rpcs3-git ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-rbs ruby-reverse_markdown ruby-solargraph ryujinx-git sameboy scala-dotty scala-scala3-symlink scheme-chez-symlink sedutil sigtop-git skyscraper-git slack-desktop soapui softhsm-git sublime-text-4 sunshine-git tla-toolbox townsemu-git ttf-b612 ums ungoogled-chromium-bin unifi upd72020x-fw vala-language-server vasm vim-language-server visual-studio-code-bin vi-vim-symlink vmware-horizon-client vmware-keymaps vtsls wd719x-firmware wxedid xcursor-dmz xdg-terminal-exec-git xpadneo-dkms y-cruncher zeal-git zlib-ng zoom; do git clone https://aur.archlinux.org/$p.git; done
+for p in adwaita-qt-git aic94xx-firmware akku amitools ares-emu aseprite ast-firmware attract-git audacious-gtk3 audacious-plugins-gtk3 aurutils blastem-hg bluez-hcitool brscan4 chez-scheme clojure-lsp-bin cmake-format cmake-language-server conan cubeb djmount dockerfile-language-server dolphin-emu-git dosbox-x drawio-desktop-bin duckstation-git dumpasn1 earthly eclipse-java edid-decode-git elixir-ls erlang_ls exercism figma-linux-bin flow-bin flutterup flycast gitkraken godot-mono-bin google-cloud-cli groovy-language-server-git ibmcloud-cli icaclient ida-pro-patched imhex irccloud-bin jdk17-graalvm-bin jdk17-jetbrains-bin jdk17-openj9-bin jdk21-graalvm-bin jdk21-jetbrains-bin jdk21-openj9-bin jdtls jetbrains-toolbox krew kubelogin lagrange lemminx lib32-gperftools lib32-intel-gmmlib lib32-intel-media-driver librashader libretro-beetle-lynx-git libretro-beetle-pcfx-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-fsuae-git libretro-swanstation-git libspng-git license-wtfpl m64py marsdev-git mathematica mednaffe mei-amt-check-git metals mkinitcpio-firmware mongodb moonlight-qt ms-sys ncurses5-compat-libs nestopia netcoredbg ocenaudio-bin omnisharp-roslyn-bin openmsx openshift-client-bin openshift-codeready-bin openshift-developer-bin openshift-pipelines-bin papirus-folders passmark-performancetest-bin pcsx2-git pegasus-frontend-git perlnavigator postman2openapi-bin postman-bin powercap powershell-bin pragmatapro-fonts protonmail-bridge-bin protonplus protontricks ps3-disc-dumper-bin pupdate-bin pvsneslib-git python-machine68k python-patch-ng python-pdm-pep517 python-pluginbase python-pysdl2 python-vdf rabtap rcu-bin rebar3 regionset remark-language-server roomeqwizard rpcs3-git ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-rbs ruby-reverse_markdown ruby-solargraph ryujinx-git sameboy scala-dotty scala-scala3-symlink scheme-chez-symlink sedutil sigtop-git skyscraper-git slack-desktop soapui softhsm-git sublime-text-4 sunshine-git tla-toolbox townsemu-git ttf-b612 ums ungoogled-chromium-bin unifi upd72020x-fw vala-language-server vasm vim-language-server visual-studio-code-bin vi-vim-symlink vlink vmware-horizon-client vmware-keymaps vtsls wd719x-firmware wxedid xcursor-dmz xdg-terminal-exec-git xpadneo-dkms y-cruncher zeal-git zlib-ng zoom; do git clone https://aur.archlinux.org/$p.git; done
 
 # Build all (I wouldn't do this, I would initially enter one-by-one and do
 # git log ; makepkg -cCs manually). Will result in packages under $PKG_ROOT/Repository.
@@ -1046,23 +1046,30 @@ pacman -S --needed $(pacman -Sl custom | grep -v installed | awk '{print $2}')
 
 I maintain these AUR packages:
 
+  * [marsdev-git](https://aur.archlinux.org/packages/marsdev-git)
   * [openshift-codeready-bin](https://aur.archlinux.org/packages/openshift-codeready-bin)
   * [openshift-developer-bin](https://aur.archlinux.org/packages/openshift-developer-bin)
   * [openshift-pipelines-bin](https://aur.archlinux.org/packages/openshift-pipelines-bin)
   * [postman2openapi-bin](https://aur.archlinux.org/packages/postman2openapi-bin)
   * [pragmatapro-fonts](https://aur.archlinux.org/packages/pragmatapro-fonts)
+  * [pupdate-bin](https://aur.archlinux.org/packages/pupdate-bin)
+  * [pvsneslib-git](https://aur.archlinux.org/packages/pvsneslib-git)
   * [rcu-bin](https://aur.archlinux.org/packages/rcu-bin)
   * [scala-scala3-symlink](https://aur.archlinux.org/packages/scala-scala3-symlink)
   * [scheme-chez-symlink](https://aur.archlinux.org/packages/scheme-chez-symlink)
 
 Here are a few more things I plan to create AUR packages for:
 
+  * [amiga-gcc](https://github.com/bebbo/amiga-gcc)
+  * [ares-commander](https://www.graebert.com/us/cad-software/ares-commander/)
   * [artemis](https://activemq.apache.org/components/artemis/download/)
+  * [kallistios](https://github.com/KallistiOS/KallistiOS)
   * [leanux](https://github.com/jmspit/leanux)
+  * [ps2dev](https://github.com/ps2dev/ps2dev)
+  * [psn00bsdk](https://github.com/Lameguy64/PSn00bSDK)
+  * [tvpaint](https://www.tvpaint.com/)
   * [vbcc](http://www.compilers.de/vbcc.html)
   * [winexe](https://sourceforge.net/projects/winexe/)
-  * [tvpaint](https://www.tvpaint.com/)
-  * [ares-commander](https://www.graebert.com/us/cad-software/ares-commander/)
 
 ## Final thoughts
 
