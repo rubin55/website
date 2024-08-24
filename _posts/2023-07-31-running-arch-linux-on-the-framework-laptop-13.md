@@ -1046,6 +1046,7 @@ pacman -S --needed $(pacman -Sl custom | grep -v installed | awk '{print $2}')
 
 I maintain these AUR packages:
 
+  * [jdk21-openj9-bin](https://aur.archlinux.org/packages/jdk21-openj9-bin)
   * [marsdev-git](https://aur.archlinux.org/packages/marsdev-git)
   * [openshift-codeready-bin](https://aur.archlinux.org/packages/openshift-codeready-bin)
   * [openshift-developer-bin](https://aur.archlinux.org/packages/openshift-developer-bin)
