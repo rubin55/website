@@ -1075,6 +1075,7 @@ I maintain these AUR packages:
   * [rusty-psn-bin](https://aur.archlinux.org/packages/rusty-psn-bin)
   * [scala-scala3-symlink](https://aur.archlinux.org/packages/scala-scala3-symlink)
   * [scheme-chez-symlink](https://aur.archlinux.org/packages/scheme-chez-symlink)
+  * [tidal-dl-ng](https://aur.archlinux.org/packages/tidal-dl-ng)
 
 Here are a few more things I plan to create AUR packages for:
 
