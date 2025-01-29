@@ -1007,7 +1007,7 @@ cd "$PKG_ROOT/Repository"
 pacman -Qpi aurutils-*-any.pkg.tar.zst
 
 # Build a source package.
-cd aurutils
+cd ../Build/aurutils
 makepkg -cCsS
 ls ../../Source\ Packages
 
