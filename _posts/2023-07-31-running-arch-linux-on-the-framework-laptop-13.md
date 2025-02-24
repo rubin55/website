@@ -358,6 +358,12 @@ systemctl mask avahi-daemon.socket
 systemctl mask avahi-dnsconfd.service
 ```
 
+Note that a side-effect of this, is that when you use something like `xsane` or
+`simplescan`, you will get a password prompt dialog every time you start the
+scanning tool. This is because, apparently, these tools use `avahi` somehow,
+which then has to be invoked, which is then done through `polkit`, which raises
+the password dialog so the `avahi` service can be started. Yeah.
+
 ### Bluetooth
 
 Enable `bluetooth` with:
