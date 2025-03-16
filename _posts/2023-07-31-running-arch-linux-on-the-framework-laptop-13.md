@@ -971,7 +971,7 @@ GPG_PUBKEY and PACKAGER environment variables to your specific likings:
 ```shell
 # Set package build root location, gpgpubkey-id and packager string.
 export PKG_ROOT="$HOME/Packaging/Arch"
-export GPG_PUBKEY='89E5EB2541BC6668A9C165D424BD51CD12534CE6'
+export GPG_PUBKEY='14B189C4E877C9CAEA7F99C7ED3BDDB83BDD2604'
 export PACKAGER='Rubin Simons <me@rubin55.org>'
 
 cat <<EOF > "$HOME/.makepkg.conf"
