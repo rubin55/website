@@ -1096,6 +1096,7 @@ Here are a few more things I plan to create AUR packages for:
   * [ares-commander](https://www.graebert.com/us/cad-software/ares-commander/)
   * [artemis](https://activemq.apache.org/components/artemis/download/)
   * [kallistios](https://github.com/KallistiOS/KallistiOS)
+  * [fakeflac](https://www.maurits.vdschee.nl/fakeflac/)
   * [leanux](https://github.com/jmspit/leanux)
   * [ps2dev](https://github.com/ps2dev/ps2dev)
   * [psn00bsdk](https://github.com/Lameguy64/PSn00bSDK)
