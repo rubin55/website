@@ -337,6 +337,40 @@ pacman -S --needed `comm -23 ~/Desktop/lib32-candidates ~/Desktop/lib32-notfound
 I use and customize a bunch of services on my device. So I don't forget what
 I customized and why, let me document it.
 
+### DisplayLink
+
+The `displaylink` service is used, together with the `evdi` driver, to handle 
+externally connected displays, which connect through a dock or other type of 
+USB3 or Thunderbolt connection. Enable it as follows:
+
+```shell
+systemctl enable --now displaylink
+```
+
+Additionally, I've observed that the `displaylink` service consumes an 
+inordinate amount of CPU time after a suspend/resume cycle. A quick restart of 
+the service works around that. To do that automatically, we can create a systemd
+unit file and enable it:
+
+```shell
+# Write the systemd unit file for restarting displaylink on resume:
+cat <<EOF > "/etc/systemd/system/displaylink-restart.service"
+[Unit]
+Description=Restart DisplayLink after resume
+After=suspend.target
+
+[Service]
+Type=simple
+ExecStart=/bin/systemctl --no-block restart displaylink.service
+
+[Install]
+WantedBy=suspend.target
+EOF
+
+# Enable and start the automatic displaylink restart service:
+systemctl enable --now displaylink-restart
+```
+
 ### CpuPower
 
 The `cpupower` service reads from `/etc/default/cpupower` and configures the
