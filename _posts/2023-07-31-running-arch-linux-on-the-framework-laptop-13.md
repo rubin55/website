@@ -297,7 +297,7 @@ pacman -S --needed radeontop vulkan-radeon gst-plugin-va ollama-rocm
 If you have an NVidia device instead, you might want these ones:
 
 ```shell
-pacman -S --needed cuda cuda-tools ffnvcodec-headers libva-nvidia-driver nvidia-cg-toolkit nvidia-settings nvidia-utils nvidia-dkms nvtop opencl-nvidia openssl-1.1 gst-plugins-bad ollama-cuda
+pacman -S --needed cuda cuda-tools ffnvcodec-headers libva-nvidia-driver nvidia-cg-toolkit nvidia-settings nvidia-utils nvidia-open-dkms nvtop opencl-nvidia openssl-1.1 gst-plugins-bad ollama-cuda
 ```
 
 Note: The `openssl-1.1` package is a (missing) dependency for
