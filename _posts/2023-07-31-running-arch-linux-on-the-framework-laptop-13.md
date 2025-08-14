@@ -1117,7 +1117,7 @@ for p in *; do cd $p; makepkg -cCs; if [[ $? -ne 0 && $? -ne 13 ]]; then echo "$
 
 # Update custom repository.
 cd "$PKG_ROOT/Repository"
-repo-add -n -R custom.db.tar.gz *.zst
+repo-add -s -n -R custom.db.tar.gz *.zst
 
 # Update pacman databases.
 pacman -Syu
