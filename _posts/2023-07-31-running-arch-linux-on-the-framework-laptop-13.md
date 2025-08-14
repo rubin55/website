@@ -1006,7 +1006,7 @@ install -d Build Repository 'Source Packages' Sources -o $USER
 
 # Create a repository database.
 cd "$PKG_ROOT/Repository"
-repo-add custom.db.tar.gz
+repo-add -s custom.db.tar.gz
 
 # Add entry to /etc/pacman.conf.
 cat <<EOF >> "/etc/pacman.conf"
@@ -1086,7 +1086,7 @@ ls ../../Source\ Packages
 
 # Update local repository (adds new packages, removes older ones).
 cd "$PKG_ROOT/Repository"
-repo-add -n -R -s custom.db.tar.gz *.zst
+repo-add -s -n -R custom.db.tar.gz *.zst
 
 # Remove a specific AUR package from local repository
 cd "$PKG_ROOT/Repository"
