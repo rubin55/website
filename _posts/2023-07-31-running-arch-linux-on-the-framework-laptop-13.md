@@ -1150,7 +1150,6 @@ I maintain these packages (all on AUR, except for `openshift-codeready-bin`):
   * [gnome-shell-extension-tiling-shell-git](https://aur.archlinux.org/packages/gnome-shell-extension-tiling-shell-git)
   * [husky](https://aur.archlinux.org/packages/husky)
   * [infer-bin](https://aur.archlinux.org/packages/infer-bin)
-  * [jdk21-openj9-bin](https://aur.archlinux.org/packages/jdk21-openj9-bin)
   * [kotlin-language-server-bin](https://aur.archlinux.org/packages/kotlin-language-server-bin)
   * [lexical-bin](https://aur.archlinux.org/packages/lexical-bin)
   * [marksman-git](https://aur.archlinux.org/packages/marksman-git)
