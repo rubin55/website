@@ -1,7 +1,7 @@
 ---
 title: Running Arch Linux on the Framework Laptop 13
-date: 2023-07-31T11:40:00+02:00
-last_modified_at: 2023-12-31T23:59:59+02:00
+date: 2025-09-30T11:02:00+02:00
+last_modified_at: 2025-09-30T11:02:00+02:00
 categories:
   - blog
 tags:
@@ -9,12 +9,13 @@ tags:
   - linux
 ---
 
-This article sums up why and how I run Arch Linux on [my new Framework Laptop 13](/blog/why-i-am-getting-a-framework/), which I received on the 3rd of this month.
+This article sums up why and how I run Arch Linux on 
+[my Framework Laptop 13](/blog/why-i-am-getting-a-framework/), which I received
+on the 3rd of July 2023, and am still as of today happily using!
 
-I've been busy getting up+running and getting to know the device. TL;DR; I'm
-*extremely* impressed and very happy with this laptop - it is by far one of the
-best devices I've owned in a long time. It is near-silent, It uses ~3watts at
-idle, it's fast, it's sturdy and it looks good!
+I'm *extremely* impressed and very happy with this laptop - it is by far one of 
+the best devices I've owned in a long time. It is near-silent, It uses ~5watts 
+at idle, it's fast, it's sturdy and it looks good!
 
 This is going to be quite a long article, so here's a Table of Contents:
 
@@ -27,7 +28,7 @@ Prior to my Framework Laptop adventures, I've been planning to move to Arch
 Linux for a while. I'm a long-time Linux desktop user. I started out with those
 Red Hat CD-ROMs you'd buy at your local bookshop (this was around '96). I
 fooled around with SCO UnixWare, had a whole period of SGI IRIX after that and
-then some distro-hopping to Debian, Fedora, Arch Linux (in 2007), Gentoo and
+then some distro-hopping to Debian, Fedora, Arch Linux (in 2006), Gentoo and
 Void Linux, more-or-less in that order.
 
 The last two-ish years I've been running on Void Linux, which I still strongly
@@ -302,6 +303,33 @@ pacman -S --needed cuda cuda-tools ffnvcodec-headers libva-nvidia-driver nvidia-
 
 Note: The `openssl-1.1` package is a (missing) dependency for
 `libnvidia-pkcs11.so` contained in `nvidia-utils`.
+
+### Installing official sublime-text and sublime-merge packages
+
+[Sublime Text](https://www.sublimetext.com/) has an official Arch linux 
+repository for its `sublime-text` and `sublime-merge` packages. If you want to
+use those, do the following (as root):
+
+```shell
+# Install and sign the sublimehq pubkey.
+curl -O https://download.sublimetext.com/sublimehq-pub.gpg 
+pacman-key --add sublimehq-pub.gpg
+pacman-key --lsign-key 8A8F901A 
+rm sublimehq-pub.gpg
+
+# Add sublime-text package repository to pacman.conf.
+cat <<EOF >> "/etc/pacman.conf"
+# Official Sublime Text and Sublime Merge repository.
+[sublime-text]
+SigLevel = Required DatabaseRequired TrustedOnly
+Server = https://download.sublimetext.com/arch/stable/x86_64
+EOF
+
+# Update local pacman databases and install.
+pacman -Syu sublime-text sublime-merge
+```
+
+The above is based on [these instructions](https://www.sublimetext.com/docs/linux_repositories.html#pacman).
 
 ### Installing lib32 package equivalents (optional)
 
@@ -1117,7 +1145,7 @@ export PKG_ROOT="$HOME/Packaging"
 
 # Git clone them all.
 cd "$PKG_ROOT/Build"
-export GITREPOS="adwaita-qt-git aic94xx-firmware aider-chat akku alsa-hdspeconf amitools ares-emu aseprite ast-firmware astrojs-language-server audacious-gtk3 audacious-plugins-gtk3 aurutils battop-bin blastem-hg bluez-hcitool bottles brscan4 bun-bin bundletool cartridges-git chalice chez-scheme clojure-lsp-bin cmake-format cmake-language-server codechecker commitlint commitlint-config-conventional conan cubeb cypher-shell dev-proxy-bin displaylink djmount dockerfile-language-server dolphin-emu-git dosbox-x dotnet-core-bin dotool drawio-desktop-bin dumpasn1 earthly eclipse-platform elixir-ls erlang_ls evcxr_jupyter evdi-dkms exercism figma-linux-bin flow-bin flutterup flycast-git fmt9 ghcup-hs-bin github-desktop-bin gnome-shell-extension-dash-to-dock-git gnome-shell-extension-stealmyfocus-git gnome-shell-extension-tiling-shell-git godot-mono-git google-cloud-cli groovy-language-server-git helm-ls husky hydroxide ibmcloud-cli icaclient icoextract imhex infer-bin irccloud-bin jdk25-graalvm-bin jdk25-openj9-bin jdtls jetbrains-toolbox kddockwidgets-qt6-git kotlin-language-server-bin kubelogin lagrange lemminx lib32-gperftools lib32-intel-gmmlib lib32-intel-media-driver libbacktrace-git libchdr-git librashader libretro-beetle-cygne-git libretro-beetle-lynx-git libretro-beetle-ngp-git libretro-beetle-pcfx-git libretro-beetle-saturn-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-lrps2-git libretro-swanstation-git libretro-uae-git libspng-git libwireplumber-4.0-compat license-wtfpl litellm logisim-evolution-bin m64py marksman-git marsdev-git maturin-git mednaffe mei-amt-check-git metals mkinitcpio-firmware mongodb-bin mongosh-bin moonlight-qt-git ms-sys ncurses5-compat-libs neo4j-community-bin neovim-symlinks nestopia netcoredbg networkmanager-iwd nvidia-patch-git ocenaudio-bin omnisharp-roslyn-bin openmsx openshift-client-bin openshift-developer-bin openshift-pipelines-bin openvpn-update-systemd-resolved pandoc-bin papirus-folders passmark-performancetest-bin patool pcsx2-git pcsx-redux-git pegasus-frontend-git perlnavigator plutosvg plutovg postman2openapi-bin postman-bin powercap powershell-bin pragmatapro-fonts protonplus protontricks-git ps3-disc-dumper-bin pupdate-bin pvsneslib-git pwvucontrol python-aioboto3 python-anthropic python-asgi-lifespan python-async-timeout python-backoff python-dataclasses-json python-diskcache python-docstring-parser python-fastuuid python-fvs python-google-ai-generativelanguage python-google-genai python-google-generativeai python-grep-ast python-httpx-sse python-inplace python-inquirer python-m3u8 python-machine68k python-mcp python-mixpanel python-mpegdash python-opentype-feature-freezer python-orjson-git python-oslex python-patch-ng python-pathvalidate python-pdm-pep517 python-pluginbase python-posthog python-proto-plus python-pyproject-patcher python-pyqtdarktheme-fork python-pysdl2 python-pytest-flakefinder python-pytest-runner python-python-ffmpeg python-readchar python-setuptools-reproducible python-sounddevice python-sse-starlette python-steamgriddb python-tidalapi python-tokenizers python-tree-sitter python-tree-sitter-c-sharp python-tree-sitter-embedded-template python-tree-sitter-language-pack python-tree-sitter-yaml python-uuid7 python-uv-dynamic-versioning python-vdf qt5-gamepad rabtap rapidyaml rcu-bin redocly regionset rpcs3-git ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-jekyll-include-cache ruby-jekyll-redirect-from ruby-jekyll-sitemap ruby-just-the-docs ruby-reverse_markdown ruby-solargraph ruby-yard-activesupport-concern ruby-yard-solargraph rusty-psn-bin ryujinx sameboy sbom-tool-bin scala-dotty sedutil sentencepiece shellcheck-bin sigtop-git skyscraper-git slack-desktop snd-hdspe-dkms-git soapui softhsm-git sublime-text-4 sunshine-git svelte-language-server-git swift-bin teller tidal-dl-ng tidal-hifi-bin tla-toolbox townsemu-git ttf-b612 ttf-ms-win11 ungoogled-chromium-bin upd72020x-fw v4l-utils-git vala-language-server vasm visual-studio-code-bin vkbasalt-cli vlink vtsls wd719x-firmware winetricks-git wxedid xcursor-dmz xdg-terminal-exec-git xpadneo-dkms yaak-bin yaml-language-server-git y-cruncher zeal-git"
+export GITREPOS="adwaita-qt-git aic94xx-firmware aider-chat akku alsa-hdspeconf amitools ares-emu aseprite ast-firmware astrojs-language-server audacious-gtk3 audacious-plugins-gtk3 aurutils battop-bin blastem-hg bluez-hcitool bottles brscan4 bun-bin bundletool cartridges-git chalice chez-scheme clojure-lsp-bin cmake-format cmake-language-server codechecker commitlint commitlint-config-conventional conan cubeb cypher-shell dev-proxy-bin displaylink djmount dockerfile-language-server dolphin-emu-git dosbox-x dotnet-core-bin dotool drawio-desktop-bin dumpasn1 earthly eclipse-platform elixir-ls erlang_ls evcxr_jupyter evdi-dkms exercism figma-linux-bin flow-bin flutterup flycast-git fmt9 ghcup-hs-bin github-desktop-bin gnome-shell-extension-dash-to-dock-git gnome-shell-extension-stealmyfocus-git gnome-shell-extension-tiling-shell-git godot-mono-git google-cloud-cli groovy-language-server-git helm-ls husky hydroxide ibmcloud-cli icaclient icoextract imhex infer-bin irccloud-bin jdk25-graalvm-bin jdk25-openj9-bin jdtls jetbrains-toolbox kddockwidgets-qt6-git kotlin-language-server-bin kubelogin lagrange lemminx lib32-gperftools lib32-intel-gmmlib lib32-intel-media-driver libbacktrace-git libchdr-git librashader libretro-beetle-cygne-git libretro-beetle-lynx-git libretro-beetle-ngp-git libretro-beetle-pcfx-git libretro-beetle-saturn-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-lrps2-git libretro-swanstation-git libretro-uae-git libspng-git libwireplumber-4.0-compat license-wtfpl litellm logisim-evolution-bin m64py marksman-git marsdev-git maturin-git mednaffe mei-amt-check-git metals mkinitcpio-firmware mongodb-bin mongosh-bin moonlight-qt-git ms-sys ncurses5-compat-libs neo4j-community-bin neovim-symlinks nestopia netcoredbg networkmanager-iwd nvidia-patch-git ocenaudio-bin omnisharp-roslyn-bin openmsx openshift-client-bin openshift-developer-bin openshift-pipelines-bin openvpn-update-systemd-resolved pandoc-bin papirus-folders passmark-performancetest-bin patool pcsx2-git pcsx-redux-git pegasus-frontend-git perlnavigator plutosvg plutovg postman2openapi-bin postman-bin powercap powershell-bin pragmatapro-fonts protonplus protontricks-git ps3-disc-dumper-bin pupdate-bin pvsneslib-git pwvucontrol python-aioboto3 python-anthropic python-asgi-lifespan python-async-timeout python-backoff python-dataclasses-json python-diskcache python-docstring-parser python-fastuuid python-fvs python-google-ai-generativelanguage python-google-genai python-google-generativeai python-grep-ast python-httpx-sse python-inplace python-inquirer python-m3u8 python-machine68k python-mcp python-mixpanel python-mpegdash python-opentype-feature-freezer python-orjson-git python-oslex python-patch-ng python-pathvalidate python-pdm-pep517 python-pluginbase python-posthog python-proto-plus python-pyproject-patcher python-pyqtdarktheme-fork python-pysdl2 python-pytest-flakefinder python-pytest-runner python-python-ffmpeg python-readchar python-setuptools-reproducible python-sounddevice python-sse-starlette python-steamgriddb python-tidalapi python-tokenizers python-tree-sitter python-tree-sitter-c-sharp python-tree-sitter-embedded-template python-tree-sitter-language-pack python-tree-sitter-yaml python-uuid7 python-uv-dynamic-versioning python-vdf qt5-gamepad rabtap rapidyaml rcu-bin redocly regionset rpcs3-git ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-jekyll-include-cache ruby-jekyll-redirect-from ruby-jekyll-sitemap ruby-just-the-docs ruby-reverse_markdown ruby-solargraph ruby-yard-activesupport-concern ruby-yard-solargraph rusty-psn-bin ryujinx sameboy sbom-tool-bin scala-dotty sedutil sentencepiece shellcheck-bin sigtop-git skyscraper-git slack-desktop snd-hdspe-dkms-git soapui softhsm-git sunshine-git svelte-language-server-git swift-bin teller tidal-dl-ng tidal-hifi-bin tla-toolbox townsemu-git ttf-b612 ttf-ms-win11 ungoogled-chromium-bin upd72020x-fw v4l-utils-git vala-language-server vasm visual-studio-code-bin vkbasalt-cli vlink vtsls wd719x-firmware winetricks-git wxedid xcursor-dmz xdg-terminal-exec-git xpadneo-dkms yaak-bin yaml-language-server-git y-cruncher zeal-git"
 for p in $GITREPOS; do git clone https://aur.archlinux.org/$p.git; done
 
 # And my own version of openshift-codeready-bin/crc.
