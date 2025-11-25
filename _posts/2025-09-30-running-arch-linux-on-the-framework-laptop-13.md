@@ -1222,10 +1222,8 @@ Here are a few more things I plan to create AUR packages for:
 After you've done (most of) the above, a `reboot` is in order; the system should
 come up cleanly, without errors or stalls.
 
-I've be been using this setup for the last month and it has been pretty great.
-I get really good battery life, The fan almost never comes on, sleep and resume
-work reliably, bluetooth works with mouse, gamepad and headphones, Libvirt has
-been amazing with a bunch of interesting virtual machines (Guix, Windows NT,
-RHEL6 with Softimage).
-
-I hope to be using this machine and operating system for a long time!
+I've been using this setup for the last two years and it has been consistently
+great. I get good battery life, The fan almost never comes on, sleep and resume
+work reliably, bluetooth works with mouse, gamepad and headphones. I've bought a
+1TB USB SSD for one of the slots on which I installed Arch Linux; I then use the 
+internal NVME for `/home`.
