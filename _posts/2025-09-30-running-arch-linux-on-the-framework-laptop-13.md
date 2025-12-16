@@ -106,8 +106,8 @@ core temperatures.
 
 Basically, [download](https://archlinux.org/download/) the ISO and follow the
 [installation guide](https://wiki.archlinux.org/title/Installation_guide). I
-opted to use `systemd-boot` as boot manager and `systemd-networkd` as my network
-configuration tooling.
+opted to use `systemd-boot` as boot manager and either `systemd-networkd` or
+`networkmanager-iwd` as my network configuration tooling.
 
 ### Additional kernel parameters I use
 
@@ -154,7 +154,7 @@ matter, but in any case, make sure `core`, `contrib` and `multilib` are enabled
 in `/etc/pacman.conf` first):
 
 ```shell
-pacman -S --needed acpi acpica acpi_call-dkms acpid alacritty alsa-firmware alsa-tools alsa-ucm-conf alsa-utils ansible-language-server ansible-lint ant antlr4 ardour aribb25 arj autoconf automake aws-cli base-devel bash bash-language-server bc bear bind biome bison blender bower btop bubblewrap busted bustle calibre cameractrls carla cdemu-client cdemu-daemon cdrdao cdrtools cifs-utils clang clinfo clojure cmake corkscrew cpio cppcheck cpupower ctags cue cups curl dagger dash dconf-editor dcraw ddcutil debugedit delve deno desmume devtools direnv discord distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dool dos2unix dosfstools doxygen d-spy dvd+rw-tools dvisvgm editorconfig-checker editorconfig-core-c efibootmgr elixir emacs-wayland erlang eslint ethtool exfatprogs extra-cmake-modules fakeroot fastfetch fd fdupes file file-roller fio firefox flex foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fractal freetype2-demos fs-uae fs-uae-launcher furnace fwupd fzf gamemode gamescope gcc gdb gdm gemini-cli ghidra gimp git git-filter-repo github-cli git-lfs glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-control-center gnome-disk-utility gnome-logs gnome-session gnome-settings-daemon gnome-shell gnome-shell-extension-appindicator gnome-shell-extension-desktop-icons-ng gnome-shell-extensions gnome-system-monitor gnome-themes-extra gnome-tweaks gnupg gnuplot go gopls go-tools gparted gperf gradle groovy gtksourceview3 gtkwave guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb handbrake harfbuzz-cairo hdparm helix helm hplip htop hunspell hunspell-de hunspell-en_gb hunspell-en_us hunspell-es_es hunspell-fr hunspell-nl i2c-tools ifuse img2pdf inetutils inkscape iperf3 iptables-nft irssi iverilog iwd jekyll jfsutils jq jupyterlab jupyterlab-lsp jupyter-lsp jupyter-notebook just k9s kafka kddockwidgets kotlin kubectl kubeseal leiningen lhasa libblockdev-crypto libblockdev-dm libblockdev-fs libblockdev-loop libblockdev-lvm libblockdev-mdraid libblockdev-mpath libblockdev-nvme libblockdev-part libblockdev-swap libebur128 libgoom2 libindicator-gtk3 librecad libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-blastem libretro-core-info libretro-desmume libretro-dolphin libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libtiger libva-mesa-driver libva-utils libvirt libwebp-utils libxcrypt-compat linux-firmware-bnx2x linux-firmware-liquidio linux-firmware-mellanox linux-firmware-nfp linux-firmware-qlogic linux-headers live-media lld lldb lm_sensors loupe lshw lsof lsscsi ltrace lua-language-server make mame mame-tools man-db mangohud man-pages mattermost-desktop maven mbedtls2 mednafen mesa-demos mesa-utils mesa-vdpau meson mgba-qt minikube mitmproxy mono mono-msbuild moreutils mpv mtools multipath-tools mupdf-tools mupen64plus mutter nasm nautilus neovide neovim netbeans net-tools nfs-utils ninja nmap nodejs noto-fonts-emoji npm ntfs-3g nuget nvchecker nvme-cli nvtop ollama openai-codex openbsd-netcat opencl-clhpp opencl-headers opencv openldap openssh openvpn osv-scanner p7zip pacman-contrib pacutils papers papirus-icon-theme patch patchelf pciutils pdfarranger perf perl perl-lwp-protocol-https perl-net-dbus perl-x11-protocol perl-yaml pinentry piper pipewire pipewire-alsa pipewire-jack pipewire-pulse pipewire-v4l2 pkgconf postgresql powertop ppsspp prettier projectm protonmail-bridge psutils python python-jsbeautifier python-jwcrypto python-kubernetes python-ldap python-lsp-server python-nose python-numpy python-opencv python-opengl python-patch-ng python-pip python-pycryptodomex python-pylint python-pyopenssl python-pytest python-rope python-setuptools python-sphinx python-sphinx-autobuild python-sympy python-websockets python-wheel qbittorrent qemu-full qjackctl qpwgraph qt5ct qt5-declarative qt5-tools qt5-wayland qt6ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland quodlibet rabbitmq racket ranger realtime-privileges rebuild-detector recode retroarch retroarch-assets-glui retroarch-assets-ozone ripgrep rlwrap rsync ruby ruby-base64 ruby-bigdecimal ruby-csv ruby-default-gems ruby-irb ruby-rake-compiler rustup samba sane sbt scons screen scummvm sdcc sdl2_mixer seahorse seatd shfmt signal-desktop simple-scan smartmontools smbclient snapshot snes9x-gtk sof-firmware sox speedtest-cli squashfs-tools steam step-ca step-cli stern strace s-tui stylelint sudo syncthing sysdig sysprof sysstat tailwindcss-language-server taplo-cli tar terminus-font texinfo texlab texlive-basic texlive-bin texlive-fontsrecommended texlive-latex texlive-latexextra texlive-latexrecommended texlive-pictures the_silver_searcher thunderbird tidy tinyxxd tmux tokei traceroute tracker3-miners tree tree-sitter-cli tree-sitter-grammars ttf-ibm-plex ttf-ubuntu-font-family turbostat twine typescript typescript-language-server udftools udisks2-lvm2 uncrustify unixodbc unzip urlwatch usbutils util-linux uucp valgrind vdpauinfo vhba-module-dkms virt-manager vkd3d vscode-css-languageserver vscode-html-languageserver vscode-json-languageserver vue-language-server vulkan-tools w3m wayland-utils wgetpaste whois wimlib wine wine-mono wireless-regdb wireless_tools wireplumber wireshark-cli wireshark-qt wl-clipboard wmctrl wol xcb-util-errors xchm xclip xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xfsprogs xorg-fonts-100dpi xorg-fonts-misc xorg-font-util xorg-mkfontscale xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xlsclients xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo yarn yasm yq yt-dlp zig zip zls zstd
+pacman -S --needed acpi acpica acpi_call-dkms acpid alacritty alsa-firmware alsa-tools alsa-ucm-conf alsa-utils ansible-language-server ansible-lint ant antlr4 ardour aribb25 arj autoconf automake aws-cli base-devel bash bash-language-server bc bear bind biome bison blender bower btop bubblewrap busted bustle calibre cameractrls carla cdemu-client cdemu-daemon cdrdao cdrtools cifs-utils clang clinfo clojure cmake corkscrew cpio cppcheck cpupower ctags cue cups curl dagger dash dconf-editor dcraw ddcutil debugedit delve deno desmume devtools direnv discord distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dool dos2unix dosfstools doxygen d-spy dvd+rw-tools dvisvgm editorconfig-checker editorconfig-core-c efibootmgr elixir emacs-wayland erlang eslint ethtool exfatprogs extra-cmake-modules fakeroot fastfetch fd fdupes file file-roller fio firefox flex foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fractal freetype2-demos fs-uae fs-uae-launcher furnace fwupd fzf gamemode gamescope gcc gdb gdm gemini-cli ghidra gimp git git-filter-repo github-cli git-lfs glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-control-center gnome-disk-utility gnome-logs gnome-session gnome-settings-daemon gnome-shell gnome-shell-extension-appindicator gnome-shell-extension-desktop-icons-ng gnome-shell-extensions gnome-system-monitor gnome-themes-extra gnome-tweaks gnupg gnuplot go gopls go-tools gparted gperf gradle groovy gtksourceview3 gtkwave guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb handbrake harfbuzz-cairo hdparm helix helm hplip htop hunspell hunspell-de hunspell-en_gb hunspell-en_us hunspell-es_es hunspell-fr hunspell-nl i2c-tools ifuse img2pdf inetutils inkscape iperf3 iptables-nft irssi iverilog iwd jekyll jfsutils jq jupyterlab jupyterlab-lsp jupyter-lsp jupyter-notebook just k9s kafka kddockwidgets kotlin kubectl kubeseal leiningen lhasa libblockdev-crypto libblockdev-dm libblockdev-fs libblockdev-loop libblockdev-lvm libblockdev-mdraid libblockdev-mpath libblockdev-nvme libblockdev-part libblockdev-swap libebur128 libgoom2 libindicator-gtk3 librecad libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-blastem libretro-core-info libretro-desmume libretro-dolphin libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libtiger libva-mesa-driver libva-utils libvirt libwebp-utils libxcrypt-compat linux-firmware-bnx2x linux-firmware-liquidio linux-firmware-mellanox linux-firmware-nfp linux-firmware-qlogic linux-headers live-media lld lldb lm_sensors loupe lshw lsof lsscsi ltrace lua-language-server make mame mame-tools man-db mangohud man-pages mattermost-desktop maven mbedtls2 mednafen mesa-demos mesa-utils mesa-vdpau meson mgba-qt minikube mitmproxy mono mono-msbuild moreutils mpv mtools multipath-tools mupdf-tools mupen64plus mutter nasm nautilus neovide neovim netbeans networkmanager-openvpn networkmanager-vpn-plugin-openvpn net-tools nfs-utils ninja nmap nodejs noto-fonts-emoji npm ntfs-3g nuget nvchecker nvme-cli nvtop ollama openai-codex openbsd-netcat opencl-clhpp opencl-headers opencv openldap openssh openvpn osv-scanner p7zip pacman-contrib pacutils papers papirus-icon-theme patch patchelf pciutils pdfarranger perf perl perl-lwp-protocol-https perl-net-dbus perl-x11-protocol perl-yaml pinentry piper pipewire pipewire-alsa pipewire-jack pipewire-pulse pipewire-v4l2 pkgconf postgresql powertop ppsspp prettier projectm protonmail-bridge psutils python python-jsbeautifier python-jwcrypto python-kubernetes python-ldap python-lsp-server python-nose python-numpy python-opencv python-opengl python-patch-ng python-pip python-pycryptodomex python-pylint python-pyopenssl python-pytest python-rope python-setuptools python-sphinx python-sphinx-autobuild python-sympy python-websockets python-wheel qbittorrent qemu-full qjackctl qpwgraph qt5ct qt5-declarative qt5-tools qt5-wayland qt6ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland quodlibet rabbitmq racket ranger realtime-privileges rebuild-detector recode retroarch retroarch-assets-glui retroarch-assets-ozone ripgrep rlwrap rsync ruby ruby-base64 ruby-bigdecimal ruby-csv ruby-default-gems ruby-irb ruby-rake-compiler rustup samba sane sbt scons screen scummvm sdcc sdl2_mixer seahorse seatd shfmt signal-desktop simple-scan smartmontools smbclient snapshot snes9x-gtk sof-firmware sox speedtest-cli squashfs-tools steam step-ca step-cli stern strace s-tui stylelint sudo syncthing sysdig sysprof sysstat tailwindcss-language-server taplo-cli tar terminus-font texinfo texlab texlive-basic texlive-bin texlive-fontsrecommended texlive-latex texlive-latexextra texlive-latexrecommended texlive-pictures the_silver_searcher thunderbird tidy tinyxxd tmux tokei traceroute tracker3-miners tree tree-sitter-cli tree-sitter-grammars ttf-ibm-plex ttf-ubuntu-font-family turbostat twine typescript typescript-language-server udftools udisks2-lvm2 uncrustify unixodbc unzip urlwatch usbutils util-linux uucp valgrind vdpauinfo vhba-module-dkms virt-manager vkd3d vscode-css-languageserver vscode-html-languageserver vscode-json-languageserver vue-language-server vulkan-tools w3m wayland-utils wgetpaste whois wimlib wine wine-mono wireless-regdb wireless_tools wireplumber wireshark-cli wireshark-qt wl-clipboard wmctrl wol xcb-util-errors xchm xclip xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xfsprogs xorg-fonts-100dpi xorg-fonts-misc xorg-font-util xorg-mkfontscale xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xlsclients xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo yarn yasm yq yt-dlp zig zip zls zstd
 ```
 
 ### Remove if you don't want brltty
@@ -170,10 +170,15 @@ userdel brltty
 ### Additionally install when you want dynamic application of power management settings
 
 You can install `tlp` to enable dynamically applying power management settings,
-based on if your power connector is connected or if you're on battery.
+based on if your power connector is connected or if you're on battery. We also
+install `tlp-pd` which is the TLP project's DBUS interface compatible
+implementation of `power-profile-daemon` (which itself conflicts with `tlp`).
+Installing `tlp-pd` Makes it possible to control TLP from things like Gnome,
+Cosmic, KDE, etc.
 
 ```shell
-pacman -S --needed tlp
+pacman -S --needed tlp tlp-pd
+systemctl enable --now tlp-pd
 ```
 
 ### Additionally install when you want to use dracut instead of mkinitcpio
@@ -531,6 +536,53 @@ to replace `$USER` with your user name):
 
 Reboot for the above to take effect.
 
+### Docker
+
+First make sure `containerd` (a dependency for `docker`) does not load plugins
+which are not relevant for this setup (these plugins cause loading errors in a
+default setup like we're building - this does not break, but it does cause a
+lot of regular error messages in `journalctl`):
+
+```shell
+mkdir -p /etc/containerd
+cat <<EOF > "/etc/containerd/config.toml"
+
+version = 3
+disabled_plugins = ["io.containerd.snapshotter.v1.blockfile", "io.containerd.snapshotter.v1.btrfs", "io.containerd.snapshotter.v1.devmapper", "io.containerd.snapshotter.v1.erofs", "io.containerd.snapshotter.v1.zfs", "io.containerd.differ.v1.erofs", "io.containerd.tracing.processor.v1.otlp", "io.containerd.internal.v1.tracing", "io.containerd.grpc.v1.cri"]
+EOF
+```
+
+Now we configure Docker to use a specific IP range for the default network (the
+`bip` setting) and a bunch of range-reservations for custom created networks
+(the `default-address-pools` setting). Additionally, we use `libvirtd`'s
+`dnsmasq` instance to resolve DNS (see next section):
+
+```shell
+mkdir -p /etc/docker
+cat <<EOF > "/etc/docker/daemon.json"
+{
+  "bip":"10.10.12.1/24",
+  "dns" : [ "10.10.12.1" ],
+  "default-address-pools": [
+    { "base": "10.10.13.0/24", "size": 24 },
+    { "base": "10.10.14.0/24", "size": 24 },
+    { "base": "10.10.15.0/24", "size": 24 },
+    { "base": "10.10.16.0/24", "size": 24 },
+    { "base": "10.10.17.0/24", "size": 24 },
+    { "base": "10.10.18.0/24", "size": 24 },
+    { "base": "10.10.19.0/24", "size": 24 }
+  ]
+}
+EOF
+```
+
+Enable docker with:
+
+```shell
+systemctl enable --now docker.service
+```
+
+I use docker without any further adjustments.
 ### Libvirtd
 
 Enable `libvirtd` with:
@@ -562,12 +614,18 @@ systemctl restart libvirtd.service
 
 Furthermore, I configure the `virt0` interface of the `default` NAT-enabled
 network to have a specific IP address (10.10.11.1) and range (note: needs to
-be run after starting/restarting libvirtd):
+be run after starting/restarting libvirtd, and after configuring Docker; if
+you look closely, you'll notice that this network configuration makes sure
+that the `dnsmasq` service generated and spawned by `libvirtd` additionally
+binds to the `docker0` network interface, which is an added convenience that
+enables Docker containers in the default network to use this `dnsmasq` instance
+to resolve DNS, as opposed to having to manage a separate/manual `dnsmasq`
+instance for Docker):
 
 ```shell
 export UUID=$(uuidgen)
 cat <<EOF > "/tmp/net-default.xml"
-<network>
+<network xmlns:dnsmasq="http://libvirt.org/schemas/network/dnsmasq/1.0">
   <name>default</name>
   <uuid>$UUID</uuid>
   <forward mode='nat'>
@@ -581,6 +639,9 @@ cat <<EOF > "/tmp/net-default.xml"
       <range start='10.10.11.2' end='10.10.11.254'/>
     </dhcp>
   </ip>
+  <dnsmasq:options>
+    <dnsmasq:option value="interface=docker0"/>
+  </dnsmasq:options>
 </network>
 EOF
 
@@ -591,7 +652,22 @@ virsh net-start default
 rm -qf /tmp/net-default.xml
 ```
 
-### Systemd-networkd and iwd
+### Configure networking
+
+You can configure networking in all kinds of ways, but the two I document are
+`networkmanager-iwd` and `systemd-networkd`.
+
+I specifically chose `networkmanager-iwd`, because I have had extensive
+problems with `wpa_supplicant` in combination with high performance network
+requirements, like when you need to stream a 4K desktop at 60fps. Due to how
+`wpa_supplicant` is instrumented by NetworkManager, that kind of use-case is
+virtually impossible to get right. `iwd` seems to handle this use-case much
+better and so I opt to use that in combination with `networkmanager-iwd`.
+
+Note that `networkmanager-iwd` is an AUR package that uses `iwd` exclusively
+and does *not* require or depend on `wpa_supplicant` in any way.
+
+#### Configure iwd
 
 First configure `iwd` defaults:
 
@@ -599,40 +675,85 @@ First configure `iwd` defaults:
 mkdir -p /etc/iwd
 cat <<EOF > "/etc/iwd/main.conf"
 [General]
-RoamThreshold=-75
+RoamThreshold=-80
 RoamThreshold5G=-80
+CriticalRoamThreshold=-90
+CriticalRoamThreshold5G=-90
 
 [Network]
-EnableIPv6=false
+EnableIPv6=true
 NameResolvingService=systemd
 
 [Scan]
 DisablePeriodicScan=true
+DisableRoamingScan=true
+MaximumPeriodicScanInterval=3600
+
+[DriverQuirks]
+PowerSaveDisable=iwlwifi
 EOF
 ```
 
-If you're connecting to a wireless network, you need to first configure that
-using `iwctl`, see the [iwd](https://wiki.archlinux.org/title/Iwd) page on the
-Arch wiki.
+`iwd` can be configured using `iwctl`, or it is managed completely by
+`networkmanager-iwd`. See the [iwd](https://wiki.archlinux.org/title/Iwd) page
+on the Arch wiki for more details about `iwd`.
 
-After that, you can configure `systemd-networkd`, which comes down to placing
-configuration files in `/etc/systemd/network`. Let me give three examples.
+#### Using networkmanager-iwd (optional)
 
-#### Setting up an ethernet device with DHCP
+I've opted to use `networkmanager-iwd` from AUR to manage my networking needs
+because as it stands, it integrates much nicelier with graphical environments
+like Gnome, Cosmic and KDE. To use `networkmanager-iwd`, you first need to
+build the `networkmanager-iwd` package. See the section about how to
+[configure for package building](#configuring-for-package-building) for more
+information about how do that.
+
+```shell
+systemctl disable --now iwd # iwd is managed by networkmanager itself
+systemctl enable --now NetworkManager
+```
+
+See the [NetworkManager](https://wiki.archlinux.org/title/NetworkManager) page
+on the Arch Wiki for details about how to use and configure NetworkManager. In
+practice, you'll find it's pretty straight-forward and that it can usually be
+configured graphically through your desktop environment of choice.
+
+#### Using systemd-networkd (optional)
+
+As an alternative to `networkmanager-iwd`, you can use `systemd-networkd` to
+configure your network. This comes down to placing configuration files in
+`/etc/systemd/network`. and enabling the `systemd-networkd` services.
+
+##### Setting up a single ethernet device with DHCP
 
 ```shell
 cat <<EOF > "/etc/systemd/network/10-ethernet.network"
 [Match]
 Name=eth0
 
+[Link]
+RequiredForOnline=routable
+
 [Network]
 DHCP=yes
+IgnoreCarrierLoss=10s
+UseDomains=false
+
+[DHCPv4]
+RouteMetric=700
+UseNTP=no
+UseDNS=no
+UseGateway=yes
+UseRoutes=no
+
+[IPv6AcceptRA]
+RouteMetric=700
 EOF
 ```
 
-#### Setting up a bridge device with DHCP
+##### Setting up a bridge device with DHCP
 
-Create the physical device bind config:
+Note that this is an alternative to the single ethernet configuration shown
+previously. Let's first create the physical device bind config:
 
 ```shell
 cat <<EOF > "/etc/systemd/network/10-bind.network"
@@ -663,12 +784,27 @@ cat <<EOF > "/etc/systemd/network/10-bridge.network"
 [Match]
 Name=bridge0
 
+[Link]
+RequiredForOnline=routable
+
 [Network]
 DHCP=yes
+IgnoreCarrierLoss=10s
+UseDomains=false
+
+[DHCPv4]
+RouteMetric=700
+UseNTP=no
+UseDNS=no
+UseGateway=yes
+UseRoutes=no
+
+[IPv6AcceptRA]
+RouteMetric=700
 EOF
 ```
 
-#### Setting up a wireless device with DHCP
+##### Setting up a wireless device with DHCP
 
 Note that you first need to configure `iwd` to authenticate and connect to your
 wireless network. After that, tell `systemd-networkd` about it:
@@ -678,20 +814,31 @@ cat <<EOF > "/etc/systemd/network/10-wireless.network"
 [Match]
 Name=wlan0
 
+[Link]
+RequiredForOnline=routable
+
 [Network]
 DHCP=yes
 IgnoreCarrierLoss=10s
+UseDomains=true
+
+[DHCPv4]
+RouteMetric=600
+
+[IPv6AcceptRA]
+RouteMetric=600
 EOF
 ```
 
-#### Enable systemd-networkd and iwd services
+##### Enable systemd-networkd and iwd services
 
 Enable `systemd-networkd` and `iwd `with:
 
 ```shell
+systemctl disable --now NetworkManager
 systemctl enable --now iwd.service
 systemctl enable --now systemd-networkd.service
-systemctl disable systemd-networkd-wait-online.service
+systemctl disable --now systemd-networkd-wait-online.service
 ```
 
 Note that we disable the waiting service, since we want to continue booting
@@ -947,30 +1094,6 @@ patch `/etc/cups/cups-browsed.conf` as follows:
 
  # Only browse remote printers (via DNS-SD or CUPS browsing) from
 ```
-
-### Docker
-
-First make sure `containerd` (a dependency for `docker`) does not load plugins
-which are not relevant for this setup (these plugins cause loading errors in a
-default setup like we're building - this does not break, but it does cause a
-lot of regular error messages in `journalctl`):
-
-```shell
-mkdir -p /etc/containerd
-cat <<EOF > "/etc/containerd/config.toml"
-
-version = 3
-disabled_plugins = ["io.containerd.snapshotter.v1.blockfile", "io.containerd.snapshotter.v1.btrfs", "io.containerd.snapshotter.v1.devmapper", "io.containerd.snapshotter.v1.erofs", "io.containerd.snapshotter.v1.zfs", "io.containerd.differ.v1.erofs", "io.containerd.tracing.processor.v1.otlp", "io.containerd.internal.v1.tracing", "io.containerd.grpc.v1.cri"]
-EOF
-```
-
-Enable docker with:
-
-```shell
-systemctl enable --now docker.socket
-```
-
-I use docker without any further adjustments.
 
 ### Ollama
 
@@ -1228,5 +1351,5 @@ come up cleanly, without errors or stalls.
 I've been using this setup for the last two years and it has been consistently
 great. I get good battery life, The fan almost never comes on, sleep and resume
 work reliably, bluetooth works with mouse, gamepad and headphones. I've bought a
-1TB USB SSD for one of the slots on which I installed Arch Linux; I then use the 
+1TB USB SSD for one of the slots on which I installed Arch Linux; I then use the
 internal NVME for `/home`.
