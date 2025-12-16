@@ -424,8 +424,9 @@ build the `networkmanager-iwd` package. See the section about how to
 information about how do that.
 
 ```shell
+systemctl disable --now systemd-networkd # systemd-networkd needs to be off
 systemctl disable --now iwd # iwd is managed by networkmanager itself
-systemctl enable --now NetworkManager
+systemctl enable --now NetworkManager # enable networkmanager
 ```
 
 See the [NetworkManager](https://wiki.archlinux.org/title/NetworkManager) page
@@ -551,10 +552,10 @@ EOF
 Enable `systemd-networkd` and `iwd `with:
 
 ```shell
-systemctl disable --now NetworkManager
-systemctl enable --now iwd.service
-systemctl enable --now systemd-networkd.service
-systemctl disable --now systemd-networkd-wait-online.service
+systemctl disable --now NetworkManager # networkmanager needs to be off
+systemctl enable --now iwd.service # iwd is not managed by systemd-networkd
+systemctl enable --now systemd-networkd.service # enable systemd-networkd
+systemctl disable --now systemd-networkd-wait-online.service # not this one
 ```
 
 Note that we disable the waiting service, since we want to continue booting
