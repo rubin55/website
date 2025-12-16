@@ -564,21 +564,10 @@ configure `systemd-networkd`, be sure to read the
 [systemd-networkd](https://wiki.archlinux.org/title/Systemd-networkd) page on
 the Arch wiki.
 
-
-
 ## Service configuration
 
 I use and customize a bunch of services on my device. So I don't forget what
 I customized and why, let me document it.
-
-### Reflector
-
-The `reflector` service is used to create an up-to-date mirrorlist which is used
-by the package manager to decide from where to install packages.
-
-```shell
-systemctl enable --now reflactor
-```
 
 ### DisplayLink
 
@@ -734,6 +723,28 @@ to replace `$USER` with your user name):
 
 Reboot for the above to take effect.
 
+### Ollama
+
+The `ollama` service makes it possible to easily run AI models locally using
+`llama-cpp`. Just like docker, this runs as a service and you use the `ollama`
+command line utility to interact with it.
+
+```shell
+systemctl enable --now ollama.service
+```
+
+Remember to install `ollama-cuda` or `ollama-rocm` if you are using NVIDIA or
+AMD devices respectively (see earlier chapter about that).
+
+After the service is enabled and running, you can run a model as follows (we're
+using the `deepcoder` model here as an example):
+
+```shell
+ollama run deepcoder
+```
+
+This will download the model and start an interactive prompt.
+
 ### Docker
 
 First make sure `containerd` (a dependency for `docker`) does not load plugins
@@ -781,6 +792,7 @@ systemctl enable --now docker.service
 ```
 
 I use docker without any further adjustments.
+
 ### Libvirtd
 
 Enable `libvirtd` with:
@@ -1097,29 +1109,6 @@ patch `/etc/cups/cups-browsed.conf` as follows:
 
  # Only browse remote printers (via DNS-SD or CUPS browsing) from
 ```
-
-### Ollama
-
-The `ollama` service makes it possible to easily run AI models locally using
-`llama-cpp`. Just like docker, this runs as a service and you use the `ollama`
-command line utility to interact with it.
-
-```shell
-systemctl enable --now ollama.service
-```
-
-Remember to install `ollama-cuda` or `ollama-rocm` if you are using NVIDIA or
-AMD devices respectively (see earlier chapter about that).
-
-After the service is enabled and running, you can run a model as follows (we're
-using the `deepcoder` model here as an example):
-
-```shell
-ollama run deepcoder
-```
-
-This will download the model and start an interactive prompt.
-
 
 ### CDemu
 
