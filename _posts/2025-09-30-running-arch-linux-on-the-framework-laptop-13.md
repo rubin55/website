@@ -368,6 +368,203 @@ sort -o ~/Desktop/lib32-notfound ~/Desktop/lib32-notfound
 pacman -S --needed `comm -23 ~/Desktop/lib32-candidates ~/Desktop/lib32-notfound`
 ```
 
+## Configure networking
+
+You can configure networking in all kinds of ways, but the two I document are
+`networkmanager-iwd` and `systemd-networkd`.
+
+I specifically chose `networkmanager-iwd`, because I have had extensive
+problems with `wpa_supplicant` in combination with high performance network
+requirements, like when you need to stream a 4K desktop at 60fps. Due to how
+`wpa_supplicant` is instrumented by NetworkManager, that kind of use-case is
+virtually impossible to get right. `iwd` seems to handle this use-case much
+better and so I opt to use that in combination with `networkmanager-iwd`.
+
+Note that `networkmanager-iwd` is an AUR package that uses `iwd` exclusively
+and does *not* require or depend on `wpa_supplicant` in any way.
+
+### Configure iwd
+
+First configure `iwd` defaults:
+
+```shell
+mkdir -p /etc/iwd
+cat <<EOF > "/etc/iwd/main.conf"
+[General]
+RoamThreshold=-80
+RoamThreshold5G=-80
+CriticalRoamThreshold=-90
+CriticalRoamThreshold5G=-90
+
+[Network]
+EnableIPv6=true
+NameResolvingService=systemd
+
+[Scan]
+DisablePeriodicScan=true
+DisableRoamingScan=true
+MaximumPeriodicScanInterval=3600
+
+[DriverQuirks]
+PowerSaveDisable=iwlwifi
+EOF
+```
+
+`iwd` can be configured using `iwctl`, or it is managed completely by
+`networkmanager-iwd`. See the [iwd](https://wiki.archlinux.org/title/Iwd) page
+on the Arch wiki for more details about `iwd`.
+
+### Using networkmanager-iwd (optional)
+
+I've opted to use `networkmanager-iwd` from AUR to manage my networking needs
+because as it stands, it integrates much nicelier with graphical environments
+like Gnome, Cosmic and KDE. To use `networkmanager-iwd`, you first need to
+build the `networkmanager-iwd` package. See the section about how to
+[configure for package building](#configuring-for-package-building) for more
+information about how do that.
+
+```shell
+systemctl disable --now iwd # iwd is managed by networkmanager itself
+systemctl enable --now NetworkManager
+```
+
+See the [NetworkManager](https://wiki.archlinux.org/title/NetworkManager) page
+on the Arch Wiki for details about how to use and configure NetworkManager. In
+practice, you'll find it's pretty straight-forward and that it can usually be
+configured graphically through your desktop environment of choice.
+
+### Using systemd-networkd (optional)
+
+As an alternative to `networkmanager-iwd`, you can use `systemd-networkd` to
+configure your network. This comes down to placing configuration files in
+`/etc/systemd/network`. and enabling the `systemd-networkd` services.
+
+#### Setting up a single ethernet device with DHCP
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-ethernet.network"
+[Match]
+Name=eth0
+
+[Link]
+RequiredForOnline=routable
+
+[Network]
+DHCP=yes
+IgnoreCarrierLoss=10s
+UseDomains=false
+
+[DHCPv4]
+RouteMetric=700
+UseNTP=no
+UseDNS=no
+UseGateway=yes
+UseRoutes=no
+
+[IPv6AcceptRA]
+RouteMetric=700
+EOF
+```
+
+#### Setting up a bridge device with DHCP
+
+Note that this is an alternative to the single ethernet configuration shown
+previously. Let's first create the physical device bind config:
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-bind.network"
+[Match]
+Name=eth0 eth1
+
+[Network]
+Bridge=bridge0
+
+EOF
+```
+
+Create the virtual bridge device:
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-bridge.netdev"
+[NetDev]
+Name=bridge0
+Kind=bridge
+MACAddress=52:41:41:46:00:0b
+EOF
+```
+
+And finally, the bridge network, configured by DHCP:
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-bridge.network"
+[Match]
+Name=bridge0
+
+[Link]
+RequiredForOnline=routable
+
+[Network]
+DHCP=yes
+IgnoreCarrierLoss=10s
+UseDomains=false
+
+[DHCPv4]
+RouteMetric=700
+UseNTP=no
+UseDNS=no
+UseGateway=yes
+UseRoutes=no
+
+[IPv6AcceptRA]
+RouteMetric=700
+EOF
+```
+
+#### Setting up a wireless device with DHCP
+
+Note that you first need to configure `iwd` to authenticate and connect to your
+wireless network. After that, tell `systemd-networkd` about it:
+
+```shell
+cat <<EOF > "/etc/systemd/network/10-wireless.network"
+[Match]
+Name=wlan0
+
+[Link]
+RequiredForOnline=routable
+
+[Network]
+DHCP=yes
+IgnoreCarrierLoss=10s
+UseDomains=true
+
+[DHCPv4]
+RouteMetric=600
+
+[IPv6AcceptRA]
+RouteMetric=600
+EOF
+```
+
+#### Enable systemd-networkd and iwd services
+
+Enable `systemd-networkd` and `iwd `with:
+
+```shell
+systemctl disable --now NetworkManager
+systemctl enable --now iwd.service
+systemctl enable --now systemd-networkd.service
+systemctl disable --now systemd-networkd-wait-online.service
+```
+
+Note that we disable the waiting service, since we want to continue booting
+even if there is no network. If you would like to know more about how you can
+configure `systemd-networkd`, be sure to read the
+[systemd-networkd](https://wiki.archlinux.org/title/Systemd-networkd) page on
+the Arch wiki.
+
+
+
 ## Service configuration
 
 I use and customize a bunch of services on my device. So I don't forget what
@@ -651,201 +848,6 @@ virsh net-define /tmp/net-default.xml
 virsh net-start default
 rm -qf /tmp/net-default.xml
 ```
-
-### Configure networking
-
-You can configure networking in all kinds of ways, but the two I document are
-`networkmanager-iwd` and `systemd-networkd`.
-
-I specifically chose `networkmanager-iwd`, because I have had extensive
-problems with `wpa_supplicant` in combination with high performance network
-requirements, like when you need to stream a 4K desktop at 60fps. Due to how
-`wpa_supplicant` is instrumented by NetworkManager, that kind of use-case is
-virtually impossible to get right. `iwd` seems to handle this use-case much
-better and so I opt to use that in combination with `networkmanager-iwd`.
-
-Note that `networkmanager-iwd` is an AUR package that uses `iwd` exclusively
-and does *not* require or depend on `wpa_supplicant` in any way.
-
-#### Configure iwd
-
-First configure `iwd` defaults:
-
-```shell
-mkdir -p /etc/iwd
-cat <<EOF > "/etc/iwd/main.conf"
-[General]
-RoamThreshold=-80
-RoamThreshold5G=-80
-CriticalRoamThreshold=-90
-CriticalRoamThreshold5G=-90
-
-[Network]
-EnableIPv6=true
-NameResolvingService=systemd
-
-[Scan]
-DisablePeriodicScan=true
-DisableRoamingScan=true
-MaximumPeriodicScanInterval=3600
-
-[DriverQuirks]
-PowerSaveDisable=iwlwifi
-EOF
-```
-
-`iwd` can be configured using `iwctl`, or it is managed completely by
-`networkmanager-iwd`. See the [iwd](https://wiki.archlinux.org/title/Iwd) page
-on the Arch wiki for more details about `iwd`.
-
-#### Using networkmanager-iwd (optional)
-
-I've opted to use `networkmanager-iwd` from AUR to manage my networking needs
-because as it stands, it integrates much nicelier with graphical environments
-like Gnome, Cosmic and KDE. To use `networkmanager-iwd`, you first need to
-build the `networkmanager-iwd` package. See the section about how to
-[configure for package building](#configuring-for-package-building) for more
-information about how do that.
-
-```shell
-systemctl disable --now iwd # iwd is managed by networkmanager itself
-systemctl enable --now NetworkManager
-```
-
-See the [NetworkManager](https://wiki.archlinux.org/title/NetworkManager) page
-on the Arch Wiki for details about how to use and configure NetworkManager. In
-practice, you'll find it's pretty straight-forward and that it can usually be
-configured graphically through your desktop environment of choice.
-
-#### Using systemd-networkd (optional)
-
-As an alternative to `networkmanager-iwd`, you can use `systemd-networkd` to
-configure your network. This comes down to placing configuration files in
-`/etc/systemd/network`. and enabling the `systemd-networkd` services.
-
-##### Setting up a single ethernet device with DHCP
-
-```shell
-cat <<EOF > "/etc/systemd/network/10-ethernet.network"
-[Match]
-Name=eth0
-
-[Link]
-RequiredForOnline=routable
-
-[Network]
-DHCP=yes
-IgnoreCarrierLoss=10s
-UseDomains=false
-
-[DHCPv4]
-RouteMetric=700
-UseNTP=no
-UseDNS=no
-UseGateway=yes
-UseRoutes=no
-
-[IPv6AcceptRA]
-RouteMetric=700
-EOF
-```
-
-##### Setting up a bridge device with DHCP
-
-Note that this is an alternative to the single ethernet configuration shown
-previously. Let's first create the physical device bind config:
-
-```shell
-cat <<EOF > "/etc/systemd/network/10-bind.network"
-[Match]
-Name=eth0 eth1
-
-[Network]
-Bridge=bridge0
-
-EOF
-```
-
-Create the virtual bridge device:
-
-```shell
-cat <<EOF > "/etc/systemd/network/10-bridge.netdev"
-[NetDev]
-Name=bridge0
-Kind=bridge
-MACAddress=52:41:41:46:00:0b
-EOF
-```
-
-And finally, the bridge network, configured by DHCP:
-
-```shell
-cat <<EOF > "/etc/systemd/network/10-bridge.network"
-[Match]
-Name=bridge0
-
-[Link]
-RequiredForOnline=routable
-
-[Network]
-DHCP=yes
-IgnoreCarrierLoss=10s
-UseDomains=false
-
-[DHCPv4]
-RouteMetric=700
-UseNTP=no
-UseDNS=no
-UseGateway=yes
-UseRoutes=no
-
-[IPv6AcceptRA]
-RouteMetric=700
-EOF
-```
-
-##### Setting up a wireless device with DHCP
-
-Note that you first need to configure `iwd` to authenticate and connect to your
-wireless network. After that, tell `systemd-networkd` about it:
-
-```shell
-cat <<EOF > "/etc/systemd/network/10-wireless.network"
-[Match]
-Name=wlan0
-
-[Link]
-RequiredForOnline=routable
-
-[Network]
-DHCP=yes
-IgnoreCarrierLoss=10s
-UseDomains=true
-
-[DHCPv4]
-RouteMetric=600
-
-[IPv6AcceptRA]
-RouteMetric=600
-EOF
-```
-
-##### Enable systemd-networkd and iwd services
-
-Enable `systemd-networkd` and `iwd `with:
-
-```shell
-systemctl disable --now NetworkManager
-systemctl enable --now iwd.service
-systemctl enable --now systemd-networkd.service
-systemctl disable --now systemd-networkd-wait-online.service
-```
-
-Note that we disable the waiting service, since we want to continue booting
-even if there is no network. If you would like to know more about how you can
-configure `systemd-networkd`, be sure to read the
-[systemd-networkd](https://wiki.archlinux.org/title/Systemd-networkd) page on
-the Arch wiki.
 
 ### OpenSSL
 
