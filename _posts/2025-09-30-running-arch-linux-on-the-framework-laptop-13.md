@@ -116,7 +116,7 @@ parameters. I found the following additionals handle a bunch of stuff nicely
 on my Framework Laptop 13:
 
 ```
-acpi_mask_gpe=0x1A acpi_osi="!Windows 2020" libata.allow_tpm=1 mem_sleep_default=deep module_blacklist=cros-usbpd-charger net.ifnames=0 nvme.noacpi=1 nvme_core.default_ps_max_latency_us=0 root=LABEL=LINUX rtc_cmos.use_acpi_alarm=1 rw split_lock_detect=off tpm_tis.interrupts=0
+acpi_mask_gpe=0x1A acpi_osi="!Windows 2020" libata.allow_tpm=1 mem_sleep_default=deep net.ifnames=0 nvme.noacpi=1 nvme_core.default_ps_max_latency_us=0 root=LABEL=LINUX rtc_cmos.use_acpi_alarm=1 rw split_lock_detect=off tpm_tis.interrupts=0
 ```
 
 ## Packages I install
