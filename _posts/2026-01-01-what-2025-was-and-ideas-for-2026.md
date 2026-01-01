@@ -32,7 +32,7 @@ doing big new things: new house, new project at work, working in a new
 [programming language][3], a big sailing trip to Norway, been to the Carribean
 last year.
 
-If I would have to use one word to summarize 2025, it would be: `exhausting`.
+If I would have to summarize 2025, it would be as: `too much`.
 
 The big reasons for that are not the fun things we did, like the vacations, and
 the travels, but I think they mostly stem from two things:
