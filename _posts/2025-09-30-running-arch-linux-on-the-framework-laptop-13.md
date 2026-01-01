@@ -1324,14 +1324,18 @@ I maintain these packages (all on AUR, except for `openshift-codeready-bin`):
 
 Here are a few more things I plan to create AUR packages for:
 
-  * [amiga-gcc](https://github.com/bebbo/amiga-gcc)
   * [ares-commander](https://www.graebert.com/us/cad-software/ares-commander/)
   * [artemis](https://activemq.apache.org/components/artemis/download/)
-  * [kallistios](https://github.com/KallistiOS/KallistiOS)
-  * [fakeflac](https://www.maurits.vdschee.nl/fakeflac/)
+  * [gbdk-2020-git](https://github.com/gbdk-2020/gbdk-2020)
+  * [devkitPro-git](https://github.com/devkitPro/buildscripts)
+  * [kallistios-git](https://github.com/KallistiOS/KallistiOS)
+  * [jo-engine](https://github.com/johannes-fetz/joengine)
   * [leanux](https://github.com/jmspit/leanux)
-  * [ps2dev](https://github.com/ps2dev/ps2dev)
-  * [psn00bsdk](https://github.com/Lameguy64/PSn00bSDK)
+  * [m68k-amigaos-gcc](https://github.com/AmigaPorts/m68k-amigaos-gcc)
+  * [ps2dev-git](https://github.com/ps2dev/ps2dev)
+  * [ps3toolchain-git](https://github.com/ps3dev/ps3toolchain)
+  * [psn00bsdk-git](https://github.com/Lameguy64/PSn00bSDK)
+  * [Saturn-SDK-GCC-SH2](https://github.com/willll/Saturn-SDK-GCC-SH2)
   * [tvpaint](https://www.tvpaint.com/)
   * [vbcc](http://www.compilers.de/vbcc.html)
   * [winexe](https://sourceforge.net/projects/winexe/)
