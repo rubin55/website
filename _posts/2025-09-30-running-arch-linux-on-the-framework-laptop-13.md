@@ -1331,6 +1331,7 @@ Here are a few more things I plan to create AUR packages for:
   * [kallistios-git](https://github.com/KallistiOS/KallistiOS)
   * [jo-engine](https://github.com/johannes-fetz/joengine)
   * [leanux](https://github.com/jmspit/leanux)
+  * [libdragon-git](https://github.com/DragonMinded/libdragon)
   * [m68k-amigaos-gcc](https://github.com/AmigaPorts/m68k-amigaos-gcc)
   * [ps2dev-git](https://github.com/ps2dev/ps2dev)
   * [ps3toolchain-git](https://github.com/ps3dev/ps3toolchain)
