@@ -1299,6 +1299,7 @@ I maintain these packages (all on AUR, except for `openshift-codeready-bin`):
   * [gnome-shell-extension-tiling-shell-git](https://aur.archlinux.org/packages/gnome-shell-extension-tiling-shell-git)
   * [infer-bin](https://aur.archlinux.org/packages/infer-bin)
   * [jdk25-openj9-bin](https://aur.archlinux.org/packages/jdk25-openj9-bin)
+  * [leanux](https://aur.archlinux.org/packages/leanux)
   * [marksman-git](https://aur.archlinux.org/packages/marksman-git)
   * [marsdev-git](https://aur.archlinux.org/packages/marsdev-git)
   * [mistral-vibe](https://aur.archlinux.org/packages/mistral-vibe)
@@ -1322,24 +1323,29 @@ I maintain these packages (all on AUR, except for `openshift-codeready-bin`):
   * [talanoa-bin](https://aur.archlinux.org/packages/talanoa-bin)
   * [yaml-language-server-git](https://aur.archlinux.org/packages/yaml-language-server-git)
 
-Here are a few more things I plan to create AUR packages for:
+These are a few open source softwares I want to create AUR packages for:
+
+  * [apache-artemis](https://artemis.apache.org/)
+  * [winexe](https://sourceforge.net/projects/winexe/)
+  * [vbcc](http://www.compilers.de/vbcc.html)
+
+And I also want to create AUR packages for these commercial packages: 
 
   * [ares-commander](https://www.graebert.com/us/cad-software/ares-commander/)
-  * [artemis](https://activemq.apache.org/components/artemis/download/)
+  * [tvpaint-professional](https://www.tvpaint.com/)
+  
+And these development kits / toolchains:
+
   * [gbdk-2020-git](https://github.com/gbdk-2020/gbdk-2020)
   * [devkitPro-git](https://github.com/devkitPro/buildscripts)
   * [kallistios-git](https://github.com/KallistiOS/KallistiOS)
   * [jo-engine](https://github.com/johannes-fetz/joengine)
-  * [leanux](https://github.com/jmspit/leanux)
   * [libdragon-git](https://github.com/DragonMinded/libdragon)
   * [m68k-amigaos-gcc](https://github.com/AmigaPorts/m68k-amigaos-gcc)
   * [ps2dev-git](https://github.com/ps2dev/ps2dev)
   * [ps3toolchain-git](https://github.com/ps3dev/ps3toolchain)
   * [psn00bsdk-git](https://github.com/Lameguy64/PSn00bSDK)
-  * [Saturn-SDK-GCC-SH2](https://github.com/willll/Saturn-SDK-GCC-SH2)
-  * [tvpaint](https://www.tvpaint.com/)
-  * [vbcc](http://www.compilers.de/vbcc.html)
-  * [winexe](https://sourceforge.net/projects/winexe/)
+  * [saturn-sdk-gcc-sh2](https://github.com/willll/Saturn-SDK-GCC-SH2)
 
 ## Final thoughts
 

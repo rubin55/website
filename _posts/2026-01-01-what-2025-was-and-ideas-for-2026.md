@@ -41,7 +41,7 @@ the travels, but I think they mostly stem from two things:
   * A weekly schedule that leaves no room for flex
 
 I've had more trouble than usual applying focus on work-related tasks. If I
-look at how that works, I think it is because of having to doing things that
+look at how that works, I think it is because of having to do things that
 really require focus, but having a schedule that has zero room for flex. My
 schedule is so tight that I constantly find myself having to stop what I'm
 doing and rush into the next have-to-do task, which can be anything from a
