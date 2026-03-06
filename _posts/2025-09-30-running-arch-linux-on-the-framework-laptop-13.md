@@ -806,29 +806,12 @@ I use docker without any further adjustments.
 Enable `libvirtd` with:
 
 ```shell
-systemctl enable --now libvirtd.service
+systemctl enable --now libvirtd.service virtnetworkd.socket virtnetworkd-ro.socket virtnetworkd-admin.socket
 ```
 
-I run `libvirtd` mostly stock. I do set `unix_sock_group` to `libvirt` and add
-myself to the `libvirt` group. I then set `unix_sock_ro_perms`,
-`unix_sock_rw_perms` and `unix_sock_admin_perms` to `0770` (Meaning, the owner
-and group can read, write and execute, everybody else can do nothing).
-
-```
-unix_sock_group = "libvirt"
-unix_sock_ro_perms = "0770"
-unix_sock_rw_perms = "0770"
-unix_sock_admin_perms = "0770"
-```
-
-You need to change this for a whole lot of files under `/etc/libvirt`. Not doing
-this causes problems when connecting with your user instead of root using the
-`virsh` or `virt-manager` clients. don't forget to restart the service after
-changes:
-
-```shell
-systemctl restart libvirtd.service
-```
+The extra `virtnetworkd` socket enables are because I noticed that only 
+enabling `libvirtd.service` does not enable those, and they are needed when
+you interact with network settings, like when doing `virsh net-info default`.
 
 Furthermore, I configure the `virt0` interface of the `default` NAT-enabled
 network to have a specific IP address (10.10.11.1) and range (note: needs to
@@ -866,6 +849,7 @@ EOF
 virsh net-destroy default
 virsh net-undefine default
 virsh net-define /tmp/net-default.xml
+virsh net-autostart default
 virsh net-start default
 rm -qf /tmp/net-default.xml
 ```
@@ -1041,11 +1025,41 @@ cat <<EOF > "/etc/samba/smb.conf"
 EOF
 ```
 
+Finally, we are going to adjust the `systemd` unit files for `smb` and `nmb`
+So they wait for the necessary network interface(s) to come up:
+
+```shell
+systemctl edit smb
+systemctl edit nmb
+```
+
+You'll be presented with a file with some comment lines above and below. Add
+the below verbatim:
+
+```
+[Unit]
+After=
+After=libvirtd.service
+
+[Service]
+ExecStartPre=timeout 10s bash -c 'until ping -c1 10.10.11.1 &> /dev/null; do sleep 1; done'
+```
+
+Note the `ExecStartPre` line; this bash one-liner makes the service wait for
+the necessary network interfaces to be up. This is necessary because we have
+configured our `smb.conf` to listen on a specific subnet (`10.10.11.0/24` in
+our case). If the interface serving that network is not up, `smb` and `nmb`
+can't bind to it and fail to start.
+
+Also note that you can add multiple `ExecStartPre` lines, one for each network
+interface you wish to wait for to become available.
+
 After creating or changing `smb.conf`, restart the services:
 
 ```shell
 systemctl restart nmb.service smb.service
 ```
+
 
 ### TLP
 
