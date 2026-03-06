@@ -813,6 +813,23 @@ The extra `virtnetworkd` socket enables are because I noticed that only
 enabling `libvirtd.service` does not enable those, and they are needed when
 you interact with network settings, like when doing `virsh net-info default`.
 
+Now add your user to the `libvirt` group, so it can interact with the service:
+
+```shell
+sudo usermod -aG libvirt "$USER"
+```
+
+Note that Arch Linux defaults to consider anybody in the `wheel` group as a 
+`libvirtd` administrator, so add yourself to that too if you aren't already.
+
+Then you should add `libvirt_guest` to the `hosts:` line in `/etc/nsswitch.conf`
+so you can always resolve the names of guests. It should usually appear just
+before `dns`. For example, here is mine:
+
+```
+hosts: mymachines resolve [!UNAVAIL=return] files myhostname libvirt_guest dns
+```
+
 Furthermore, I configure the `virt0` interface of the `default` NAT-enabled
 network to have a specific IP address (10.10.11.1) and range (note: needs to
 be run after starting/restarting libvirtd, and after configuring Docker; if
