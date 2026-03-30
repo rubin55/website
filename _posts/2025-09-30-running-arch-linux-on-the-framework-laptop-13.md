@@ -286,17 +286,20 @@ If your fingerprint reader is working, you can continue to follow the steps
 My Framework Laptop 13 is intel-based, so I install these packages additionally:
 
 ```shell
-pacman -S --needed gst-plugin-va intel-compute-runtime intel-gpu-tools intel-graphics-compiler intel-media-driver intel-oneapi-base-toolkit libvdpau-va-gl opencv python-opencv python-pytorch-opt vulkan-intel
+pacman -S --needed gst-plugin-va intel-compute-runtime intel-gpu-tools intel-graphics-compiler intel-media-driver libvdpau-va-gl opencv python-opencv python-pytorch-opt vulkan-intel
 ```
 
-Also, from AUR, I install these, making sure their version is synced with the
-above mentioned 64-bit versions, These make it possible for 32-bit apps to also
-use VAAPI-based hardware acceleration:
+Also, from my [own package repositories on Codeberg][1], I install `lib32`
+variants of the intel driver and a latest+greatest version of the Intel 
+compilers for SYCL hardware accelerated AI inference:
 
 ```
+intel-oneapi-base-toolkit
 lib32-intel-gmmlib
 lib32-intel-media-driver
 ```
+
+[1]: https://codeberg.org/rubin?tab=repositories
 
 ### Additionally install on devices with AMD graphics
 
@@ -1269,22 +1272,25 @@ cd "$PKG_ROOT/Repository"
 repo-remove -s custom.db.tar.gz aurutils
 ```
 
-### AUR packages I build and install
+### Packages I build and install
 
-So now to fill that `$PKG_ROOT/Build` directory with packages from AUR so we
-can build some stuff and put it in our own repository:
+So now to fill that `$PKG_ROOT/Build` directory with packages so we can build
+some stuff and put it in our own repository:
 
 ```shell
 # Set package build root location.
 export PKG_ROOT="$HOME/Packaging"
 
-# Git clone them all.
+# Git clone the AUR packages.
 cd "$PKG_ROOT/Build"
-export GITREPOS="adwaita-qt-git aic94xx-firmware akku alsacap alsa-hdspeconf amitools android-studio ares-emu aseprite asm-lsp ast-firmware astrojs-language-server astrojs-ts-plugin audacious-gtk3 audacious-plugins-gtk3 aurutils azahar-git battop-bin blastem-hg bluez-hcitool bochs bottles brscan4 bundletool cartridges-git cdesktopenv-git chez-scheme claude-code clojure-lsp-bin cmake-format cmake-language-server codechecker conan cpp-httplib cpp-jwt crush cubeb davinci-resolve debtap dev-proxy-bin diagnostic-languageserver displaylink djmount dockerfile-language-server dolphin-emu-git dosbox-x-git dotool drawio-desktop-bin dumpasn1 earthly eclipse-platform eden-git elixir-ls erlang_ls evcxr_jupyter evdi-dkms-git exercism expert-git figma-linux-bin flow-bin flutterup flycast-git fsautocomplete-bin ghcup-hs-bin github-copilot github-desktop gnome-shell-extension-auto-accent-color gnome-shell-extension-dash-to-dock-git gnome-shell-extension-stealmyfocus-git gnome-shell-extension-tiling-shell-git godot-mono-git google-cloud-cli google-earth-pro gopher64-git groovy-language-server-git gtk2 helm-ls ibmcloud-cli icaclient icoextract imhex infer-bin jdk25-openj9-bin jdtls kotlin-lsp-bin kubelogin lagrange leanux lemminx lib32-gperftools lib32-gtk2 lib32-intel-gmmlib lib32-intel-media-driver lib32-libpng12 libbacktrace-git libchdr-git libpng12 librashader libretro-beetle-cygne-git libretro-beetle-lynx-git libretro-beetle-ngp-git libretro-beetle-pcfx-git libretro-beetle-saturn-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-lrps2-git libretro-swanstation-git libretro-uae-git libspng-git libwireplumber-4.0-compat license-wtfpl llama.cpp-cuda-git llama.cpp-sycl-git logisim-evolution-bin marksman-git marsdev-git mednaffe mei-amt-check-git metals mistral-vibe mkinitcpio-firmware mksh mongodb-bin mongosh-bin moonlight-qt-git ms-sys nand2tetris nbdkit ncurses5-compat-libs neo4j-community neovim-symlinks nestopia netcoredbg networkmanager-iwd nvidia-patch-git ocenaudio-bin omnisharp-roslyn-bin openmsx openshift-client-bin openshift-developer-bin openshift-pipelines-bin openvpn-update-systemd-resolved pandoc-bin papirus-folders passmark-performancetest-bin patool pcsx2-git pcsx-redux-git pegasus-frontend-git perlnavigator plutosvg plutovg postman-bin powercap powershell-bin powershell-editor-services pragmatapro-fonts prek prettier-plugin-xml protonplus protontricks-git ps3-disc-dumper-bin pupdate-bin pvsneslib-git pwvucontrol python-agent-client-protocol python-asgi-lifespan python-async-timeout python-backoff python-dataclasses-json python-eval-type-backport python-fvs python-gguf-git python-httpx-sse python-m3u8 python-machine68k python-mcp python-mistralai python-mkl python-opencensus python-opentelemetry python-opentype-feature-freezer python-orjson-git python-pathvalidate python-pluginbase python-pyqtdarktheme-fork python-pysdl2 python-python-ffmpeg python-setuptools-reproducible python-sounddevice python-sse-starlette python-steamgriddb python-tokenizers python-transformers python-tree-sitter python-tree-sitter-bash python-uuid7 python-uv-dynamic-versioning qt5-gamepad qt5-location qt5-webchannel qt5-webengine qt5-websockets rabtap rapidyaml rcu-bin regionset rpcs3-git rtcqs ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-jekyll-include-cache ruby-jekyll-redirect-from ruby-jekyll-sitemap ruby-just-the-docs ruby-reverse_markdown ruby-solargraph ruby-yard-activesupport-concern ruby-yard-solargraph rusty-psn-bin ryujinx-git sameboy sbom-tool-bin scala-dotty scheme-langserver-bin sedutil sentencepiece shellcheck-bin sigtop-git skyscraper-git snd-hdspe-dkms-git soapui softhsm-git stc-syncthing-git sunshine-git svelte-language-server-git swift-bin systemd-suspend-modules tidal-dl-ng tla-toolbox tonearm townsemu-git ttf-b612 ungoogled-chromium-bin upd72020x-fw usbtop uxplay v4l-utils-git vacuum vala-language-server vasm visual-studio-code-bin vita3k-git vkbasalt-cli vlink vmware-keymaps vmware-workstation vtsls vulkan-memory-allocator wd719x-firmware winetricks-git witr xcursor-dmz xdg-terminal-exec-git xpadneo-dkms yaml-language-server-git y-cruncher ymir-emu-git zeal-git"
+export GITREPOS="adwaita-qt-git aic94xx-firmware akku alsacap alsa-hdspeconf amitools android-studio ares-emu aseprite asm-lsp ast-firmware astrojs-language-server astrojs-ts-plugin audacious-gtk3 audacious-plugins-gtk3 aurutils azahar-git battop-bin blastem-hg bluez-hcitool bochs bottles brscan4 bundletool cartridges-git cdesktopenv-git chez-scheme claude-code clojure-lsp-bin cmake-format cmake-language-server codechecker conan cpp-httplib cpp-jwt crush cubeb davinci-resolve debtap dev-proxy-bin diagnostic-languageserver displaylink djmount dockerfile-language-server dolphin-emu-git dosbox-x-git dotool drawio-desktop-bin dumpasn1 earthly eclipse-platform eden-git elixir-ls erlang_ls evcxr_jupyter evdi-dkms-git exercism expert-git figma-linux-bin flow-bin flutterup flycast-git fsautocomplete-bin ghcup-hs-bin github-copilot github-desktop gnome-shell-extension-auto-accent-color gnome-shell-extension-dash-to-dock-git gnome-shell-extension-stealmyfocus-git gnome-shell-extension-tiling-shell-git godot-mono-git google-cloud-cli google-earth-pro gopher64-git groovy-language-server-git gtk2 helm-ls ibmcloud-cli icaclient icoextract imhex infer-bin jdk25-openj9-bin jdtls kotlin-lsp-bin kubelogin lagrange leanux lemminx lib32-gperftools lib32-gtk2 lib32-libpng12 libbacktrace-git libchdr-git libpng12 librashader libretro-beetle-cygne-git libretro-beetle-lynx-git libretro-beetle-ngp-git libretro-beetle-pcfx-git libretro-beetle-saturn-git libretro-bluemsx-git libretro-dosbox-pure-git libretro-lrps2-git libretro-swanstation-git libretro-uae-git libspng-git libwireplumber-4.0-compat license-wtfpl logisim-evolution-bin marksman-git marsdev-git mednaffe mei-amt-check-git metals mistral-vibe mkinitcpio-firmware mksh mongodb-bin mongosh-bin moonlight-qt-git ms-sys nbdkit ncurses5-compat-libs neo4j-community neovim-symlinks nestopia netcoredbg networkmanager-iwd nvidia-patch-git ocenaudio-bin omnisharp-roslyn-bin openmsx openshift-client-bin openshift-developer-bin openshift-pipelines-bin openvpn-update-systemd-resolved pandoc-bin papirus-folders passmark-performancetest-bin patool pcsx2-git pcsx-redux-git pegasus-frontend-git perlnavigator plutosvg plutovg postman-bin powercap powershell-bin powershell-editor-services pragmatapro-fonts prek prettier-plugin-xml protonplus protontricks-git ps3-disc-dumper-bin pupdate-bin pvsneslib-git pwvucontrol python-agent-client-protocol python-asgi-lifespan python-async-timeout python-backoff python-dataclasses-json python-eval-type-backport python-fvs python-gguf-git python-httpx-sse python-m3u8 python-machine68k python-mcp python-mistralai python-mkl python-opencensus python-opentelemetry python-opentype-feature-freezer python-orjson-git python-pathvalidate python-pluginbase python-pyqtdarktheme-fork python-pysdl2 python-python-ffmpeg python-setuptools-reproducible python-sounddevice python-sse-starlette python-steamgriddb python-tokenizers python-transformers python-tree-sitter python-tree-sitter-bash python-uuid7 python-uv-dynamic-versioning qt5-gamepad qt5-location qt5-webchannel qt5-webengine qt5-websockets rabtap rapidyaml rcu-bin regionset rpcs3-git rtcqs ruby-backport ruby-e2mmap ruby-jaro_winkler ruby-jekyll-include-cache ruby-jekyll-redirect-from ruby-jekyll-sitemap ruby-just-the-docs ruby-reverse_markdown ruby-solargraph ruby-yard-activesupport-concern ruby-yard-solargraph rusty-psn-bin ryujinx-git sameboy sbom-tool-bin scala-dotty scheme-langserver-bin sedutil sentencepiece shellcheck-bin sigtop-git skyscraper-git snd-hdspe-dkms-git soapui softhsm-git stc-syncthing-git sunshine-git svelte-language-server-git swift-bin systemd-suspend-modules tidal-dl-ng tla-toolbox tonearm townsemu-git ttf-b612 ttf-ms-win11-base ungoogled-chromium-bin upd72020x-fw usbtop uxplay v4l-utils-git vacuum vala-language-server vasm visual-studio-code-bin vita3k-git vkbasalt-cli vlink vmware-keymaps vmware-workstation vtsls vulkan-memory-allocator wd719x-firmware winetricks-git witr xcursor-dmz xdg-terminal-exec-git xpadneo-dkms yaml-language-server-git y-cruncher ymir-emu-git zeal-git"
 for p in $GITREPOS; do git clone https://aur.archlinux.org/$p.git; done
 
-# And my own version of openshift-codeready-bin/crc.
-git clone https://github.com/rubin55/openshift-codeready-bin.git
+# Git clone my own packages that are not in AUR for some reason.
+cd "$PKG_ROOT/Build"
+export GITREPOS="ida-pro intel-oneapi-base-toolkit lib32-intel-gmmlib lib32-intel-media-driver llama.cpp-cuda-git llama.cpp-sycl-git nand2tetris openshift-codeready-bin wolfram"
+for p in $GITREPOS; do git clone https://codeberg.org/rubin/$p.git; done
+
 
 # Build all (I wouldn't do this, I would initially enter one-by-one and do
 # git log ; makepkg -cCs manually). Will result in packages under $PKG_ROOT/Repository.
