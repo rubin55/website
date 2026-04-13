@@ -291,10 +291,11 @@ pacman -S --needed gst-plugin-va intel-compute-runtime intel-gpu-tools intel-gra
 
 Also, from my [own package repositories on Codeberg][1], I install `lib32`
 variants of the intel driver and a latest+greatest version of the Intel 
-compilers for SYCL hardware accelerated AI inference:
+compilers for SYCL hardware accelerated AI inference, and Intel OpenVINO:
 
 ```
-intel-oneapi-base-toolkit
+intel-oneapi
+intel-openvino
 lib32-intel-gmmlib
 lib32-intel-media-driver
 ```
@@ -1288,7 +1289,7 @@ for p in $GITREPOS; do git clone https://aur.archlinux.org/$p.git; done
 
 # Git clone my own packages that are not in AUR for various reasons.
 cd "$PKG_ROOT/Build"
-export GITREPOS="ida-pro intel-oneapi-base-toolkit intel-openvino lib32-intel-gmmlib lib32-intel-media-driver llama.cpp-cuda-git llama.cpp-openvino-git llama.cpp-sycl-git nand2tetris openshift-codeready-bin wolfram"
+export GITREPOS="ida-pro intel-oneapi intel-openvino lib32-intel-gmmlib lib32-intel-media-driver llama.cpp-cuda-git llama.cpp-openvino-git llama.cpp-sycl-git nand2tetris openshift-codeready-bin wolfram"
 for p in $GITREPOS; do git clone https://codeberg.org/rubin/$p.git; done
 
 
@@ -1348,7 +1349,7 @@ I maintain these packages on AUR:
 I maintain these packages on Codeberg:
 
   * [ida-pro](https://codeberg.org/rubin/ida-pro) 
-  * [intel-oneapi-base-toolkit](https://codeberg.org/rubin/intel-oneapi-base-toolkit) 
+  * [intel-oneapi](https://codeberg.org/rubin/intel-oneapi) 
   * [intel-openvino](https://codeberg.org/rubin/intel-openvino)
   * [lib32-intel-gmmlib](https://codeberg.org/rubin/lib32-intel-gmmlib)
   * [lib32-intel-media-driver](https://codeberg.org/rubin/lib32-intel-media-driver) 
