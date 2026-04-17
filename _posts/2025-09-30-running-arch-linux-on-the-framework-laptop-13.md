@@ -153,13 +153,13 @@ boot, or you could do it during install with `pacstrap` (it doesn't really
 matter, but in any case, make sure `core`, `contrib` and `multilib` are enabled
 in `/etc/pacman.conf` first):
 
-```shell
-pacman -S --needed acpi acpica acpi_call-dkms acpid alacritty alsa-firmware alsa-tools alsa-ucm-conf alsa-utils ansible-language-server ansible-lint ant antlr4 ardour ares-emu aribb25 arj autoconf automake aws-cli base-devel bash bash-language-server bc bear bind biome bison blender bower btop bubblewrap bun busted bustle calibre cameractrls carla cdemu-client cdemu-daemon cdrdao cdrtools chawan chntpw cifs-utils clang clinfo clpeak clojure cmake corkscrew cpio cppcheck cpupower ctags cue cups curl dash dconf-editor dcraw ddcutil debugedit delve deno desmume devtools direnv distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dool dos2unix dosfstools doxygen d-spy dvd+rw-tools dvisvgm editorconfig-checker editorconfig-core-c efibootmgr elixir emacs-wayland erlang eslint ethtool exfatprogs extra-cmake-modules fakeroot fastfetch fd fdupes file file-roller fio firefox flex fltk1.3 fontforge foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fractal freecad freetype2-demos fs-uae fs-uae-launcher furnace fwupd fzf gamemode gamescope gcc gdb gdm gemini-cli ghidra gimp git git-filter-repo github-cli git-lfs glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-control-center gnome-disk-utility gnome-logs gnome-session gnome-settings-daemon gnome-shell gnome-shell-extension-appindicator gnome-shell-extension-desktop-icons-ng gnome-shell-extensions gnome-system-monitor gnome-themes-extra gnome-tweaks gnupg gnuplot go gopls go-tools gparted gperf gradle groovy gtksourceview3 gtkwave guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb handbrake harfbuzz-cairo hdparm helix helm hplip htop hunspell hunspell-de hunspell-en_gb hunspell-en_us hunspell-es_es hunspell-fr hunspell-nl i2c-tools ifuse img2pdf inetutils inkscape iperf3 iptables-nft irssi iverilog iwd jekyll jfsutils jq jupyterlab jupyterlab-lsp jupyter-lsp jupyter-notebook just k9s kafka kddockwidgets kotlin kubeconform kubectl kubeseal leiningen lhasa libblockdev-crypto libblockdev-dm libblockdev-fs libblockdev-loop libblockdev-lvm libblockdev-mdraid libblockdev-mpath libblockdev-nvme libblockdev-part libblockdev-swap libebur128 libgoom2 libindicator-gtk3 librashader librecad libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-blastem libretro-core-info libretro-desmume libretro-dolphin libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libtiger libva-mesa-driver libva-utils libvirt libwebp-utils libxcrypt-compat linux-firmware-bnx2x linux-firmware-liquidio linux-firmware-mellanox linux-firmware-nfp linux-firmware-qlogic linux-headers live-media lld lldb lm_sensors loupe lshw lsof lsscsi ltrace lua-language-server make mame mame-tools man-db mangohud man-pages mattermost-desktop maven mbedtls2 mednafen mesa-demos mesa-utils meson mgba-qt minikube mitmproxy mono mono-msbuild moreutils mpv mtools multipath-tools mupdf-tools mutter nasm nautilus nbd neovide neovim netbeans networkmanager-openvpn networkmanager-vpn-plugin-openvpn net-tools nfs-utils ninja nmap nodejs noto-fonts-emoji npm ntfs-3g nuget nvchecker nvme-cli nvtop openai-codex openbsd-netcat opencl-clhpp opencl-headers opencode openldap openssh openvpn osv-scanner p7zip pacman-contrib pacutils papers papirus-icon-theme patch patchelf pciutils pdfarranger perf perl perl-lwp-protocol-https perl-net-dbus perl-x11-protocol perl-yaml pinentry piper pipewire pipewire-alsa pipewire-jack pipewire-libcamera pipewire-pulse pipewire-v4l2 pkgconf postgresql powertop ppsspp prettier projectm protonmail-bridge psutils python python-huggingface-hub python-jsbeautifier python-jwcrypto python-kubernetes python-ldap python-lsp-server python-nose python-numpy python-opengl python-patch-ng python-pip python-pycryptodomex python-pylint python-pyopenssl python-pytest python-rope python-safetensors python-setuptools python-sphinx python-sphinx-autobuild python-sympy python-websockets python-wheel qbittorrent qjackctl qpwgraph qsynth qt5ct qt5-declarative qt5-tools qt5-wayland qt6ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland quodlibet rabbitmq racket ranger realtime-privileges rebuild-detector recode retroarch retroarch-assets-glui retroarch-assets-ozone ripgrep rlwrap rsync ruby ruby-base64 ruby-bigdecimal ruby-csv ruby-default-gems ruby-irb ruby-rake-compiler rustup samba sane sbt scons screen scummvm sdcc sdl2_mixer seahorse seatd shfmt signal-desktop simple-scan smartmontools smbclient snapshot snes9x-gtk sof-firmware sox speedtest-cli squashfs-tools steam step-ca step-cli stern strace s-tui sudo syncthing sysdig sysprof sysstat tailwindcss-language-server taplo-cli tar terminus-font texinfo texlab texlive-basic texlive-bin texlive-fontsrecommended texlive-latex texlive-latexextra texlive-latexrecommended texlive-pictures the_silver_searcher thunderbird tidy tinyxxd tmux tokei traceroute tracker3-miners tree tree-sitter-cli ttf-ibm-plex ttf-ubuntu-font-family turbostat twine typescript typescript-language-server udftools udisks2-lvm2 uncrustify unixodbc unzip urlwatch usbutils util-linux uucp valgrind valkey vdpauinfo vhba-module-dkms vkd3d vscode-css-languageserver vscode-html-languageserver vscode-json-languageserver vue-language-server vulkan-tools w3m wayland-utils wgetpaste whois wimlib wine wine-mono wireless-regdb wireless_tools wireplumber wireshark-cli wireshark-qt wl-clipboard wmctrl wol xcb-util-errors xchm xclip xdelta3 xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xfsprogs xmlstarlet xorg-fonts-100dpi xorg-fonts-misc xorg-font-util xorg-mkfontscale xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xlsclients xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo yarn yasm yq yt-dlp zig zip zls zstd
+```bash
+pacman -S --needed acpi acpica acpi_call-dkms acpid alacritty alsa-firmware alsa-tools alsa-ucm-conf alsa-utils ansible-language-server ansible-lint ant antlr4 ardour ares-emu aribb25 arj autoconf automake aws-cli base-devel bash bash-language-server bc bear bind biome bison blender bower btop bubblewrap bun busted bustle calibre cameractrls carla cdemu-client cdemu-daemon cdrdao cdrtools chawan chntpw cifs-utils clang clinfo clpeak clojure cmake corkscrew cpio cppcheck cpupower ctags cue cups curl dash dconf-editor dcraw ddcutil debugedit delve deno desmume devtools direnv distrobox dive dmidecode dmraid dnsmasq docker docker-buildx docker-compose dool dos2unix dosfstools doxygen d-spy dvd+rw-tools dvisvgm editorconfig-checker editorconfig-core-c efibootmgr elixir emacs-wayland erlang eslint ethtool exfatprogs extra-cmake-modules fakeroot fastfetch fd fdupes file file-roller fio firefox flex fltk1.3 fontforge foomatic-db-engine foomatic-db-nonfree-ppds foomatic-db-ppds fractal freecad freetype2-demos fs-uae fs-uae-launcher furnace fwupd fzf gamemode gamescope gcc gdb gdm gemini-cli ghidra gimp git git-filter-repo github-cli git-lfs glab gnome-backgrounds gnome-browser-connector gnome-calculator gnome-characters gnome-control-center gnome-disk-utility gnome-font-viewer gnome-logs gnome-session gnome-settings-daemon gnome-shell gnome-shell-extension-appindicator gnome-shell-extension-desktop-icons-ng gnome-shell-extensions gnome-system-monitor gnome-themes-extra gnome-tweaks gnupg gnuplot go gopls go-tools gparted gperf gradle groovy gtksourceview3 gtkwave guile gvfs gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb handbrake harfbuzz-cairo hdparm helix helm hplip htop hunspell hunspell-de hunspell-en_gb hunspell-en_us hunspell-es_es hunspell-fr hunspell-nl i2c-tools ifuse img2pdf inetutils inkscape iperf3 iptables-nft irssi iverilog iwd jekyll jfsutils jq jupyterlab jupyterlab-lsp jupyter-lsp jupyter-notebook just k9s kafka kddockwidgets kotlin kubeconform kubectl kubeseal leiningen lhasa libblockdev-crypto libblockdev-dm libblockdev-fs libblockdev-loop libblockdev-lvm libblockdev-mdraid libblockdev-mpath libblockdev-nvme libblockdev-part libblockdev-swap libebur128 libgoom2 libindicator-gtk3 librashader librecad libreoffice-still libretro-beetle-pce libretro-beetle-psx-hw libretro-blastem libretro-core-info libretro-desmume libretro-dolphin libretro-flycast libretro-mame libretro-mgba libretro-mupen64plus-next libretro-nestopia libretro-picodrive libretro-ppsspp libretro-sameboy libretro-scummvm libretro-snes9x libtiger libva-mesa-driver libva-utils libvirt libwebp-utils libxcrypt-compat linux-firmware-bnx2x linux-firmware-liquidio linux-firmware-mellanox linux-firmware-nfp linux-firmware-qlogic linux-headers live-media lld lldb lm_sensors loupe lshw lsof lsscsi ltrace lua-language-server make mame mame-tools man-db mangohud man-pages mattermost-desktop maven mbedtls2 mednafen mesa-demos mesa-utils meson mgba-qt minikube mitmproxy mono mono-msbuild moreutils mpv mtools multipath-tools mupdf-tools mutter nasm nautilus nbd neovide neovim netbeans networkmanager-openvpn networkmanager-vpn-plugin-openvpn net-tools nfs-utils ninja nmap nodejs noto-fonts-emoji npm ntfs-3g nuget nvchecker nvme-cli nvtop openai-codex openbsd-netcat opencl-clhpp opencl-headers opencode openldap openssh openvpn osv-scanner p7zip pacman-contrib pacutils papers papirus-icon-theme patch patchelf pciutils pdfarranger perf perl perl-lwp-protocol-https perl-net-dbus perl-x11-protocol perl-yaml pinentry piper pipewire pipewire-alsa pipewire-jack pipewire-libcamera pipewire-pulse pipewire-v4l2 pkgconf postgresql powertop ppsspp prettier projectm protonmail-bridge psutils python python-huggingface-hub python-jsbeautifier python-jwcrypto python-kubernetes python-ldap python-lsp-server python-nose python-numpy python-opengl python-patch-ng python-pip python-pycryptodomex python-pylint python-pyopenssl python-pytest python-rope python-safetensors python-setuptools python-sphinx python-sphinx-autobuild python-sympy python-websockets python-wheel qbittorrent qjackctl qpwgraph qsynth qt5ct qt5-declarative qt5-tools qt5-wayland qt6ct qt6-multimedia-ffmpeg qt6-tools qt6-wayland quodlibet rabbitmq racket ranger realtime-privileges rebuild-detector recode retroarch retroarch-assets-glui retroarch-assets-ozone ripgrep rlwrap rsync ruby ruby-base64 ruby-bigdecimal ruby-csv ruby-default-gems ruby-irb ruby-rake-compiler rustup samba sane sbt scons screen scummvm sdcc sdl2_mixer seahorse seatd shfmt signal-desktop simple-scan smartmontools smbclient snapshot snes9x-gtk sof-firmware sox speedtest-cli squashfs-tools steam step-ca step-cli stern strace s-tui sudo syncthing sysdig sysprof sysstat tailwindcss-language-server taplo-cli tar terminus-font texinfo texlab texlive-basic texlive-bin texlive-fontsrecommended texlive-latex texlive-latexextra texlive-latexrecommended texlive-pictures the_silver_searcher thunderbird tidy tinyxxd tmux tokei traceroute tracker3-miners tree tree-sitter-cli ttf-ibm-plex ttf-ubuntu-font-family turbostat twine typescript typescript-language-server udftools udisks2-lvm2 uncrustify unixodbc unzip urlwatch usbutils util-linux uucp valgrind valkey vdpauinfo vhba-module-dkms vkd3d vscode-css-languageserver vscode-html-languageserver vscode-json-languageserver vue-language-server vulkan-tools w3m wayland-utils wgetpaste whois wimlib wine wine-mono wireless-regdb wireless_tools wireplumber wireshark-cli wireshark-qt wl-clipboard wmctrl wol xcb-util-errors xchm xclip xdelta3 xdg-desktop-portal-gnome xdg-user-dirs-gtk xdg-utils xdotool xfsprogs xmlstarlet xorg-fonts-100dpi xorg-fonts-misc xorg-font-util xorg-mkfontscale xorg-server xorg-server-devel xorg-xauth xorg-xdpyinfo xorg-xdriinfo xorg-xev xorg-xfontsel xorg-xhost xorg-xinit xorg-xinput xorg-xkill xorg-xlsclients xorg-xprop xorg-xrandr xorg-xrdb xorg-xset xorg-xsetroot xorg-xvinfo xorg-xwayland xorg-xwininfo yarn yasm yq yt-dlp zig zip zls zstd
 ```
 
 ### Additionally install when you want to run virtual machines using KVM and Qemu
 
-```shell
+```bash
 pacman -S --needed qemu-full libvirt virt-manager
 ```
 
@@ -167,7 +167,7 @@ Note that the `qemu-full` package depends on `qemu-chardev-baum` which in turn
 pulls in `brltty`, a braille (virtual?) keyboard service. If you don't need 
 that:
  
-```shell
+```bash
 pacman -R qemu-chardev-baum qemu-full brltty
 userdel brltty
 ```
@@ -184,7 +184,7 @@ implementation of `power-profile-daemon` (which itself conflicts with `tlp`).
 Installing `tlp-pd` Makes it possible to control TLP from things like Gnome,
 Cosmic, KDE, etc.
 
-```shell
+```bash
 pacman -S --needed tlp tlp-pd
 systemctl enable --now tlp-pd
 ```
@@ -197,7 +197,7 @@ there. I couldn't get that to work with `mkinitcpio` based initrd.
 If you want to use `dracut` instead of `mkinitcpio` to generate initrd images,
 you need to install it and remove the default initrd tooling:
 
-```shell
+```bash
 pacman -S --needed dracut
 pacman -R mkinitcpio mkinitcpio-busybox
 ```
@@ -206,7 +206,7 @@ Note that there are no hooks by default for rebuilding dracut-based initrd
 images, so you'd need to do that manually after `linux` kernel package updates.
 For example:
 
-```shell
+```bash
 # Kernel version in package contains dot, on-disk it contains dash, hence the sed.
 export KERNEL_VERSION=$(pacman -Q linux | awk '{print $2}' | sed 's|\.arch|-arch|g')
 cp /lib/modules/$KERNEL_VERSION/vmlinuz /boot/vmlinuz-linux
@@ -220,13 +220,13 @@ Wayland provides working gestures on Gnome out of the box, and Wayland is the
 default on Arch Linux. If, however, you have some reason to use X11 instead of
 Wayland by default and you want gestures to work, you can install Touchégg:
 
-```shell
+```bash
 pacman -S --needed touchegg
 ```
 
 Make sure you enable the service:
 
-```shell
+```bash
 systemctl enable --now touchegg
 ```
 
@@ -238,13 +238,13 @@ And also install the required Gnome [extension](https://github.com/JoseExposito/
 Devices like the Framework Laptop 13 have a fingerprint reader. If you want to
 use it, make sure to install the following packages:
 
-```shell
+```bash
 pacman -S --needed libfprint fprintd
 ```
 
 And make sure you enable the service:
 
-```shell
+```bash
 systemctl enable --now fprintd
 ```
 
@@ -258,7 +258,7 @@ In any case, I followed the instructions [here](https://knowledgebase.frame.work
 to update to the required firmware version `01000330` to make the fingerprint
 reader work with Linux. Instructions below are based on the linked document:
 
-```shell
+```bash
 # First downgrade fwupd...
 wget --continue https://archive.archlinux.org/packages/f/fwupd/fwupd-1.9.5-2-x86_64.pkg.tar.zst --output fwupd-1.9.5-2-x86_64.pkg.tar.zst
 pacman -U fwupd-1.9.5-2-x86_64.pkg.tar.zst
@@ -270,7 +270,7 @@ fwupdtool install --allow-reinstall --allow-older goodix-moc-609c-v01000330.cab
 Note: There might be a transfer error mentioned at the end. This can be safely
 ignored. Reboot and start a fresh terminal and show the device:
 
-```shell
+```bash
 fwupdmgr get-devices 1e8c8470-a49c-571a-82fd-19c9fa32b8c3
 ```
 
@@ -285,7 +285,7 @@ If your fingerprint reader is working, you can continue to follow the steps
 
 My Framework Laptop 13 is intel-based, so I install these packages additionally:
 
-```shell
+```bash
 pacman -S --needed gst-plugin-va intel-compute-runtime intel-gpu-tools intel-graphics-compiler intel-media-driver libvdpau-va-gl opencv python-opencv python-pytorch-opt vulkan-intel
 ```
 
@@ -306,7 +306,7 @@ lib32-intel-media-driver
 
 If you have an AMD device instead, you might want these ones:
 
-```shell
+```bash
 pacman -S --needed radeontop vulkan-radeon gst-plugin-va opencv python-opencv python-pytorch-opt-rocm
 ```
 
@@ -314,7 +314,7 @@ pacman -S --needed radeontop vulkan-radeon gst-plugin-va opencv python-opencv py
 
 If you have an NVidia device instead, you might want these ones:
 
-```shell
+```bash
 pacman -S --needed cuda ffnvcodec-headers libva-nvidia-driver nvidia-cg-toolkit nvidia-settings nvidia-utils nvidia-open-dkms nvtop opencl-nvidia openssl-1.1 gst-plugins-bad python-pytorch-opt-cuda opencv-cuda python-opencv-cuda nsight-compute nsight-systems
 ```
 
@@ -330,7 +330,7 @@ and `python-opencv` packages installed previously.
 repository for its `sublime-text` and `sublime-merge` packages. If you want to
 use those, do the following (as root):
 
-```shell
+```bash
 # Install and sign the sublimehq pubkey.
 curl -O https://download.sublimetext.com/sublimehq-pub.gpg
 pacman-key --add sublimehq-pub.gpg
@@ -356,7 +356,7 @@ The above is based on [these instructions](https://www.sublimetext.com/docs/linu
 I like to install the lib32-* package equivalents of packages I installed. There
 isn't an easy way to do this and it is a bit messy, but here's how I do it:
 
-```shell
+```bash
 # Clean beginnings.
 mkdir -p ~/Desktop
 rm ~/Desktop/lib32-candidates ~/Desktop/lib32-notfound
@@ -399,7 +399,7 @@ and does *not* require or depend on `wpa_supplicant` in any way.
 
 First configure `iwd` defaults:
 
-```shell
+```bash
 mkdir -p /etc/iwd
 cat <<EOF > "/etc/iwd/main.conf"
 [General]
@@ -435,7 +435,7 @@ build the `networkmanager-iwd` package. See the section about how to
 [configure for package building](#configuring-for-package-building) for more
 information about how do that.
 
-```shell
+```bash
 systemctl disable --now systemd-networkd # systemd-networkd needs to be off
 systemctl disable --now iwd # iwd is managed by networkmanager itself
 systemctl enable --now NetworkManager # enable networkmanager
@@ -454,7 +454,7 @@ configure your network. This comes down to placing configuration files in
 
 #### Setting up a single ethernet device with DHCP
 
-```shell
+```bash
 cat <<EOF > "/etc/systemd/network/10-ethernet.network"
 [Match]
 Name=eth0
@@ -484,7 +484,7 @@ EOF
 Note that this is an alternative to the single ethernet configuration shown
 previously. Let's first create the physical device bind config:
 
-```shell
+```bash
 cat <<EOF > "/etc/systemd/network/10-bind.network"
 [Match]
 Name=eth0 eth1
@@ -497,7 +497,7 @@ EOF
 
 Create the virtual bridge device:
 
-```shell
+```bash
 cat <<EOF > "/etc/systemd/network/10-bridge.netdev"
 [NetDev]
 Name=bridge0
@@ -508,7 +508,7 @@ EOF
 
 And finally, the bridge network, configured by DHCP:
 
-```shell
+```bash
 cat <<EOF > "/etc/systemd/network/10-bridge.network"
 [Match]
 Name=bridge0
@@ -538,7 +538,7 @@ EOF
 Note that you first need to configure `iwd` to authenticate and connect to your
 wireless network. After that, tell `systemd-networkd` about it:
 
-```shell
+```bash
 cat <<EOF > "/etc/systemd/network/10-wireless.network"
 [Match]
 Name=wlan0
@@ -563,7 +563,7 @@ EOF
 
 Enable `systemd-networkd` and `iwd `with:
 
-```shell
+```bash
 systemctl disable --now NetworkManager # networkmanager needs to be off
 systemctl enable --now iwd.service # iwd is not managed by systemd-networkd
 systemctl enable --now systemd-networkd.service # enable systemd-networkd
@@ -587,7 +587,7 @@ The `displaylink` service is used, together with the `evdi` driver, to handle
 externally connected displays, which connect through a dock or other type of
 USB3 or Thunderbolt connection. Enable it as follows:
 
-```shell
+```bash
 systemctl enable --now displaylink
 ```
 
@@ -596,7 +596,7 @@ inordinate amount of CPU time after a suspend/resume cycle. A quick restart of
 the service works around that. To do that automatically, we can create a systemd
 unit file and enable it:
 
-```shell
+```bash
 # Write the systemd unit file for restarting displaylink on resume:
 cat <<EOF > "/etc/systemd/system/displaylink-restart.service"
 [Unit]
@@ -621,7 +621,7 @@ The `cpupower` service reads from `/etc/default/cpupower` and configures the
 default scheduler. Edit that file to set the default scheduler to `powersave` or
 `performance `and then enable it:
 
-```shell
+```bash
 systemctl enable --now cpupower.service
 ```
 
@@ -630,7 +630,7 @@ systemctl enable --now cpupower.service
 I don't want any service auto-configuring stuff on my system, especially things
 like printers for example. Therefore I disable the Avahi zeroconf service:
 
-```shell
+```bash
 systemctl mask avahi-daemon.service
 systemctl mask avahi-daemon.socket
 systemctl mask avahi-dnsconfd.service
@@ -646,7 +646,7 @@ the password dialog so the `avahi` service can be started. Yeah.
 
 Enable `bluetooth` with:
 
-```shell
+```bash
 systemctl enable --now bluetooth.service
 ```
 
@@ -703,7 +703,7 @@ to apply the settings to your `main.conf`):
 
 After changes, restart the service:
 
-```shell
+```bash
 systemctl restart bluetooth.service
 ```
 
@@ -711,7 +711,7 @@ systemctl restart bluetooth.service
 
 Enable `gdm` with:
 
-```shell
+```bash
 systemctl enable --now gdm.service
 ```
 
@@ -742,7 +742,7 @@ which are not relevant for this setup (these plugins cause loading errors in a
 default setup like we're building - this does not break, but it does cause a
 lot of regular error messages in `journalctl`):
 
-```shell
+```bash
 mkdir -p /etc/containerd
 cat <<EOF > "/etc/containerd/config.toml"
 
@@ -756,7 +756,7 @@ Now we configure Docker to use a specific IP range for the default network (the
 (the `default-address-pools` setting). Additionally, we use `libvirtd`'s
 `dnsmasq` instance to resolve DNS (see next section):
 
-```shell
+```bash
 mkdir -p /etc/docker
 cat <<EOF > "/etc/docker/daemon.json"
 {
@@ -777,7 +777,7 @@ EOF
 
 Enable docker with:
 
-```shell
+```bash
 systemctl enable --now docker.service
 ```
 
@@ -787,7 +787,7 @@ I use docker without any further adjustments.
 
 Enable `libvirtd` with:
 
-```shell
+```bash
 systemctl enable --now libvirtd.service virtnetworkd.socket virtnetworkd-ro.socket virtnetworkd-admin.socket
 ```
 
@@ -797,7 +797,7 @@ you interact with network settings, like when doing `virsh net-info default`.
 
 Now add your user to the `libvirt` group, so it can interact with the service:
 
-```shell
+```bash
 sudo usermod -aG libvirt "$USER"
 ```
 
@@ -822,7 +822,7 @@ enables Docker containers in the default network to use this `dnsmasq` instance
 to resolve DNS, as opposed to having to manage a separate/manual `dnsmasq`
 instance for Docker):
 
-```shell
+```bash
 export UUID=$(uuidgen)
 cat <<EOF > "/tmp/net-default.xml"
 <network xmlns:dnsmasq="http://libvirt.org/schemas/network/dnsmasq/1.0">
@@ -872,7 +872,7 @@ by default on OpenSSL 1.x).
 
 To work-around these issues, I place a custom  `/etc/ssl/openssl.cnf`:
 
-```shell
+```bash
 cp -n "/etc/ssl/openssl.cnf" "/etc/ssl/openssl.cnf.orig"
 cat <<EOF > "/etc/ssl/openssl.cnf"
 HOME = .
@@ -908,7 +908,7 @@ legacy VPN stuff, or if you're behind moron-grade SSL-terminating proxies.
 
 Enable `nfsv4` with:
 
-```shell
+```bash
 systemctl enable --now nfsv4-server.service
 ```
 
@@ -926,7 +926,7 @@ loop-mount a memory block device which is a directory on the host).
 Since we're only doing NFSv4, and we're not interested in user/group ID mapping,
 let's stop and mask a couple of RPC services first:
 
-```shell
+```bash
 systemctl stop rpcbind.service
 systemctl mask rpcbind.service
 systemctl stop nfs-blkmap
@@ -965,7 +965,7 @@ the protocol explicitly, we patch `/etc/nfs.conf` (use `patch` or add the
 
 Create an exports for /home:
 
-```shell
+```bash
 cp -n "/etc/exports.d/home.exports" "/etc/exports.d/home.exports.orig"
 cat <<EOF > "/etc/exports.d/home.exports"
 /home   10.10.11.0/24(rw,sync,crossmnt,no_subtree_check)
@@ -974,7 +974,7 @@ EOF
 
 After the above changes, restart the service:
 
-```shell
+```bash
 systemctl restart nfsv4-server.service
 ```
 
@@ -982,7 +982,7 @@ systemctl restart nfsv4-server.service
 
 Enable `smbd` and `nmbd` with:
 
-```shell
+```bash
 systemctl enable --now nmb.service smb.service
 ```
 
@@ -990,7 +990,7 @@ I use Samba for the same reasons as I use NFS, that is to have shared storage
 on various older virtual machines (like Windows NT 4.0). Let's create an
 `smb.conf` file:
 
-```shell
+```bash
 cat <<EOF > "/etc/samba/smb.conf"
 [global]
    workgroup = WORKGROUP
@@ -1027,7 +1027,7 @@ EOF
 Finally, we are going to adjust the `systemd` unit files for `smb` and `nmb`
 So they wait for the necessary network interface(s) to come up:
 
-```shell
+```bash
 systemctl edit smb
 systemctl edit nmb
 ```
@@ -1055,7 +1055,7 @@ interface you wish to wait for to become available.
 
 After creating or changing `smb.conf`, restart the services:
 
-```shell
+```bash
 systemctl restart nmb.service smb.service
 ```
 
@@ -1064,7 +1064,7 @@ systemctl restart nmb.service smb.service
 
 Enable `tlp` with:
 
-```shell
+```bash
 systemctl enable --now tlp.service
 ```
 
@@ -1076,7 +1076,7 @@ PCIe, Bluetooth, the CPU scheduler, etc.
 I've made a custom TLP configuration for my Framework Laptop 13 which you can
 install as follows:
 
-```shell
+```bash
 cat <<EOF > "/etc/tlp.d/01-custom.conf"
 CPU_SCALING_GOVERNOR_ON_AC=powersave
 CPU_SCALING_GOVERNOR_ON_BAT=powersave
@@ -1102,7 +1102,7 @@ EOF
 
 After the above, you need to restart the service:
 
-```shell
+```bash
 systemctl restart tlp.service
 ```
 
@@ -1110,7 +1110,7 @@ systemctl restart tlp.service
 
 Enable `cups` with:
 
-```shell
+```bash
 systemctl enable --now cups.socket
 ```
 
@@ -1137,7 +1137,7 @@ I  use `cdemu` and related `vhba` kernel module to emulate optical drives for
 use with emulation stuff. If you'd like to run CDemu, make sure the required
 modules are loaded at boot:
 
-```shell
+```bash
 # Load modules at boot.
 cat <<EOF > "/etc/modules-load.d/cdemu.conf"
 sg
@@ -1154,7 +1154,7 @@ modprobe -a sg sr_mod vhba
 
 I use the following user-level services (do as logged in user):
 
-```shell
+```bash
 for u in syncthing.service wireplumber.service pipewire.socket pipewire-pulse.socket; do systemctl enable --now --user $u; done
 ```
 
@@ -1175,7 +1175,7 @@ not to sign your built package.
 Also note that my package build root location is specific to my needs;
 feel free to change it to anything you like.
 
-```shell
+```bash
 # Set package build root location.
 export PKG_ROOT="$HOME/Packaging/Arch"
 
@@ -1215,7 +1215,7 @@ unset PKG_ROOT
 Now we configure `makepkg` defaults. Make sure you configure the PKG_ROOT,
 GPG_PUBKEY and PACKAGER environment variables to your specific likings:
 
-```shell
+```bash
 # Set package build root location, gpgpubkey-id and packager string.
 export PKG_ROOT="$HOME/Packaging/Arch"
 export GPG_PUBKEY='14B189C4E877C9CAEA7F99C7ED3BDDB83BDD2604'
@@ -1242,7 +1242,7 @@ unset PKG_ROOT GPG_PUBKEY PACKAGER
 Here are a few example interactions with package fetching, building, repository
 updating and package removal to get you started:
 
-```shell
+```bash
 # Set package build root location.
 export PKG_ROOT="$HOME/Packaging/Arch"
 
@@ -1278,7 +1278,7 @@ repo-remove -s custom.db.tar.gz aurutils
 So now to fill that `$PKG_ROOT/Build` directory with packages so we can build
 some stuff and put it in our own repository:
 
-```shell
+```bash
 # Set package build root location.
 export PKG_ROOT="$HOME/Packaging"
 
