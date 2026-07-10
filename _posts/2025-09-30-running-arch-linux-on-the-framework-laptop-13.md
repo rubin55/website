@@ -770,14 +770,16 @@ EOF
 Now we configure Docker to use a specific IP range for the default network (the
 `bip` setting) and a bunch of range-reservations for custom created networks
 (the `default-address-pools` setting). Additionally, we use `libvirtd`'s
-`dnsmasq` instance to resolve DNS (see next section):
+`dnsmasq` instance to resolve DNS (see next section), and we set the firewall
+backend to `nftables`:
 
 ```bash
 mkdir -p /etc/docker
 cat <<EOF > "/etc/docker/daemon.json"
 {
   "bip":"10.10.12.1/24",
-  "dns" : [ "10.10.12.1" ],
+  "dns" : [ "10.12.1" ],
+  "firewall-backend": "nftables",
   "default-address-pools": [
     { "base": "10.10.13.0/24", "size": 24 },
     { "base": "10.10.14.0/24", "size": 24 },
