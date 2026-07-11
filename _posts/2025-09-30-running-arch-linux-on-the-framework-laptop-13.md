@@ -1376,6 +1376,7 @@ I maintain these packages on Codeberg:
   * [ida-pro](https://codeberg.org/rubin/ida-pro) 
   * [lib32-intel-gmmlib](https://codeberg.org/rubin/lib32-intel-gmmlib)
   * [lib32-intel-media-driver](https://codeberg.org/rubin/lib32-intel-media-driver) 
+  * [llama.cpp-cuda-git](https://codeberg.org/rubin/llama.cpp-vulkan-git)
   * [nand2tetris](https://codeberg.org/rubin/nand2tetris) 
   * [openshift-codeready-bin](https://codeberg.org/rubin/openshift-codeready-bin) 
   * [wolfram](https://codeberg.org/rubin/wolfram)
