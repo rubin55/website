@@ -433,8 +433,8 @@ DisablePeriodicScan=true
 DisableRoamingScan=true
 MaximumPeriodicScanInterval=3600
 
-[DriverQuirks]
-PowerSaveDisable=iwlwifi
+#[DriverQuirks]
+#PowerSaveDisable=iwlwifi
 EOF
 ```
 
@@ -1096,23 +1096,30 @@ install as follows:
 
 ```bash
 cat <<EOF > "/etc/tlp.d/01-custom.conf"
+AHCI_RUNTIME_PM_ON_AC=on
+AHCI_RUNTIME_PM_ON_BAT=on
+AHCI_RUNTIME_PM_TIMEOUT=60
+
 CPU_SCALING_GOVERNOR_ON_AC=powersave
 CPU_SCALING_GOVERNOR_ON_BAT=powersave
 
 CPU_BOOST_ON_AC=0
 CPU_BOOST_ON_BAT=0
 
+DISK_DEVICES="nvme0n1"
+
 PCIE_ASPM_ON_BAT=powersupersave
 
 PLATFORM_PROFILE_ON_AC=balanced
 PLATFORM_PROFILE_ON_BAT=low-power
 
-USB_ALLOWLIST=32ac:0002
+USB_DENYLIST=32ac:0005
+
 USB_EXCLUDE_BTUSB=1
 USB_EXCLUDE_PRINTER=0
 
 WIFI_PWR_ON_AC=off
-WIFI_PWR_ON_BAT=off
+WIFI_PWR_ON_BAT=on
 
 WOL_DISABLE=N
 EOF
