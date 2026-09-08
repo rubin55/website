@@ -1380,6 +1380,7 @@ I maintain these packages on AUR:
   * [pvsneslib-git](https://aur.archlinux.org/packages/pvsneslib-git)
   * [python-agent-client-protocol](https://aur.archlinux.org/packages/python-agent-client-protocol)
   * [python-jsonpath-python](https://aur.archlinux.org/packages/python-jsonpath-python)
+  * [python-tree-sitter-bash](https://aur.archlinux.org/packages/python-tree-sitter-bash)
   * [rcu-bin](https://aur.archlinux.org/packages/rcu-bin)
   * [retro68-git](https://aur.archlinux.org/packages/retro68-git)
   * [rusty-psn](https://aur.archlinux.org/packages/rusty-psn)
