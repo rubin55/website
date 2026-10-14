@@ -1363,7 +1363,7 @@ for p in $GITREPOS; do git clone https://aur.archlinux.org/$p.git; done
 
 # Git clone my own packages that are not in AUR for various reasons.
 cd "$PKG_ROOT/Build"
-export GITREPOS="ida-pro lib32-intel-gmmlib lib32-intel-media-driver llama.cpp-cuda-git llama.cpp-vulkan-git nand2tetris openshift-codeready-bin wolfram"
+export GITREPOS="ida-pro lib32-intel-gmmlib lib32-intel-media-driver llama.cpp-cuda-git llama.cpp-vulkan-git nand2tetris openshift-codeready-bin python-propainter-git wolfram"
 for p in $GITREPOS; do git clone https://codeberg.org/rubin/$p.git; done
 
 
@@ -1434,9 +1434,9 @@ I maintain these packages on Codeberg:
   * [lib32-intel-gmmlib](https://codeberg.org/rubin/lib32-intel-gmmlib)
   * [lib32-intel-media-driver](https://codeberg.org/rubin/lib32-intel-media-driver) 
   * [llama.cpp-cuda-git](https://codeberg.org/rubin/llama.cpp-cuda-git)
-  * [llama.cpp-vulkan-git](https://codeberg.org/rubin/llama.cpp-vulkan-git)
   * [nand2tetris](https://codeberg.org/rubin/nand2tetris) 
   * [openshift-codeready-bin](https://codeberg.org/rubin/openshift-codeready-bin) 
+  * [python-propainter-git](https://codeberg.org/rubin/python-propainter-git) 
   * [wolfram](https://codeberg.org/rubin/wolfram)
 
 These are a few open source softwares I still want to create packages for:
